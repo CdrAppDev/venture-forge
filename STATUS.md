@@ -24,15 +24,17 @@ Venture Forge is a **company factory** - a framework that systematically creates
 6. **Business Thesis** - How does it make money? Unit economics
 7. **Risk Thesis** - What could go wrong? Mitigations
 
-### Materials & Funding (8-10)
+### Materials (8-9)
 8. **Case Assembly** - Evidence library, all claims cited
 9. **Narrative Assembly** - Pitch deck, summaries, materials
-10. **Funding Execution** - Applications, pitches, close
 
-### Build & Launch (11-13)
-11. **MVP Architecture** - Tech spec, data model, UI/UX, dev plan
-12. **MVP Build** - AI-accelerated development, working software
-13. **Launch & Revenue** - First customers, first revenue
+### Build & Traction (10-12)
+10. **MVP Architecture** - Tech spec, data model, UI/UX, dev plan
+11. **MVP Build** - AI-accelerated development, working software
+12. **Customer Traction** - LOI or first paying customer (funders need proof)
+
+### Funding (13)
+13. **Funding Execution** - Applications with traction, pitches, close
 
 ## Technology Stack
 
@@ -75,8 +77,8 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 
 ## What's Next
 
-- [ ] Update `docs/WORKFLOW.md` to match 13-phase model
-- [ ] Update `docs/AGENTS.md` to include build agents
+- [x] Update `docs/WORKFLOW.md` to match 13-phase model
+- [x] Update `docs/AGENTS.md` to include build agents
 - [ ] Create research prompt templates for each phase
 - [ ] Document the Gemini Deep Research integration
 - [ ] Continue ClaimIQ through remaining phases

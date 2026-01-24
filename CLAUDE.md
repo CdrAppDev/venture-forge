@@ -10,7 +10,7 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 
 ## The Framework
 
-### 13 Phases (Research → Revenue)
+### 13 Phases (Research → Funded)
 
 **Research & Validation (1-4)**
 1. Capital Thesis - What funders want
@@ -23,15 +23,17 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 6. Business Thesis - How it makes money
 7. Risk Thesis - What could go wrong
 
-**Materials & Funding (8-10)**
+**Materials (8-9)**
 8. Case Assembly - Evidence library
 9. Narrative Assembly - Pitch materials
-10. Funding Execution - Close the deal
 
-**Build & Launch (11-13)**
-11. MVP Architecture - Tech spec, design
-12. MVP Build - AI-accelerated development
-13. Launch & Revenue - First customers, first dollars
+**Build & Traction (10-12)**
+10. MVP Architecture - Tech spec, design
+11. MVP Build - AI-accelerated development
+12. Customer Traction - LOI or first customer (funders need proof)
+
+**Funding (13)**
+13. Funding Execution - Close funding with traction proof
 
 ### Technology Stack
 
