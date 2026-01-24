@@ -392,6 +392,96 @@
             }
         }
 
+        /* Pipeline Phases */
+        .pipeline-phase {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .pipeline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pipeline-num {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .pipeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .pipeline-content {
+            padding: 1.5rem;
+        }
+
+        .pipeline-agent {
+            margin-bottom: 1.5rem;
+        }
+
+        .pipeline-agent .agent-box {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .pipeline-agent p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-left: 0;
+        }
+
+        .pipeline-agent strong {
+            color: var(--accent-light);
+        }
+
+        .pipeline-gate {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .pipeline-gate .agent-box {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .pipeline-gate p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .pipeline-arrow {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            padding: 0.75rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .pipeline-content {
+                padding: 1rem;
+            }
+        }
+
         .scale-note {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -905,74 +995,122 @@
     <section class="agents" id="agents">
         <div class="container">
             <div class="section-num">03</div>
-            <h2>The Agentic Machine</h2>
+            <h2>How Agents Run Each Phase</h2>
             <p class="section-lead">
-                This isn't automation. It's autonomous AI agents that investigate, reason, and build—
-                without human intervention. You give them an objective. They figure out how to achieve it.
+                Each phase from above is executed by AI agents. They do the work autonomously.
+                Humans make strategic decisions at gates between phases.
             </p>
 
             <div class="agents-visual">
-                <div class="agent-flow">
-                    <div class="agent-row">
-                        <div class="agent-label">Research Agent</div>
-                        <div class="agent-boxes">
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">1</div>
+                        <div class="pipeline-title">Research</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
                             <div class="agent-box gemini">Gemini Deep Research</div>
+                            <p>Autonomously plans research strategy. Executes 80-160 web searches per topic.
+                            Synthesizes 40+ sources. Produces 15-page cited reports on capital criteria,
+                            problem validation, market sizing, and competitive landscape.
+                            <strong>4 reports. ~2 hours. Unsupervised.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Is this opportunity worth pursuing?"</p>
                         </div>
                     </div>
-                    <div class="agent-capability">
-                        <p>You say: <em>"Research the rural hospital claim denial problem."</em></p>
-                        <p>The agent <strong>autonomously</strong>: plans a research strategy, executes 80-160 web searches,
-                        reads industry reports, synthesizes 40+ sources, resolves contradictions, and produces a
-                        15-page cited report. <strong>In 30 minutes. Unsupervised.</strong></p>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">2</div>
+                        <div class="pipeline-title">Design</div>
                     </div>
-
-                    <div class="agent-arrow">&darr;</div>
-
-                    <div class="agent-row">
-                        <div class="agent-label">Reasoning Agent</div>
-                        <div class="agent-boxes">
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
                             <div class="agent-box claude">Claude Opus 4.5</div>
+                            <p>Takes all research (80+ pages, 150+ citations). Designs solution architecture.
+                            Builds business model with unit economics. Creates risk register with mitigations.
+                            Cross-references everything. <strong>Holds the entire venture in memory.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Is this solution buildable? Does the business model work?"</p>
                         </div>
                     </div>
-                    <div class="agent-capability">
-                        <p>Takes 4 research reports (80+ pages, 150+ citations). Cross-references every claim.
-                        Identifies patterns, contradictions, gaps. Reconciles conflicting statistics.
-                        Outputs structured evidence with confidence ratings. <strong>Holds entire ventures in memory.</strong></p>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">3</div>
+                        <div class="pipeline-title">Materials</div>
                     </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box claude">Claude Opus 4.5</div>
+                            <p>Compiles evidence library—every claim traced to source. Generates pitch deck,
+                            executive summary, grant applications. Ensures statistics are consistent across
+                            all materials. <strong>All citations verified. All links accessible.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Would I invest based on these materials?"</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="agent-arrow">&darr;</div>
+                <div class="pipeline-arrow">&darr;</div>
 
-                    <div class="agent-row">
-                        <div class="agent-label">Build Agent</div>
-                        <div class="agent-boxes">
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">4</div>
+                        <div class="pipeline-title">Build</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
                             <div class="agent-box claude">Claude Code</div>
+                            <p>Reads the spec. Plans architecture. Writes production code. Creates tests.
+                            Sets up infrastructure. Deploys. Iterates on feedback.
+                            <strong>Software development as an autonomous process.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Is this ready for customers?"</p>
                         </div>
                     </div>
-                    <div class="agent-capability">
-                        <p>Reads the spec. Plans the architecture. Writes production code. Creates tests.
-                        Sets up infrastructure. Deploys. Iterates on feedback.
-                        <strong>Software development as an autonomous process.</strong></p>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">5</div>
+                        <div class="pipeline-title">Traction & Fund</div>
                     </div>
-
-                    <div class="agent-arrow">&darr;</div>
-
-                    <div class="agent-row">
-                        <div class="agent-label">Human</div>
-                        <div class="agent-boxes">
-                            <div class="agent-box human">Strategic Decisions Only</div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box claude">Claude Opus 4.5</div>
+                            <p>Generates outreach materials. Prepares data room with traction evidence.
+                            Drafts responses to due diligence questions. Supports funding applications
+                            with customer proof. <strong>Traction first, then capital.</strong></p>
                         </div>
-                    </div>
-                    <div class="agent-capability">
-                        <p>"Is this problem worth solving?" "Is this positioning defensible?" "Ready to fund?"
-                        <strong>You make the calls. The machine does the work.</strong></p>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Are the deal terms acceptable?"</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="scale-note">
                     <p>
-                        <strong>The multiplier:</strong> These agents run in parallel. While one investigates
-                        Opportunity A, others research B, C, D simultaneously. One operator. Dozens of ventures.
-                        The bottleneck isn't research or building—it's human judgment at decision points.
+                        <strong>The multiplier:</strong> These phases run in parallel across opportunities.
+                        While Venture A is in Build, Venture B is in Research, Venture C is in Design.
+                        One operator. Dozens of ventures. The bottleneck is human judgment, not agent capacity.
                     </p>
                 </div>
             </div>
