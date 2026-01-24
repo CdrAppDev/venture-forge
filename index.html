@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venture Forge | The Company Factory</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #2a2a3a;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Section headers */
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* Insight Section */
+        .insight {
+            background: var(--bg-secondary);
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .insight-visual {
+            position: relative;
+        }
+
+        .insight-diagram {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .diagram-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .diagram-row:last-child {
+            border-bottom: none;
+        }
+
+        .diagram-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .diagram-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .diagram-text p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .arrow-down {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            padding: 0.5rem 0;
+        }
+
+        /* Process */
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .process-flow::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            opacity: 0.3;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Phases */
+        .phases {
+            background: var(--bg-secondary);
+        }
+
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .phase-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .phase-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .phase-number {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Technology */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .tech-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .tech-card h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Leverage */
+        .leverage {
+            background: var(--bg-secondary);
+        }
+
+        .comparison-table {
+            margin-top: 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-header {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .comparison-cell {
+            padding: 1.25rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .comparison-cell.metric {
+            color: var(--text-secondary);
+        }
+
+        .comparison-cell.traditional {
+            color: var(--text-muted);
+        }
+
+        .comparison-cell.forge {
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        /* Proof Point */
+        .proof {
+            position: relative;
+        }
+
+        .proof-card {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        .proof-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .proof-logo {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .proof-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .proof-title p {
+            color: var(--text-secondary);
+        }
+
+        .proof-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .proof-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+        }
+
+        .proof-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .proof-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border: 1px solid var(--accent);
+            border-radius: 24px;
+            padding: 4rem;
+            margin-top: 2rem;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-list {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            list-style: none;
+        }
+
+        .cta-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-list .check {
+            color: var(--success);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .phases-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-flow {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .process-flow::before {
+                display: none;
+            }
+
+            .phases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-header {
+                display: none;
+            }
+
+            .proof-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .cta-list {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">VF</div>
+                Venture Forge
+            </a>
+            <ul class="nav-links">
+                <li><a href="#insight">The Insight</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="#phases">Phases</a></li>
+                <li><a href="#leverage">Leverage</a></li>
+                <li><a href="#proof">Proof</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">AI-Powered Venture Creation</div>
+            <h1>The <span>Company Factory</span></h1>
+            <p>A systematic framework that transforms capital opportunities into funded ventures. One operator. Days, not months.</p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">Days</div>
+                    <div class="stat-label">Time to pitch-ready</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Parallel opportunities</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">Operator required</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="insight" id="insight">
+        <div class="container">
+            <div class="section-label">The Core Insight</div>
+            <h2 class="section-title">Information Symmetry</h2>
+            <p class="section-subtitle">AI can now access and synthesize the same public information that funders use for due diligence. Same inputs, same conclusions.</p>
+
+            <div class="insight-grid">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">If we research with rigor...</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Every claim backed by third-party citations. Every statistic from verifiable sources. Every competitive assessment honest and complete.</p>
+
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">...funders will verify independently...</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">They'll search the same databases. Read the same reports. Find the same evidence. Their due diligence draws from the same pool.</p>
+
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">...and reach the same conclusions.</h3>
+                    <p style="color: var(--text-secondary);">The venture thesis becomes verifiable, not just persuasive. It survives scrutiny by design.</p>
+                </div>
+
+                <div class="insight-visual">
+                    <div class="insight-diagram">
+                        <div class="diagram-row">
+                            <div class="diagram-icon">🔍</div>
+                            <div class="diagram-text">
+                                <h4>AI Deep Research</h4>
+                                <p>Comprehensive, multi-source, cited</p>
+                            </div>
+                        </div>
+                        <div class="arrow-down">↓</div>
+                        <div class="diagram-row">
+                            <div class="diagram-icon">📊</div>
+                            <div class="diagram-text">
+                                <h4>Evidence Library</h4>
+                                <p>Every claim linked to source</p>
+                            </div>
+                        </div>
+                        <div class="arrow-down">↓</div>
+                        <div class="diagram-row">
+                            <div class="diagram-icon">✓</div>
+                            <div class="diagram-text">
+                                <h4>Funder Verification</h4>
+                                <p>Same sources, same conclusions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-label">The Model</div>
+            <h2 class="section-title">Capital-First Inversion</h2>
+            <p class="section-subtitle">Traditional ventures seek funding after building. We start with capital criteria and work backwards.</p>
+
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4>Capital Criteria</h4>
+                    <p>Understand what funders want to fund</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4>Research Problems</h4>
+                    <p>Find problems matching those criteria</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4>Design Solutions</h4>
+                    <p>Build evidence-backed solutions</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h4>Compile Evidence</h4>
+                    <p>Every claim verifiable</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <h4>Deploy</h4>
+                    <p>Pitch, fund, launch</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="phases" id="phases">
+        <div class="container">
+            <div class="section-label">The Pipeline</div>
+            <h2 class="section-title">Ten Phases to Funded Venture</h2>
+            <p class="section-subtitle">Each phase eliminates risk. What emerges survives funder scrutiny.</p>
+
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 1</div>
+                    <h4>Capital Thesis</h4>
+                    <p>Where is funding flowing? What do funders want?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 2</div>
+                    <h4>Problem Thesis</h4>
+                    <p>Is this a real, documented, painful problem?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 3</div>
+                    <h4>Market Thesis</h4>
+                    <p>Is the market big enough to matter?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 4</div>
+                    <h4>Competitive Thesis</h4>
+                    <p>Can we differentiate? What are the gaps?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 5</div>
+                    <h4>Solution Thesis</h4>
+                    <p>What should we build? Why will it win?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 6</div>
+                    <h4>Business Thesis</h4>
+                    <p>Does the business model work?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 7</div>
+                    <h4>Risk Thesis</h4>
+                    <p>What could go wrong? How do we address it?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 8</div>
+                    <h4>Case Assembly</h4>
+                    <p>Is every claim backed by evidence?</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 9</div>
+                    <h4>Narrative Assembly</h4>
+                    <p>Pitch deck, summaries, materials</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">PHASE 10</div>
+                    <h4>Funding Execution</h4>
+                    <p>Pitch, negotiate, close</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="technology" id="technology">
+        <div class="container">
+            <div class="section-label">The Stack</div>
+            <h2 class="section-title">No Custom Software Required</h2>
+            <p class="section-subtitle">The platform already exists. Claude Code is the orchestration engine.</p>
+
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <div class="tech-icon">🔬</div>
+                    <h4>Gemini Deep Research</h4>
+                    <p>Multi-step autonomous research with automatic citations. Comprehensive reports in minutes.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🧠</div>
+                    <h4>Claude Code</h4>
+                    <p>Orchestration, processing, synthesis, and generation. The workflow engine.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📁</div>
+                    <h4>GitHub + Files</h4>
+                    <p>Portfolio tracking, asset storage, version control, audit trail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="leverage" id="leverage">
+        <div class="container">
+            <div class="section-label">The Leverage</div>
+            <h2 class="section-title">What One Operator Can Do</h2>
+            <p class="section-subtitle">Traditional venture creation requires teams and months. Venture Forge inverts this.</p>
+
+            <div class="comparison-table">
+                <div class="comparison-row comparison-header">
+                    <div class="comparison-cell">Metric</div>
+                    <div class="comparison-cell">Traditional</div>
+                    <div class="comparison-cell">Venture Forge</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell metric">Time to pitch-ready</div>
+                    <div class="comparison-cell traditional">3-6 months</div>
+                    <div class="comparison-cell forge">1-2 weeks</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell metric">Opportunities evaluated</div>
+                    <div class="comparison-cell traditional">1-2 at a time</div>
+                    <div class="comparison-cell forge">Dozens in parallel</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell metric">Evidence quality</div>
+                    <div class="comparison-cell traditional">Opinion-heavy</div>
+                    <div class="comparison-cell forge">Citation-backed</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell metric">Iteration speed</div>
+                    <div class="comparison-cell traditional">Weeks</div>
+                    <div class="comparison-cell forge">Hours</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell metric">Custom software needed</div>
+                    <div class="comparison-cell traditional">Yes</div>
+                    <div class="comparison-cell forge">No</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof" id="proof">
+        <div class="container">
+            <div class="section-label">Proof Point</div>
+            <h2 class="section-title">ClaimIQ: Built With This Framework</h2>
+            <p class="section-subtitle">The first venture developed using Venture Forge methodology.</p>
+
+            <div class="proof-card">
+                <div class="proof-header">
+                    <div class="proof-logo">CIQ</div>
+                    <div class="proof-title">
+                        <h3>ClaimIQ</h3>
+                        <p>AI-powered denial prevention for rural hospitals</p>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">Problem:</strong> Rural hospitals lose $19.7B annually to claim denials (HFMA). 432 are vulnerable to closure (Chartis Group).
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">Solution:</strong> AI denial prevention with pay-for-performance pricing. Rural-first positioning backed by Black Book Research.
+                </p>
+                <p style="color: var(--text-secondary);">
+                    <strong style="color: var(--text-primary);">Differentiation:</strong> 88% of rural providers say vendors sell "urban-first" solutions. Only 29% agree vendors solve rural problems.
+                </p>
+
+                <div class="proof-stats">
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">Phase 6</div>
+                        <div class="proof-stat-label">Current Status</div>
+                    </div>
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">~40 hrs</div>
+                        <div class="proof-stat-label">Time Invested</div>
+                    </div>
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">100%</div>
+                        <div class="proof-stat-label">Claims Cited</div>
+                    </div>
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">Ready</div>
+                        <div class="proof-stat-label">For Funding</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Build</h2>
+                <p>The framework is proven. The tools exist. The first venture validates the approach.</p>
+
+                <ul class="cta-list">
+                    <li><span class="check">✓</span> Methodology documented</li>
+                    <li><span class="check">✓</span> Technology stack ready</li>
+                    <li><span class="check">✓</span> Proof point complete</li>
+                    <li><span class="check">✓</span> Operator committed</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            Venture Forge &mdash; The Company Factory
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
