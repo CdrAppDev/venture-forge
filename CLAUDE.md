@@ -1,163 +1,95 @@
 # Project: venture-forge
 
-## Workflow Instructions for Claude
+## What This Is
 
-This is the Venture Forge framework - an agentic AI system for systematically identifying, validating, and launching ventures at scale.
+Venture Forge is a **company factory** - a systematic framework for creating software ventures from funding opportunities through to revenue. AI agents handle research, synthesis, and generation. Humans review and decide.
 
-### Session Start
+## Current Status
 
-When starting a conversation:
+**Read `STATUS.md` first** - it has the current state of the project.
 
-1. **Check portfolio status** - Query GitHub for active opportunities
-2. **Announce state** - Show what phase each opportunity is in
-3. **Show available actions** - Based on portfolio state
+## The Framework
 
-```bash
-# Query GitHub for portfolio state
-gh issue list --label "opportunity" --json number,title,labels
+### 13 Phases (Research → Revenue)
 
-# Get details on specific opportunity
-gh issue view <number>
-```
+**Research & Validation (1-4)**
+1. Capital Thesis - What funders want
+2. Problem Thesis - Validated problem
+3. Market Thesis - TAM/SAM/SOM
+4. Competitive Thesis - Gaps and positioning
 
-### Session Start Format
+**Design & Model (5-7)**
+5. Solution Thesis - What to build
+6. Business Thesis - How it makes money
+7. Risk Thesis - What could go wrong
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- VENTURE FORGE PORTFOLIO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+**Materials & Funding (8-10)**
+8. Case Assembly - Evidence library
+9. Narrative Assembly - Pitch materials
+10. Funding Execution - Close the deal
 
-Active Opportunities:
-  • ClaimIQ - Phase 6 (Business Case) - READY FOR PHASE 7
-  • [Others from GitHub query]
+**Build & Launch (11-13)**
+11. MVP Architecture - Tech spec, design
+12. MVP Build - AI-accelerated development
+13. Launch & Revenue - First customers, first dollars
 
-Available Actions:
-  • status - Full portfolio view
-  • continue [opportunity] - Work on next phase
-  • scout [source] - Add new capital source
-  • research [area] - Start new opportunity
+### Technology Stack
 
-What would you like to do?
-```
+- **Research**: Gemini Deep Research API
+- **Processing/Generation**: Claude Opus 4.5
+- **Orchestration**: Claude Code
+- **Storage**: Files + GitHub
 
-### Commands
+### Key Principles
+
+1. **Capital-first** - Start with what funders want, work backwards
+2. **Evidence-backed** - Every claim cited to third-party source
+3. **Software-first** - All ventures are software products
+4. **AI-accelerated** - Research, materials, AND build
+5. **Human decisions** - AI researches/generates, humans approve
+
+## Important Files
+
+| File | Purpose |
+|------|---------|
+| `STATUS.md` | Current state, what's done, what's next |
+| `docs/THESIS.md` | Full thesis document |
+| `presentation/index.html` | Web presentation |
+| `docs/WORKFLOW.md` | Phase details (needs update to 13 phases) |
+| `docs/AGENTS.md` | Agent specs (needs update for build agents) |
+
+## Live Presentation
+
+- **URL**: https://cdrappdev.github.io/venture-forge/
+- **Repo**: https://github.com/CdrAppDev/venture-forge
+
+## Proof Points
+
+RHTP research → 5 opportunities:
+1. ClaimIQ (in development) - `/Users/chrisroberts/Projects/claimiq/`
+2. CyberShield - `/Users/chrisroberts/Projects/cybershield-rural/`
+3. VitalLink - `/Users/chrisroberts/Projects/vitallink-rpm/`
+4. MindBridge - `/Users/chrisroberts/Projects/mindbridge-rural/`
+5. ShiftSmart - `/Users/chrisroberts/Projects/shiftsmart-health/`
+
+RHTP Research: `/Users/chrisroberts/Projects/rhtp/`
+
+## Communication Guidelines
+
+**NEVER mention costs, budgets, money, or "zero capital"** in thesis or presentation materials. Don't position things as "free" or "no investment needed" - just describe the work without financial framing.
+
+## Commands
 
 | Command | Description |
 |---------|-------------|
-| `status` | Show full portfolio with phases |
-| `scout [source]` | Add new capital source (Phase 1) |
-| `research [area]` | Research new problem space (Phase 2) |
-| `continue [opportunity]` | Work on next phase for opportunity |
-| `review [opportunity]` | Show current phase output for review |
-| `approve` | Approve current phase, move to next |
-| `revise [feedback]` | Revise current phase output |
+| `status` | Show portfolio state |
+| `continue [opportunity]` | Work on next phase |
+| `review [opportunity]` | Show current phase output |
 
-### Phase Workflow
+## What Needs Work
 
-Each opportunity progresses through 9 phases:
-
-1. **Capital Scout** → Capital source profile
-2. **Problem Research** → Problem brief with TAM/SAM
-3. **Solution Design** → MVP specification
-4. **Evidence Building** → Citation library
-5. **Competitive Intel** → Competitive analysis
-6. **Business Case** → Investor materials
-7. **Customer ID** → Prospect list
-8. **Outreach & LOI** → Customer commitment
-9. **Funding Activation** → Funded venture
-
-See `docs/WORKFLOW.md` for detailed phase documentation.
-
-### Agent Behavior
-
-When working on a phase:
-
-1. **Research thoroughly** - Use web search, read documents, gather evidence
-2. **Cite everything** - Every claim needs a third-party source
-3. **Be honest** - Surface risks and competitors, don't hide them
-4. **Present for review** - Show structured output, await human approval
-5. **Update GitHub** - Record progress in issue comments
-
-### Quality Standards
-
-**Evidence Requirements:**
-- Every statistic must have a third-party source
-- All URLs must be verified accessible
-- Minimum 3 sources per major claim
-
-**Competitive Analysis:**
-- Must identify real competitors
-- Differentiation must be evidence-backed
-- Risks must be surfaced, not hidden
-
-**Business Case:**
-- All stats consistent across documents
-- Every claim linked to source
-- Objections addressed proactively
-
-### Portfolio Tracking
-
-Opportunities are tracked as GitHub issues:
-
-```bash
-# Create new opportunity
-gh issue create --title "Opportunity: [Name]" --label "opportunity,phase:1-scout"
-
-# Update phase
-gh issue edit <number> --remove-label "phase:1-scout" --add-label "phase:2-research"
-
-# Add phase output
-gh issue comment <number> --body "## Phase 2 Output\n..."
-
-# Complete opportunity
-gh issue close <number> --comment "Funded and launched!"
-```
-
-### ClaimIQ Reference
-
-The ClaimIQ project (`/Users/chrisroberts/Projects/claimiq/`) is the proof-of-concept:
-
-- **Current Phase**: 6 (Business Case complete)
-- **Next Phase**: 7 (Customer ID)
-- **Materials**: index.html, product-spec.html, research.html
-- **Evidence**: All stats cited to third-party sources
-- **Positioning**: Rural-first, backed by Black Book Research
-
-Use ClaimIQ as the template for how opportunities should be developed.
-
----
-
-## Project Structure
-
-```
-venture-forge/
-├── CLAUDE.md           # This file
-├── README.md           # Project overview
-├── docs/
-│   ├── WORKFLOW.md     # 9-phase workflow details
-│   ├── AGENTS.md       # Agent specifications
-│   └── QUALITY-GATES.md # Human review criteria
-├── portfolio/          # Opportunity references
-├── templates/          # Reusable templates
-└── scripts/            # Automation
-```
-
----
-
-## Labels Reference
-
-| Label | Purpose |
-|-------|---------|
-| `opportunity` | Marks issue as a venture opportunity |
-| `phase:1-scout` | Capital Scout phase |
-| `phase:2-research` | Problem Research phase |
-| `phase:3-design` | Solution Design phase |
-| `phase:4-evidence` | Evidence Building phase |
-| `phase:5-competitive` | Competitive Intel phase |
-| `phase:6-bizcase` | Business Case phase |
-| `phase:7-customerid` | Customer ID phase |
-| `phase:8-outreach` | Outreach & LOI phase |
-| `phase:9-funding` | Funding Activation phase |
-| `status:active` | Currently being worked |
-| `status:review` | Awaiting human review |
-| `status:blocked` | Blocked on something |
+1. Update `docs/WORKFLOW.md` to 13-phase model
+2. Update `docs/AGENTS.md` to include build phase agents
+3. Create Gemini Deep Research prompt templates
+4. Continue ClaimIQ through phases 7-13
+5. Stakeholder presentation and greenlight
