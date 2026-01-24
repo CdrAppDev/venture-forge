@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venture Forge | The Company Factory</title>
+    <style>
+        :root {
+            --bg-primary: #09090b;
+            --bg-secondary: #18181b;
+            --bg-card: #1f1f23;
+            --bg-card-hover: #27272a;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(139, 92, 246, 0.12);
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: rgba(255, 255, 255, 0.08);
+            --success: #22c55e;
+            --gradient-1: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 560px;
+        }
+
+        .hero-visual {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .funnel {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .funnel-box {
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .funnel-arrow {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+        }
+
+        .funnel-box.highlight {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent-light);
+        }
+
+        /* Section headers */
+        .section-num {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-lead {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        /* Thesis Section */
+        .thesis {
+            background: var(--bg-secondary);
+        }
+
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .thesis-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .thesis-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .thesis-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Phases */
+        .phases-container {
+            margin-top: 3rem;
+        }
+
+        .phase-group {
+            margin-bottom: 3rem;
+        }
+
+        .phase-group-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .phases-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .phase-card {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .phase-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .phase-num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Agents */
+        .agents {
+            background: var(--bg-secondary);
+        }
+
+        .agents-visual {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .agent-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .agent-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .agent-label {
+            width: 140px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .agent-boxes {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .agent-box {
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .agent-box.gemini {
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+        }
+
+        .agent-box.claude {
+            border-color: rgba(139, 92, 246, 0.3);
+            color: var(--accent-light);
+        }
+
+        .agent-box.human {
+            border-color: rgba(251, 191, 36, 0.3);
+            color: #fbbf24;
+        }
+
+        .agent-arrow {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0.5rem 0;
+        }
+
+        .agent-capability {
+            padding: 1rem 1.5rem;
+            margin-left: 140px;
+            background: var(--bg-secondary);
+            border-left: 2px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            margin-top: 0.5rem;
+        }
+
+        .agent-capability p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-capability p:last-child {
+            margin-bottom: 0;
+        }
+
+        .agent-capability em {
+            color: var(--text-muted);
+        }
+
+        .agent-capability strong {
+            color: var(--accent-light);
+        }
+
+        @media (max-width: 768px) {
+            .agent-capability {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Pipeline Phases */
+        .pipeline-phase {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .pipeline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pipeline-num {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .pipeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .pipeline-content {
+            padding: 1.5rem;
+        }
+
+        .pipeline-agent {
+            margin-bottom: 1.5rem;
+        }
+
+        .pipeline-agent .agent-box {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .pipeline-agent p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-left: 0;
+        }
+
+        .pipeline-agent strong {
+            color: var(--accent-light);
+        }
+
+        .pipeline-gate {
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .pipeline-gate .agent-box {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .pipeline-gate p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .pipeline-arrow {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            padding: 0.75rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .pipeline-content {
+                padding: 1rem;
+            }
+        }
+
+        .scale-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 10px;
+        }
+
+        .scale-note p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .scale-note strong {
+            color: var(--accent-light);
+        }
+
+        /* Build */
+        .build-flow {
+            margin-top: 3rem;
+        }
+
+        .build-stage {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .build-stage-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .build-stage-num {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .build-stage-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .build-stage-content {
+            padding: 1.5rem;
+        }
+
+        .build-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .build-item {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .build-item-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            color: var(--text-primary);
+        }
+
+        .build-item-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .build-arrow {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .build-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 10px;
+        }
+
+        .build-note p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .build-note strong {
+            color: var(--accent-light);
+        }
+
+        /* Proof */
+        .proof-intro {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .proof-intro p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .proof-card {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .proof-card.active {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .proof-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .proof-card p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .proof-card .status {
+            margin-top: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .proof-card .status.funded {
+            color: var(--success);
+        }
+
+        .proof-card .status.available {
+            color: var(--text-muted);
+        }
+
+        .proof-detail {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+        }
+
+        .proof-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .proof-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .proof-detail h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .proof-detail .subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .proof-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .proof-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .proof-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .proof-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta .section-lead {
+            margin: 0 auto 3rem;
+        }
+
+        .cta-points {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .cta-points li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-points .check {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .thesis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proof-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .proof-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .agent-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .agent-label {
+                width: auto;
+            }
+
+            .funnel {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .funnel-arrow {
+                transform: rotate(90deg);
+            }
+
+            .cta-points {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .build-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Venture Forge</a>
+            <ul class="nav-links">
+                <li><a href="#thesis">Thesis</a></li>
+                <li><a href="#phases">Phases</a></li>
+                <li><a href="#agents">Agents</a></li>
+                <li><a href="#build">Build</a></li>
+                <li><a href="#proof">Proof</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Systematic <span class="gradient">Venture Creation</span></h1>
+                <p class="lead">
+                    A machine that transforms funding criteria into funded ventures.
+                    AI agents research, generate materials, build software, and secure customers.
+                    Funders see traction before we ask for capital.
+                </p>
+            </div>
+
+            <div class="hero-visual">
+                <div class="funnel">
+                    <div class="funnel-step">
+                        <div class="funnel-box">Funding Criteria</div>
+                        <span class="funnel-arrow">&rarr;</span>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-box">AI Research</div>
+                        <span class="funnel-arrow">&rarr;</span>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-box">Materials</div>
+                        <span class="funnel-arrow">&rarr;</span>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-box">Build</div>
+                        <span class="funnel-arrow">&rarr;</span>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-box">Traction</div>
+                        <span class="funnel-arrow">&rarr;</span>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-box highlight">Funded</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="thesis" id="thesis">
+        <div class="container">
+            <div class="section-num">01</div>
+            <h2>The Thesis</h2>
+            <p class="section-lead">
+                Start with what funders want to fund. Research problems that match.
+                Build evidence that survives scrutiny. Every claim verifiable, every statistic cited.
+            </p>
+
+            <div class="thesis-grid">
+                <div class="thesis-card">
+                    <h3>Capital-First</h3>
+                    <p>Traditional ventures seek funding after building. We start with funding criteria and work backwards to create ventures that are fundable by design.</p>
+                </div>
+                <div class="thesis-card">
+                    <h3>Evidence-Backed</h3>
+                    <p>Every claim linked to a third-party source. Market sizing with citations. Competitive analysis that surfaces real competitors. Risks documented, not hidden.</p>
+                </div>
+                <div class="thesis-card">
+                    <h3>AI-Driven Research</h3>
+                    <p>Deep research agents synthesize hundreds of sources into comprehensive, cited reports. What took weeks now takes hours.</p>
+                </div>
+                <div class="thesis-card">
+                    <h3>Human Decisions</h3>
+                    <p>AI researches and generates. Humans review, approve, and make strategic decisions. Quality gates at every phase.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="phases" id="phases">
+        <div class="container">
+            <div class="section-num">02</div>
+            <h2>Five Phases to Funded</h2>
+            <p class="section-lead">
+                From funding criteria to funded venture. Build first, get traction, then fund.
+                Funders want proof—we give them customers before asking for capital.
+            </p>
+
+            <div class="phases-container">
+                <div class="phase-group">
+                    <div class="phase-group-title">Phase 1: Research</div>
+                    <div class="phases-row">
+                        <div class="phase-card">
+                            <h4>Capital Thesis</h4>
+                            <p>What do funders want? What are their criteria?</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Problem Thesis</h4>
+                            <p>Is this a real, documented problem?</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Market Thesis</h4>
+                            <p>Is the market big enough? TAM/SAM/SOM.</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Competitive Thesis</h4>
+                            <p>Who else is solving this? Where do we position?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="phase-group-title">Phase 2: Design</div>
+                    <div class="phases-row">
+                        <div class="phase-card">
+                            <h4>Solution Thesis</h4>
+                            <p>What do we build? Why will it win?</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Business Thesis</h4>
+                            <p>How does it make money? Unit economics.</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Risk Thesis</h4>
+                            <p>What could go wrong? Mitigations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="phase-group-title">Phase 3: Materials</div>
+                    <div class="phases-row">
+                        <div class="phase-card">
+                            <h4>Evidence Library</h4>
+                            <p>Every claim verified. All sources accessible.</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Pitch Materials</h4>
+                            <p>Deck, summary, applications. Consistent story.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="phase-group-title">Phase 4: Build</div>
+                    <div class="phases-row">
+                        <div class="phase-card">
+                            <h4>Architecture</h4>
+                            <p>Tech spec, data model, UI/UX design.</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>MVP</h4>
+                            <p>Working software. AI-accelerated development.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="phase-group-title">Phase 5: Traction & Fund</div>
+                    <div class="phases-row">
+                        <div class="phase-card">
+                            <h4>Customer Traction</h4>
+                            <p>LOI or first revenue. Proof funders need.</p>
+                        </div>
+                        <div class="phase-card">
+                            <h4>Funding Execution</h4>
+                            <p>Close funding with traction proof.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="agents" id="agents">
+        <div class="container">
+            <div class="section-num">03</div>
+            <h2>How Agents Run Each Phase</h2>
+            <p class="section-lead">
+                Each phase from above is executed by AI agents. They do the work autonomously.
+                Humans make strategic decisions at gates between phases.
+            </p>
+
+            <div class="agents-visual">
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">1</div>
+                        <div class="pipeline-title">Research</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box gemini">Gemini Deep Research</div>
+                            <p>Autonomously plans research strategy. Executes 80-160 web searches per topic.
+                            Synthesizes 40+ sources. Produces 15-page cited reports on capital criteria,
+                            problem validation, market sizing, and competitive landscape.
+                            <strong>4 reports. ~2 hours. Unsupervised.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Is this opportunity worth pursuing?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">2</div>
+                        <div class="pipeline-title">Design</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box claude">Claude Opus 4.5</div>
+                            <p>Takes all research (80+ pages, 150+ citations). Designs solution architecture.
+                            Builds business model with unit economics. Creates risk register with mitigations.
+                            Cross-references everything. <strong>Holds the entire venture in memory.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Is this solution buildable? Does the business model work?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">3</div>
+                        <div class="pipeline-title">Materials</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box claude">Claude Opus 4.5</div>
+                            <p>Compiles evidence library—every claim traced to source. Generates pitch deck,
+                            executive summary, grant applications. Ensures statistics are consistent across
+                            all materials. <strong>All citations verified. All links accessible.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Would I invest based on these materials?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">4</div>
+                        <div class="pipeline-title">Build</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box claude">Claude Code</div>
+                            <p>Reads the spec. Plans architecture. Writes production code. Creates tests.
+                            Sets up infrastructure. Deploys. Iterates on feedback.
+                            <strong>Software development as an autonomous process.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Is this ready for customers?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pipeline-arrow">&darr;</div>
+
+                <div class="pipeline-phase">
+                    <div class="pipeline-header">
+                        <div class="pipeline-num">5</div>
+                        <div class="pipeline-title">Traction & Fund</div>
+                    </div>
+                    <div class="pipeline-content">
+                        <div class="pipeline-agent">
+                            <div class="agent-box claude">Claude Opus 4.5</div>
+                            <p>Generates outreach materials. Prepares data room with traction evidence.
+                            Drafts responses to due diligence questions. Supports funding applications
+                            with customer proof. <strong>Traction first, then capital.</strong></p>
+                        </div>
+                        <div class="pipeline-gate">
+                            <div class="agent-box human">Human Gate</div>
+                            <p>"Are the deal terms acceptable?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scale-note">
+                    <p>
+                        <strong>The multiplier:</strong> These phases run in parallel across opportunities.
+                        While Venture A is in Build, Venture B is in Research, Venture C is in Design.
+                        One operator. Dozens of ventures. The bottleneck is human judgment, not agent capacity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="build" id="build">
+        <div class="container">
+            <div class="section-num">04</div>
+            <h2>AI-Accelerated Build</h2>
+            <p class="section-lead">
+                The same AI agents that research and generate materials also build the product.
+                From architecture to working software, AI accelerates every step.
+            </p>
+
+            <div class="build-flow">
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">10</div>
+                        <h3>MVP Architecture</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">Technical Specification</div>
+                                <div class="build-item-desc">System architecture, tech stack selection, integration points</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Data Model</div>
+                                <div class="build-item-desc">Database schema, API contracts, data flows</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">UI/UX Design</div>
+                                <div class="build-item-desc">Wireframes, user flows, interface specifications</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Development Plan</div>
+                                <div class="build-item-desc">Sprint breakdown, milestones, deliverables</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-arrow">&darr;</div>
+
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">11</div>
+                        <h3>MVP Build</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">AI-Assisted Development</div>
+                                <div class="build-item-desc">Claude Code generates, refactors, and tests code</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Core Features</div>
+                                <div class="build-item-desc">Minimum viable feature set that solves the core problem</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Infrastructure</div>
+                                <div class="build-item-desc">Deployment, hosting, CI/CD pipeline</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Quality Assurance</div>
+                                <div class="build-item-desc">Testing, security review, performance validation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-arrow">&darr;</div>
+
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">12</div>
+                        <h3>Customer Traction</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">Targeted Outreach</div>
+                                <div class="build-item-desc">Reach pilot customers identified in research phases</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">LOI or Contract</div>
+                                <div class="build-item-desc">Signed commitment that funders need to see</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">First Revenue</div>
+                                <div class="build-item-desc">Even small MRR demonstrates market validation</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Reference Customer</div>
+                                <div class="build-item-desc">Someone funders can call to verify demand</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-arrow">&darr;</div>
+
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">13</div>
+                        <h3>Funding Execution</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">Traction Evidence</div>
+                                <div class="build-item-desc">LOIs, contracts, revenue proof for applications</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Data Room</div>
+                                <div class="build-item-desc">Due diligence materials with customer proof</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Pitch Meetings</div>
+                                <div class="build-item-desc">Present de-risked opportunity with real customers</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Close Funding</div>
+                                <div class="build-item-desc">Terms, signatures, capital deployed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="build-note">
+                <p>
+                    <strong>Traction before funding.</strong> Most funders want proof—an LOI, a contract, or first revenue—before
+                    deploying capital. We build the product and secure customers first. Funders see a de-risked opportunity.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof" id="proof">
+        <div class="container">
+            <div class="section-num">05</div>
+            <h2>Proof Point</h2>
+            <p class="section-lead">
+                One research pass into rural health technology funding identified five software opportunities.
+                One is in active development. Four are documented and ready.
+            </p>
+
+            <div class="proof-intro">
+                <p>
+                    The Rural Health Technology Program (RHTP) research analyzed $50B in federal funding,
+                    state investment programs, and rural hospital pain points. The result: five distinct
+                    venture opportunities, each with evidence-backed problem validation, market sizing,
+                    and competitive positioning.
+                </p>
+            </div>
+
+            <div class="proof-grid">
+                <div class="proof-card active">
+                    <h4>ClaimIQ</h4>
+                    <p>AI denial prevention for rural hospitals</p>
+                    <div class="status funded">In Development</div>
+                </div>
+                <div class="proof-card">
+                    <h4>CyberShield</h4>
+                    <p>Managed security for critical access hospitals</p>
+                    <div class="status available">Available</div>
+                </div>
+                <div class="proof-card">
+                    <h4>VitalLink</h4>
+                    <p>Remote patient monitoring for rural populations</p>
+                    <div class="status available">Available</div>
+                </div>
+                <div class="proof-card">
+                    <h4>MindBridge</h4>
+                    <p>Integrated behavioral health for primary care</p>
+                    <div class="status available">Available</div>
+                </div>
+                <div class="proof-card">
+                    <h4>ShiftSmart</h4>
+                    <p>Workforce scheduling for rural healthcare</p>
+                    <div class="status available">Available</div>
+                </div>
+            </div>
+
+            <div class="proof-detail">
+                <div class="proof-detail-header">
+                    <div class="proof-logo">CIQ</div>
+                    <div>
+                        <h4>ClaimIQ</h4>
+                        <div class="subtitle">AI-powered denial prevention for rural hospitals</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">
+                    Rural hospitals lose $19.7B annually to claim denials (HFMA). 432 are vulnerable to closure (Chartis Group).
+                    ClaimIQ addresses this with AI denial prevention and pay-for-performance pricing.
+                    Rural-first positioning backed by Black Book Research: 88% of rural providers say vendors sell "urban-first" solutions.
+                </p>
+
+                <div class="proof-stats">
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">Phase 4</div>
+                        <div class="proof-stat-label">Current</div>
+                    </div>
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">3/5</div>
+                        <div class="proof-stat-label">Complete</div>
+                    </div>
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">100%</div>
+                        <div class="proof-stat-label">Cited</div>
+                    </div>
+                    <div class="proof-stat">
+                        <div class="proof-stat-value">Build</div>
+                        <div class="proof-stat-label">Status</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>The Machine Works</h2>
+            <p class="section-lead">
+                Funding criteria in. Funded ventures out. AI-accelerated at every step.
+            </p>
+
+            <ul class="cta-points">
+                <li><span class="check">&#10003;</span> 5 phases: Research → Design → Materials → Build → Fund</li>
+                <li><span class="check">&#10003;</span> Autonomous agents at every step</li>
+                <li><span class="check">&#10003;</span> 5 opportunities from 1 research pass</li>
+                <li><span class="check">&#10003;</span> Traction before funding</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            Venture Forge
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
