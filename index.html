@@ -357,6 +357,41 @@
             padding: 0.5rem 0;
         }
 
+        .agent-capability {
+            padding: 1rem 1.5rem;
+            margin-left: 140px;
+            background: var(--bg-secondary);
+            border-left: 2px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            margin-top: 0.5rem;
+        }
+
+        .agent-capability p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-capability p:last-child {
+            margin-bottom: 0;
+        }
+
+        .agent-capability em {
+            color: var(--text-muted);
+        }
+
+        .agent-capability strong {
+            color: var(--accent-light);
+        }
+
+        @media (max-width: 768px) {
+            .agent-capability {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
         .scale-note {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -872,74 +907,72 @@
             <div class="section-num">03</div>
             <h2>The Agentic Machine</h2>
             <p class="section-lead">
-                Not tools—autonomous workers. Research agents investigate for 30-60 minutes unsupervised.
-                Synthesis agents reason through complex evidence. Build agents write production code.
-                Humans make strategic decisions. The machine handles everything else.
+                This isn't automation. It's autonomous AI agents that investigate, reason, and build—
+                without human intervention. You give them an objective. They figure out how to achieve it.
             </p>
 
             <div class="agents-visual">
                 <div class="agent-flow">
                     <div class="agent-row">
-                        <div class="agent-label">Research</div>
+                        <div class="agent-label">Research Agent</div>
                         <div class="agent-boxes">
                             <div class="agent-box gemini">Gemini Deep Research</div>
-                            <div class="agent-box">Multi-source synthesis</div>
-                            <div class="agent-box">Automatic citations</div>
                         </div>
+                    </div>
+                    <div class="agent-capability">
+                        <p>You say: <em>"Research the rural hospital claim denial problem."</em></p>
+                        <p>The agent <strong>autonomously</strong>: plans a research strategy, executes 80-160 web searches,
+                        reads industry reports, synthesizes 40+ sources, resolves contradictions, and produces a
+                        15-page cited report. <strong>In 30 minutes. Unsupervised.</strong></p>
                     </div>
 
                     <div class="agent-arrow">&darr;</div>
 
                     <div class="agent-row">
-                        <div class="agent-label">Processing</div>
+                        <div class="agent-label">Reasoning Agent</div>
                         <div class="agent-boxes">
-                            <div class="agent-box claude">Claude Opus</div>
-                            <div class="agent-box">Extract & structure</div>
-                            <div class="agent-box">Maintain citation chains</div>
+                            <div class="agent-box claude">Claude Opus 4.5</div>
                         </div>
+                    </div>
+                    <div class="agent-capability">
+                        <p>Takes 4 research reports (80+ pages, 150+ citations). Cross-references every claim.
+                        Identifies patterns, contradictions, gaps. Reconciles conflicting statistics.
+                        Outputs structured evidence with confidence ratings. <strong>Holds entire ventures in memory.</strong></p>
                     </div>
 
                     <div class="agent-arrow">&darr;</div>
 
                     <div class="agent-row">
-                        <div class="agent-label">Generation</div>
-                        <div class="agent-boxes">
-                            <div class="agent-box claude">Claude Opus</div>
-                            <div class="agent-box">Pitch materials</div>
-                            <div class="agent-box">Financial models</div>
-                            <div class="agent-box">Applications</div>
-                        </div>
-                    </div>
-
-                    <div class="agent-arrow">&darr;</div>
-
-                    <div class="agent-row">
-                        <div class="agent-label">Build</div>
+                        <div class="agent-label">Build Agent</div>
                         <div class="agent-boxes">
                             <div class="agent-box claude">Claude Code</div>
-                            <div class="agent-box">Architecture specs</div>
-                            <div class="agent-box">Production code</div>
-                            <div class="agent-box">Tests & deploy</div>
                         </div>
+                    </div>
+                    <div class="agent-capability">
+                        <p>Reads the spec. Plans the architecture. Writes production code. Creates tests.
+                        Sets up infrastructure. Deploys. Iterates on feedback.
+                        <strong>Software development as an autonomous process.</strong></p>
                     </div>
 
                     <div class="agent-arrow">&darr;</div>
 
                     <div class="agent-row">
-                        <div class="agent-label">Decision</div>
+                        <div class="agent-label">Human</div>
                         <div class="agent-boxes">
-                            <div class="agent-box human">Human Operator</div>
-                            <div class="agent-box">Strategic decisions</div>
-                            <div class="agent-box">Phase approvals</div>
+                            <div class="agent-box human">Strategic Decisions Only</div>
                         </div>
+                    </div>
+                    <div class="agent-capability">
+                        <p>"Is this problem worth solving?" "Is this positioning defensible?" "Ready to fund?"
+                        <strong>You make the calls. The machine does the work.</strong></p>
                     </div>
                 </div>
 
                 <div class="scale-note">
                     <p>
-                        <strong>Parallel execution:</strong> Research agents run simultaneously across opportunities.
-                        While investigating problems for Venture A, the machine researches markets for B, competitors for C.
-                        10 agents working = 10x throughput. Human time is strategic decisions only.
+                        <strong>The multiplier:</strong> These agents run in parallel. While one investigates
+                        Opportunity A, others research B, C, D simultaneously. One operator. Dozens of ventures.
+                        The bottleneck isn't research or building—it's human judgment at decision points.
                     </p>
                 </div>
             </div>
