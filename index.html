@@ -374,6 +374,100 @@
             color: var(--accent-light);
         }
 
+        /* Build */
+        .build-flow {
+            margin-top: 3rem;
+        }
+
+        .build-stage {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .build-stage-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .build-stage-num {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .build-stage-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .build-stage-content {
+            padding: 1.5rem;
+        }
+
+        .build-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .build-item {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .build-item-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            color: var(--text-primary);
+        }
+
+        .build-item-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .build-arrow {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .build-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 10px;
+        }
+
+        .build-note p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .build-note strong {
+            color: var(--accent-light);
+        }
+
         /* Proof */
         .proof-intro {
             margin-top: 3rem;
@@ -586,6 +680,10 @@
                 align-items: center;
                 gap: 1rem;
             }
+
+            .build-items {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -597,6 +695,7 @@
                 <li><a href="#thesis">Thesis</a></li>
                 <li><a href="#phases">Phases</a></li>
                 <li><a href="#agents">Agents</a></li>
+                <li><a href="#build">Build</a></li>
                 <li><a href="#proof">Proof</a></li>
             </ul>
         </div>
@@ -607,8 +706,8 @@
             <div class="hero-content">
                 <h1>Systematic <span class="gradient">Venture Creation</span></h1>
                 <p class="lead">
-                    A framework that transforms funding opportunities into evidence-backed, fundable ventures.
-                    AI agents research, synthesize, and generate. Humans review and decide.
+                    A framework that transforms funding opportunities into software companies with revenue.
+                    AI agents research, build materials, and accelerate development. Humans review and decide.
                 </p>
             </div>
 
@@ -623,15 +722,15 @@
                         <span class="funnel-arrow">&rarr;</span>
                     </div>
                     <div class="funnel-step">
-                        <div class="funnel-box">Multiple Opportunities</div>
-                        <span class="funnel-arrow">&rarr;</span>
-                    </div>
-                    <div class="funnel-step">
                         <div class="funnel-box">Evidence & Materials</div>
                         <span class="funnel-arrow">&rarr;</span>
                     </div>
                     <div class="funnel-step">
-                        <div class="funnel-box highlight">Funded Ventures</div>
+                        <div class="funnel-box">MVP Software</div>
+                        <span class="funnel-arrow">&rarr;</span>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-box highlight">Revenue</div>
                     </div>
                 </div>
             </div>
@@ -671,10 +770,10 @@
     <section class="phases" id="phases">
         <div class="container">
             <div class="section-num">02</div>
-            <h2>Ten Phases</h2>
+            <h2>Twelve Phases to Revenue</h2>
             <p class="section-lead">
-                Each phase answers a critical question. Each phase eliminates risk.
-                What emerges is a venture thesis that survives due diligence.
+                From funding criteria to working software. Each phase answers a critical question.
+                What emerges is a funded company with a product customers can buy.
             </p>
 
             <div class="phases-container">
@@ -710,7 +809,7 @@
                         <div class="phase-card">
                             <div class="phase-num">05</div>
                             <h4>Solution Thesis</h4>
-                            <p>What do we build? Why will it win? MVP scope and technical approach.</p>
+                            <p>What do we build? Why will it win? Core value proposition defined.</p>
                         </div>
                         <div class="phase-card">
                             <div class="phase-num">06</div>
@@ -726,7 +825,7 @@
                 </div>
 
                 <div class="phase-group">
-                    <div class="phase-group-title">Assembly & Execution</div>
+                    <div class="phase-group-title">Materials & Funding</div>
                     <div class="phases-row">
                         <div class="phase-card">
                             <div class="phase-num">08</div>
@@ -742,6 +841,27 @@
                             <div class="phase-num">10</div>
                             <h4>Funding Execution</h4>
                             <p>Applications, pitches, due diligence, close. From materials to funded.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-group">
+                    <div class="phase-group-title">Build & Launch</div>
+                    <div class="phases-row">
+                        <div class="phase-card">
+                            <div class="phase-num">11</div>
+                            <h4>MVP Architecture</h4>
+                            <p>Technical spec, data model, UI/UX design. AI-assisted development planning.</p>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-num">12</div>
+                            <h4>MVP Build</h4>
+                            <p>Working software. AI-accelerated development. Version 1 ready for customers.</p>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-num">13</div>
+                            <h4>Launch & Revenue</h4>
+                            <p>First customers. First revenue. Product-market fit validation.</p>
                         </div>
                     </div>
                 </div>
@@ -816,13 +936,119 @@
         </div>
     </section>
 
-    <section class="proof" id="proof">
+    <section class="build" id="build">
         <div class="container">
             <div class="section-num">04</div>
+            <h2>AI-Accelerated Build</h2>
+            <p class="section-lead">
+                The same AI agents that research and generate materials also build the product.
+                From architecture to working software, AI accelerates every step.
+            </p>
+
+            <div class="build-flow">
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">11</div>
+                        <h3>MVP Architecture</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">Technical Specification</div>
+                                <div class="build-item-desc">System architecture, tech stack selection, integration points</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Data Model</div>
+                                <div class="build-item-desc">Database schema, API contracts, data flows</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">UI/UX Design</div>
+                                <div class="build-item-desc">Wireframes, user flows, interface specifications</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Development Plan</div>
+                                <div class="build-item-desc">Sprint breakdown, milestones, deliverables</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-arrow">&darr;</div>
+
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">12</div>
+                        <h3>MVP Build</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">AI-Assisted Development</div>
+                                <div class="build-item-desc">Claude Code generates, refactors, and tests code</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Core Features</div>
+                                <div class="build-item-desc">Minimum viable feature set that solves the core problem</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Infrastructure</div>
+                                <div class="build-item-desc">Deployment, hosting, CI/CD pipeline</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Quality Assurance</div>
+                                <div class="build-item-desc">Testing, security review, performance validation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="build-arrow">&darr;</div>
+
+                <div class="build-stage">
+                    <div class="build-stage-header">
+                        <div class="build-stage-num">13</div>
+                        <h3>Launch & Revenue</h3>
+                    </div>
+                    <div class="build-stage-content">
+                        <div class="build-items">
+                            <div class="build-item">
+                                <div class="build-item-title">Customer Onboarding</div>
+                                <div class="build-item-desc">First customers from target list, pilot programs</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Revenue Activation</div>
+                                <div class="build-item-desc">Billing, contracts, first dollars in the door</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Feedback Loop</div>
+                                <div class="build-item-desc">Customer feedback, iteration, product-market fit</div>
+                            </div>
+                            <div class="build-item">
+                                <div class="build-item-title">Growth Foundation</div>
+                                <div class="build-item-desc">Metrics, processes, ready to scale</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="build-note">
+                <p>
+                    <strong>Software-first ventures.</strong> Every opportunity in the pipeline is designed as a software product.
+                    AI agents accelerate the build just as they accelerate the research.
+                    The same operator who runs the research pipeline can oversee the build.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof" id="proof">
+        <div class="container">
+            <div class="section-num">05</div>
             <h2>Proof Point</h2>
             <p class="section-lead">
-                One research pass into rural health technology funding identified five opportunities.
-                One is being funded. Four are available.
+                One research pass into rural health technology funding identified five software opportunities.
+                One is in active development. Four are documented and ready.
             </p>
 
             <div class="proof-intro">
@@ -838,7 +1064,7 @@
                 <div class="proof-card active">
                     <h4>ClaimIQ</h4>
                     <p>AI denial prevention for rural hospitals</p>
-                    <div class="status funded">In Progress</div>
+                    <div class="status funded">In Development</div>
                 </div>
                 <div class="proof-card">
                     <h4>CyberShield</h4>
@@ -902,14 +1128,14 @@
         <div class="container">
             <h2>The Framework Works</h2>
             <p class="section-lead">
-                Methodology documented. Agents operational. First venture validated.
+                Research to revenue. AI-accelerated at every step.
             </p>
 
             <ul class="cta-points">
-                <li><span class="check">&#10003;</span> 10-phase workflow defined</li>
-                <li><span class="check">&#10003;</span> AI research pipeline proven</li>
-                <li><span class="check">&#10003;</span> 5 opportunities from 1 research pass</li>
-                <li><span class="check">&#10003;</span> First venture ready for funding</li>
+                <li><span class="check">&#10003;</span> 13-phase workflow from idea to revenue</li>
+                <li><span class="check">&#10003;</span> AI agents for research, materials, and build</li>
+                <li><span class="check">&#10003;</span> 5 software opportunities from 1 research pass</li>
+                <li><span class="check">&#10003;</span> First venture in active development</li>
             </ul>
         </div>
     </section>
