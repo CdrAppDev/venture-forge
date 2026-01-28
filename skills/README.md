@@ -1,67 +1,82 @@
 # Venture Forge Skills
 
-Skills are the execution instructions Claude Code follows for each phase. They define **how** to do the work that the process defines.
+Skills package domain expertise for each phase of the Venture Forge process. They follow the [Agent Skills standard](https://agentskills.io) so Claude Code discovers and applies them automatically.
 
-## Structure
+## Structure (Official Agent Skills Format)
 
 ```
 skills/
-├── README.md                          ← This file
-├── {phase-id}/
-│   ├── generate-prompts.md            ← Create research prompts
-│   └── process-research.md            ← Process results into outputs
+├── README.md
+├── vf-{phase}-{action}/
+│   ├── SKILL.md              ← Entry point with YAML frontmatter
+│   └── references/           ← Supporting docs loaded on demand
+│       └── *.md
 ```
 
-## Skill File Format
+## How Discovery Works (Progressive Disclosure)
 
-Each skill file contains:
+1. **Metadata** (~50 tokens) - Claude reads `name` and `description` from YAML frontmatter to decide if skill is relevant
+2. **SKILL.md** (~500 tokens) - Full instructions load when skill is matched
+3. **references/** (2000+ tokens) - Templates and detailed docs load only when needed
 
-1. **Purpose** - What this skill accomplishes
-2. **Prerequisites** - What must exist before running
-3. **Instructions** - Step-by-step execution guide
-4. **Output Format** - Exact format for outputs
-5. **Quality Checklist** - Validation criteria
-6. **Version History** - Changes and learnings
+This means dozens of skills can exist without overwhelming context.
+
+## SKILL.md Format
+
+```yaml
+---
+name: vf-problem-generate-prompts
+description: Generate Claude Deep Research prompts for Phase 02...
+version: 1.0.0
+phase: 02-problem
+when: before_research
+---
+
+# Skill Title
+
+[Concise instructions, workflow, quality checklist]
+
+See `references/` for detailed templates.
+```
+
+## Skill Types
+
+| Type | Purpose | Naming Pattern |
+|------|---------|----------------|
+| generate-prompts | Create research prompts for Claude Deep Research | `vf-{phase}-generate-prompts` |
+| process-research | Process uploaded research into phase outputs | `vf-{phase}-process-research` |
+| synthesize | Combine prior phase outputs (no new research) | `vf-{phase}-synthesize` |
+| validate | Check outputs against gate criteria | `vf-{phase}-validate` |
+| generate-spec | Create technical specifications | `vf-{phase}-generate-spec` |
+| compile-evidence | Consolidate evidence library | `vf-{phase}-compile-evidence` |
 
 ## How Skills Are Used
 
-1. Claude Code reads the phase definition from `process/phases/{phase}.yaml`
-2. Phase definition specifies which skills to execute
-3. Claude Code reads the skill file and follows instructions precisely
-4. Outputs are validated against the skill's quality checklist
-5. Phase gate criteria are checked
+1. Claude Code reads phase definition from `process/phases/{phase}.yaml`
+2. Phase definition names the skills to execute
+3. Claude discovers matching skill by `name` in YAML frontmatter
+4. Claude reads SKILL.md instructions
+5. Claude loads references only when needed
+6. Outputs validated against quality checklist
+7. Validate skill runs before human gate review
 
 ## Updating Skills
 
-When a skill needs improvement:
-
 1. Identify the gap (what went wrong or could be better)
-2. Update the skill file with the fix
-3. Add entry to Version History section
+2. Update SKILL.md or references with the fix
+3. Bump `version` in YAML frontmatter
 4. Commit with clear message about what changed and why
 
 Skills improve through use. Every project run is an opportunity to refine them.
 
-## Skill Naming Convention
-
-- `generate-prompts.md` - Creates research prompts for user to run in Claude Deep Research
-- `process-research.md` - Processes uploaded research results into phase outputs
-- `synthesize.md` - Combines multiple inputs into a single output
-- `validate.md` - Checks outputs against criteria
-
 ## Current Skills
 
-| Phase | Skills |
-|-------|--------|
-| 01-capital | generate-prompts, process-research |
-| 02-problem | generate-prompts, process-research |
-| 03-market | generate-prompts, process-research |
-| 04-competitive | generate-prompts, process-research |
-| 05-solution | synthesize (no research, uses prior phases) |
-| 06-business | generate-prompts, process-research |
-| 07-risk | synthesize, validate |
-| 08-materials | compile-evidence, generate-materials |
-| 09-architecture | generate-spec |
-| 10-build | (uses Claude Code directly) |
-| 11-traction | generate-launch-plan |
-| 12-funding | generate-applications |
+| Skill | Phase | Status |
+|-------|-------|--------|
+| `vf-capital-generate-prompts` | 01 | Complete |
+| `vf-problem-generate-prompts` | 02 | Complete |
+| `vf-problem-process-research` | 02 | Complete |
+| `vf-problem-validate` | 02 | Complete |
+| Remaining phases | 03-12 | To be built |
+
+Skills for phases 03-12 will be built as the process is tested with real projects.

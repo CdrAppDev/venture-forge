@@ -45,28 +45,28 @@ research_requirements: []
 
 skills:
   prepare_applications:
-    skill: "12-funding/prepare-applications"
+    skill: "vf-funding-prepare-applications"
     when: "start"
     description: "Prepare funding applications with traction evidence"
     outputs:
       - "funding_applications"
 
   build_data_room:
-    skill: "12-funding/build-data-room"
+    skill: "vf-funding-build-data-room"
     when: "start"
     description: "Assemble due diligence materials"
     outputs:
       - "data_room"
 
   track_status:
-    skill: "12-funding/track-status"
+    skill: "vf-funding-track-status"
     when: "ongoing"
     description: "Track application status and outcomes"
     outputs:
       - "funding_status"
 
   validate:
-    skill: "12-funding/validate"
+    skill: "vf-funding-validate"
     when: "before_gate"
     description: "Verify funding materials and applications are complete"
     output: "{project}/phases/12-funding/validation-report.md"

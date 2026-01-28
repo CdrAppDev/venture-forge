@@ -49,19 +49,19 @@ research_requirements:
 
 skills:
   generate_prompts:
-    skill: "06-business-thesis/generate-prompts"
+    skill: "vf-business-generate-prompts"
     when: "before_research"
     output: "{project}/research/06-business-prompts.md"
 
   process_research:
-    skill: "06-business-thesis/process-research"
+    skill: "vf-business-process-research"
     when: "after_research"
     outputs:
       - "business_thesis"
       - "financial_model"
 
   validate:
-    skill: "06-business-thesis/validate"
+    skill: "vf-business-validate"
     when: "before_gate"
     description: "Check outputs against gate criteria before human review"
     output: "{project}/phases/06-business/validation-report.md"

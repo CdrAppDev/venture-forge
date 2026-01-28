@@ -55,14 +55,14 @@ research_requirements:
 
 skills:
   generate_prompts:
-    skill: "03-market-thesis/generate-prompts"
+    skill: "vf-market-generate-prompts"
     when: "before_research"
     inputs:
       - "problem_thesis"
     output: "{project}/research/03-market-prompts.md"
 
   process_research:
-    skill: "03-market-thesis/process-research"
+    skill: "vf-market-process-research"
     when: "after_research"
     inputs:
       - "problem_thesis"
@@ -72,7 +72,7 @@ skills:
       - "market_data"
 
   validate:
-    skill: "03-market-thesis/validate"
+    skill: "vf-market-validate"
     when: "before_gate"
     description: "Check outputs against gate criteria before human review"
     output: "{project}/phases/03-market/validation-report.md"

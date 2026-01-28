@@ -39,7 +39,7 @@ research_requirements: []
 
 skills:
   synthesize:
-    skill: "05-solution-thesis/synthesize"
+    skill: "vf-solution-synthesize"
     when: "execution"
     description: "Synthesize prior phases into solution design"
     inputs:
@@ -52,7 +52,7 @@ skills:
       - "feature_spec"
 
   validate:
-    skill: "05-solution-thesis/validate"
+    skill: "vf-solution-validate"
     when: "before_gate"
     description: "Check outputs against gate criteria before human review"
     output: "{project}/phases/05-solution/validation-report.md"

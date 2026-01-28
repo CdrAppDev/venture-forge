@@ -67,33 +67,24 @@ research_requirements:
 
 skills:
   generate_prompts:
-    skill: "02-problem-thesis/generate-prompts"
+    skill: "vf-problem-generate-prompts"
     when: "before_research"
     description: "Generate Claude Deep Research prompts for problem validation"
-    inputs:
-      - "capital_thesis"
     output: "{project}/research/02-problem-prompts.md"
 
   process_research:
-    skill: "02-problem-thesis/process-research"
+    skill: "vf-problem-process-research"
     when: "after_research"
     description: "Process research results into problem thesis"
-    inputs:
-      - "capital_thesis"
-      - "research_results"
     outputs:
       - "problem_thesis"
       - "evidence"
       - "customer_voice"
 
   validate:
-    skill: "02-problem-thesis/validate"
+    skill: "vf-problem-validate"
     when: "before_gate"
     description: "Check outputs against gate criteria before human review"
-    inputs:
-      - "problem_thesis"
-      - "evidence"
-      - "customer_voice"
     output: "{project}/phases/02-problem/validation-report.md"
 
 gate:

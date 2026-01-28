@@ -1,61 +1,6 @@
-# Skill: Problem Thesis - Process Research
+# Problem Thesis Output Templates
 
-**Version:** 1.0.0
-**Phase:** 02-problem
-**When:** After research
-
-## Purpose
-
-Process the uploaded Claude Deep Research results into a validated Problem Thesis with structured evidence and extracted customer voice.
-
-## Prerequisites
-
-- Capital thesis exists at `{project}/phases/01-capital/thesis.md`
-- Research results uploaded to `{project}/research/02-problem/`
-- Research prompts file exists at `{project}/research/02-problem-prompts.md`
-
-## Instructions
-
-### Step 1: Read All Inputs
-
-Read in order:
-1. Capital thesis: `{project}/phases/01-capital/thesis.md`
-2. Research prompts: `{project}/research/02-problem-prompts.md`
-3. All research results in: `{project}/research/02-problem/`
-
-### Step 2: Extract and Validate Evidence
-
-For each research result file:
-
-1. **Identify all cited statistics and claims**
-2. **Verify citations are present** (source, date, URL where available)
-3. **Categorize evidence** by type:
-   - Prevalence (how widespread)
-   - Severity (how painful)
-   - Cost (quantified impact)
-   - Customer voice (direct quotes)
-   - Current solutions (what exists)
-   - Gaps (what's missing)
-
-4. **Flag any uncited claims** - these cannot be used in thesis
-
-### Step 3: Synthesize Problem Statement
-
-Write a clear problem statement that:
-- States the problem in one sentence
-- Identifies who experiences it
-- Quantifies the impact
-- Is backed by the evidence collected
-
-Format:
-```
-[WHO] experiences [PROBLEM], resulting in [QUANTIFIED IMPACT].
-Currently, [CURRENT STATE], leaving [GAP].
-```
-
-### Step 4: Build Evidence Structure
-
-Create `evidence.yaml` with this structure:
+## evidence.yaml Structure
 
 ```yaml
 problem_statement: "[One sentence problem statement]"
@@ -103,9 +48,7 @@ capital_alignment:
   explanation: "[How this problem aligns with funder criteria]"
 ```
 
-### Step 5: Extract Customer Voice
-
-Create `customer-voice.md` with:
+## customer-voice.md Structure
 
 ```markdown
 # Customer Voice: [Problem]
@@ -139,9 +82,7 @@ Create `customer-voice.md` with:
 - [Workaround 2]: "[Quote about trying this]" — Source
 ```
 
-### Step 6: Write Problem Thesis
-
-Create `thesis.md` with:
+## thesis.md Structure
 
 ```markdown
 # Problem Thesis: [Problem Name]
@@ -167,7 +108,6 @@ Create `thesis.md` with:
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| [Metric] | [Value] | [Source, Date] |
 | [Metric] | [Value] | [Source, Date] |
 
 ## Current State
@@ -212,39 +152,3 @@ Create `thesis.md` with:
 *Full evidence: evidence.yaml*
 *Customer voice detail: customer-voice.md*
 ```
-
-### Step 7: Create Output Directory
-
-Ensure all outputs are in `{project}/phases/02-problem/`:
-- `thesis.md`
-- `evidence.yaml`
-- `customer-voice.md`
-
-## Output Format
-
-| File | Location | Format |
-|------|----------|--------|
-| Problem Thesis | `{project}/phases/02-problem/thesis.md` | Markdown |
-| Evidence | `{project}/phases/02-problem/evidence.yaml` | YAML |
-| Customer Voice | `{project}/phases/02-problem/customer-voice.md` | Markdown |
-
-## Quality Checklist
-
-- [ ] Problem statement is one clear sentence
-- [ ] All statistics have citations (source, date, URL)
-- [ ] Minimum 3 prevalence citations
-- [ ] Minimum 3 severity citations
-- [ ] Minimum 2 cost citations
-- [ ] Minimum 5 customer voice quotes with sources
-- [ ] Current solutions documented with limitations
-- [ ] Gaps clearly identified
-- [ ] Capital alignment explicitly stated
-- [ ] Gate criteria checklist included in thesis
-
-## Version History
-
-### 1.0.0 - 2025-01-28
-- Initial version
-- Three output files: thesis.md, evidence.yaml, customer-voice.md
-- Explicit citation minimums per category
-- Gate criteria checklist embedded in thesis

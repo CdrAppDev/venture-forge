@@ -1,42 +1,7 @@
-# Skill: Capital Thesis - Generate Research Prompts
+# Capital Thesis Prompt Templates
 
-**Version:** 1.0.0
-**Phase:** 01-capital
-**When:** Before research
+## Prompt 1: Funding Landscape
 
-## Purpose
-
-Generate Claude Deep Research prompts to understand the funding landscape and identify viable capital sources.
-
-## Prerequisites
-
-- Funder criteria input exists at `{project}/inputs/funder-criteria.md`
-- This can be: meeting notes, grant program descriptions, investor thesis pages, etc.
-
-## Instructions
-
-### Step 1: Read Funder Criteria Input
-
-Read `{project}/inputs/funder-criteria.md` to understand:
-- What funding sources are being considered
-- Any known criteria or requirements
-- Geographic or vertical focus
-- Stage preferences
-- Timeline constraints
-
-### Step 2: Identify Research Gaps
-
-Determine what additional information is needed:
-- Are there other funding sources in this space?
-- What are the detailed criteria for identified sources?
-- What have these funders invested in recently?
-- What is their decision process and timeline?
-
-### Step 3: Generate Research Prompts
-
-Create 3-4 research prompts:
-
-**Prompt 1: Funding Landscape**
 ```
 Research the funding landscape for [VERTICAL/STAGE] ventures.
 
@@ -49,7 +14,8 @@ I need:
 Provide citations for all claims including source name, date, and URL.
 ```
 
-**Prompt 2: Specific Funder Analysis**
+## Prompt 2: Specific Funder Analysis
+
 ```
 Research [SPECIFIC FUNDER(S)] in detail.
 
@@ -63,7 +29,8 @@ I need:
 Cite all information with sources.
 ```
 
-**Prompt 3: Funder Requirements**
+## Prompt 3: Funder Requirements
+
 ```
 Research the typical requirements for [FUNDING TYPE] in [VERTICAL].
 
@@ -77,7 +44,8 @@ I need:
 Provide sources for all requirements mentioned.
 ```
 
-**Prompt 4: Recent Funding Activity**
+## Prompt 4: Recent Funding Activity
+
 ```
 Research recent [FUNDING TYPE] activity in [VERTICAL] (last 12-18 months).
 
@@ -90,14 +58,14 @@ I need:
 All examples and trends should be cited.
 ```
 
-### Step 4: Customize Prompts
+## Customization Instructions
 
-- Replace bracketed placeholders with specifics from input
+- Replace all bracketed `[PLACEHOLDERS]` with specifics from funder criteria input
 - Add any specific funders mentioned in the criteria
-- Focus on relevant geography if specified
+- Constrain to relevant geography if specified
 - Add vertical-specific sources to search
 
-### Step 5: Write Output File
+## Output File Format
 
 Save to `{project}/research/01-capital-prompts.md`:
 
@@ -116,13 +84,13 @@ Save to `{project}/research/01-capital-prompts.md`:
 
 ### Prompt 1: Funding Landscape
 
-[Full prompt]
+[Full customized prompt]
 
 ---
 
 ### Prompt 2: Specific Funder Analysis
 
-[Full prompt]
+[Full customized prompt]
 
 ---
 
@@ -131,24 +99,7 @@ Save to `{project}/research/01-capital-prompts.md`:
 ## Instructions for Research
 
 1. Run each prompt in Claude Deep Research
-2. Save results to `research/01-capital/`
+2. Save each result to `research/01-capital/`
 3. Name files: `01-landscape.md`, `02-funder-analysis.md`, etc.
-4. Notify when complete for processing
+4. Once all research is complete, notify for processing
 ```
-
-## Output Format
-
-File: `{project}/research/01-capital-prompts.md`
-
-## Quality Checklist
-
-- [ ] Prompts address known funders from input
-- [ ] Prompts seek additional/alternative funding sources
-- [ ] All prompts request citations
-- [ ] Geographic/vertical scope is specified
-- [ ] Prompts cover: landscape, specific funders, requirements, recent activity
-
-## Version History
-
-### 1.0.0 - 2025-01-28
-- Initial version

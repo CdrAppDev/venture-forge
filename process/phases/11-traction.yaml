@@ -45,14 +45,14 @@ research_requirements: []
 
 skills:
   generate_launch_plan:
-    skill: "11-traction/generate-launch-plan"
+    skill: "vf-traction-generate-launch-plan"
     when: "start"
     description: "Create customer acquisition and launch plan"
     outputs:
       - location: "{project}/phases/11-traction/launch-plan.md"
 
   document_traction:
-    skill: "11-traction/document-traction"
+    skill: "vf-traction-document-traction"
     when: "ongoing"
     description: "Document customer wins and revenue"
     outputs:
@@ -61,7 +61,7 @@ skills:
       - "revenue_proof"
 
   validate:
-    skill: "11-traction/validate"
+    skill: "vf-traction-validate"
     when: "before_gate"
     description: "Verify traction evidence is documented"
     output: "{project}/phases/11-traction/validation-report.md"

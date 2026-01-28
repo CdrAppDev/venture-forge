@@ -51,7 +51,7 @@ research_requirements: []
 # Skills provide structure but execution is iterative coding
 skills:
   build_mvp:
-    skill: "10-build/build-mvp"
+    skill: "vf-build-mvp"
     when: "execution"
     description: "AI-accelerated MVP development with Claude Code"
     note: "This skill provides guidelines; actual build is iterative"
@@ -61,7 +61,7 @@ skills:
       - "documentation"
 
   validate:
-    skill: "10-build/validate"
+    skill: "vf-build-validate"
     when: "before_gate"
     description: "Verify MVP is functional and deployable"
     output: "{project}/phases/10-build/validation-report.md"

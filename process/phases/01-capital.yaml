@@ -50,31 +50,23 @@ research_requirements:
 
 skills:
   generate_prompts:
-    skill: "01-capital-thesis/generate-prompts"
+    skill: "vf-capital-generate-prompts"
     when: "before_research"
     description: "Generate Claude Deep Research prompts for funder analysis"
-    inputs:
-      - "funder_criteria"
     output: "{project}/research/01-capital-prompts.md"
 
   process_research:
-    skill: "01-capital-thesis/process-research"
+    skill: "vf-capital-process-research"
     when: "after_research"
     description: "Process research results into capital thesis"
-    inputs:
-      - "funder_criteria"
-      - "research_results"
     outputs:
       - "capital_thesis"
       - "funder_profiles"
 
   validate:
-    skill: "01-capital-thesis/validate"
+    skill: "vf-capital-validate"
     when: "before_gate"
     description: "Check outputs against gate criteria before human review"
-    inputs:
-      - "capital_thesis"
-      - "funder_profiles"
     output: "{project}/phases/01-capital/validation-report.md"
 
 gate:
