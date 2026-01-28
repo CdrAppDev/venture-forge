@@ -1,14 +1,15 @@
 ---
 name: vf-problem-process-research
-description: Process Claude Deep Research results into a validated Problem Thesis. Use after the user has uploaded research results for Phase 02. Reads research from the project research folder and produces thesis document, structured evidence YAML, and customer voice extraction.
+description: Process uploaded Claude Deep Research results into a validated Problem Thesis with structured evidence and customer voice extraction. Activate after the user uploads research files to {project}/research/02-problem/. Reads capital thesis and all research results, extracts cited evidence into evidence.yaml, synthesizes customer voice into themed document, writes thesis.md with inline citations, and produces a processing-log.md audit trail documenting all processing decisions.
 version: 1.0.0
+license: MIT
 phase: 02-problem
 when: after_research
 ---
 
 # Problem Thesis: Process Research
 
-Process uploaded Claude Deep Research results into a validated Problem Thesis with structured evidence and extracted customer voice.
+Process uploaded Claude Deep Research results into a validated Problem Thesis with structured evidence, extracted customer voice, and a complete audit trail.
 
 ## Prerequisites
 
@@ -18,12 +19,16 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 ## Workflow
 
 1. **Read** capital thesis and all research results
-2. **Extract** and categorize all cited evidence
-3. **Synthesize** problem statement from evidence
-4. **Build** structured evidence YAML
-5. **Extract** customer voice into themed document
-6. **Write** problem thesis with inline citations
-7. **Output** all three files to `{project}/phases/02-problem/`
+2. **Log** each file read with filename and word count to processing log
+3. **Extract** and categorize all cited evidence
+4. **Log** each piece of evidence: included or excluded, with reason
+5. **Synthesize** problem statement from evidence
+6. **Build** structured evidence YAML
+7. **Extract** customer voice into themed document
+8. **Log** any conflicting data found across research files
+9. **Write** problem thesis with inline citations
+10. **Write** processing log with complete audit trail
+11. **Output** all four files to `{project}/phases/02-problem/`
 
 ## Outputs
 
@@ -32,6 +37,7 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 | Problem Thesis | `{project}/phases/02-problem/thesis.md` | Markdown |
 | Evidence | `{project}/phases/02-problem/evidence.yaml` | YAML |
 | Customer Voice | `{project}/phases/02-problem/customer-voice.md` | Markdown |
+| Processing Log | `{project}/phases/02-problem/processing-log.md` | Markdown |
 
 ## Evidence Requirements
 
@@ -46,6 +52,17 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 
 **Uncited claims cannot be used in the thesis.**
 
+## Audit Trail Requirements
+
+The processing log MUST document:
+- **Files read:** Every research file read, with filename and approximate word count
+- **Evidence included:** Each piece of evidence used, which output it went into, and why
+- **Evidence excluded:** Each piece of evidence found but not used, and why (duplicate, uncited, irrelevant, contradicted)
+- **Customer voice decisions:** Quotes included vs. excluded, theme grouping rationale
+- **Conflicts found:** Any contradictions between research sources, with both values and sources cited
+- **Gaps identified:** Citation minimums not met, categories with thin evidence
+- **Decisions made:** Any judgment calls during processing (e.g., which severity figure to lead with, how to group themes)
+
 ## Quality Checklist
 
 - [ ] Problem statement is one clear sentence
@@ -54,5 +71,6 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 - [ ] Customer voice quotes have source attribution
 - [ ] Capital alignment explicitly stated
 - [ ] Gate criteria checklist embedded in thesis
+- [ ] Processing log is complete with all audit trail sections
 
 See `references/output-templates.md` for exact output formats.

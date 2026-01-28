@@ -151,4 +151,89 @@ capital_alignment:
 
 *Full evidence: evidence.yaml*
 *Customer voice detail: customer-voice.md*
+*Processing decisions: processing-log.md*
+```
+
+## processing-log.md Structure
+
+```markdown
+# Processing Log: Problem Thesis
+
+**Project:** [Project Name]
+**Date:** [Date]
+**Processor:** Claude Code (vf-problem-process-research v1.0.0)
+
+## Files Read
+
+| # | File | Path | Word Count |
+|---|------|------|------------|
+| 1 | [Filename] | research/02-problem/[filename] | ~[N] words |
+| 2 | [Filename] | research/02-problem/[filename] | ~[N] words |
+| 3 | [Filename] | phases/01-capital/thesis.md | ~[N] words |
+
+**Total files read:** [N]
+**Total approximate words processed:** [N]
+
+## Evidence Included
+
+| # | Evidence | Source | Used In | Reason |
+|---|----------|--------|---------|--------|
+| 1 | [Statistic or claim] | [Source, Date] | evidence.yaml / thesis.md / customer-voice.md | [Why included] |
+
+**Total evidence items included:** [N]
+
+## Evidence Excluded
+
+| # | Evidence | Source | Reason for Exclusion |
+|---|----------|--------|---------------------|
+| 1 | [Statistic or claim] | [Source, Date] | [Duplicate / Uncited / Irrelevant / Contradicted / Outside scope] |
+
+**Total evidence items excluded:** [N]
+
+## Customer Voice Decisions
+
+| # | Quote | Source | Included | Theme Assigned | Rationale |
+|---|-------|--------|----------|----------------|-----------|
+| 1 | "[Quote excerpt]" | [Source] | Yes/No | [Theme name or N/A] | [Why included/excluded, theme grouping logic] |
+
+**Total quotes found:** [N]
+**Total quotes included:** [N]
+**Total themes identified:** [N]
+**Theme grouping rationale:** [Brief explanation of how themes were determined]
+
+## Conflicts Found
+
+| # | Topic | Value A | Source A | Value B | Source B | Resolution |
+|---|-------|---------|----------|---------|----------|------------|
+| 1 | [e.g., "Breach cost figure"] | [Value] | [Source] | [Value] | [Source] | [Both presented / Led with A because...] |
+
+**Total conflicts found:** [N]
+
+## Gaps Identified
+
+| # | Gap | Category | Impact |
+|---|-----|----------|--------|
+| 1 | [What's missing] | [Citation category] | [Minimum not met / Data incomplete] |
+
+**Total gaps identified:** [N]
+
+## Decisions Made
+
+| # | Decision | Rationale |
+|---|----------|-----------|
+| 1 | [e.g., "Used HHS figure over vendor study for breach cost"] | [e.g., "Government source more credible for investor materials"] |
+| 2 | [e.g., "Grouped quotes into 3 themes instead of 4"] | [e.g., "Two candidate themes had only 1 quote each; merged into broader theme"] |
+
+**Total processing decisions:** [N]
+
+## Citation Minimum Status
+
+| Category | Required | Found | Status |
+|----------|----------|-------|--------|
+| Prevalence | 3 | [N] | MET/NOT MET |
+| Severity | 3 | [N] | MET/NOT MET |
+| Cost of status quo | 2 | [N] | MET/NOT MET |
+| Customer voice quotes | 5 | [N] | MET/NOT MET |
+| Current solutions | 1 | [N] | MET/NOT MET |
+| Gaps | 1 | [N] | MET/NOT MET |
 ```

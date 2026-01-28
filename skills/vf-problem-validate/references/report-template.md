@@ -5,60 +5,97 @@
 
 **Project:** [Project Name]
 **Date:** [Date]
-**Result:** PASS / FAIL
+**Validator:** Claude Code (vf-problem-validate v1.0.0)
+**Result:** PASS / FAIL / PASS WITH WARNINGS
+**Checks passed:** [X]/27
 
-## File Checks
+## 1. File Checks (4 checks)
 
-| File | Status |
-|------|--------|
-| thesis.md | Present / Missing |
-| evidence.yaml | Present / Missing |
-| customer-voice.md | Present / Missing |
+| # | File | Status |
+|---|------|--------|
+| 1 | thesis.md | PASS / FAIL |
+| 2 | evidence.yaml | PASS / FAIL |
+| 3 | customer-voice.md | PASS / FAIL |
+| 4 | processing-log.md | PASS / FAIL |
 
-## Evidence Checks
+## 2. Evidence Checks (7 checks)
 
-| Criterion | Required | Found | Status |
-|-----------|----------|-------|--------|
-| Prevalence citations | 3+ | [N] | PASS/FAIL |
-| Severity citations | 3+ | [N] | PASS/FAIL |
-| Cost citations | 2+ | [N] | PASS/FAIL |
-| Current solutions | 1+ | [N] | PASS/FAIL |
-| Gaps identified | 1+ | [N] | PASS/FAIL |
-| Capital aligned | Yes | [Y/N] | PASS/FAIL |
+| # | Criterion | Required | Found | Status |
+|---|-----------|----------|-------|--------|
+| 5 | Problem statement present | Yes | [Y/N] | PASS/FAIL |
+| 6 | Prevalence statistics | 3+ (with source, date) | [N] | PASS/FAIL |
+| 7 | Severity statistics | 3+ (with source, date) | [N] | PASS/FAIL |
+| 8 | Cost of status quo statistics | 2+ | [N] | PASS/FAIL |
+| 9 | Current solutions | 1+ | [N] | PASS/FAIL |
+| 10 | Gaps identified | 1+ | [N] | PASS/FAIL |
+| 11 | Capital alignment set to true | Yes | [Y/N] | PASS/FAIL |
 
-## Customer Voice Checks
+### Invalid Evidence Entries (not counted toward minimums)
 
-| Criterion | Required | Found | Status |
-|-----------|----------|-------|--------|
-| Direct quotes | 5+ | [N] | PASS/FAIL |
-| Themes identified | 2+ | [N] | PASS/FAIL |
-| Terminology section | Yes | [Y/N] | PASS/FAIL |
-| Workarounds section | Yes | [Y/N] | PASS/FAIL |
+| # | Entry | Issue |
+|---|-------|-------|
+| [N] | [Description] | [Missing source / Empty source / Missing date] |
 
-## Thesis Checks
+## 3. Customer Voice Checks (4 checks)
 
-| Criterion | Status |
-|-----------|--------|
-| Problem statement | PASS/FAIL |
-| Statistics table with sources | PASS/FAIL |
-| Customer voice section | PASS/FAIL |
-| Capital alignment section | PASS/FAIL |
-| Evidence summary | PASS/FAIL |
-| Gate checklist | PASS/FAIL |
+| # | Criterion | Required | Found | Status |
+|---|-----------|----------|-------|--------|
+| 12 | Direct quotes with source attribution | 5+ | [N valid] | PASS/FAIL |
+| 13 | Distinct themes identified | 2+ | [N] | PASS/FAIL |
+| 14 | Terminology section present and non-empty | Yes | [Y/N] | PASS/FAIL |
+| 15 | Workarounds section present and non-empty | Yes | [Y/N] | PASS/FAIL |
 
-## Cross-Validation
+### Invalid Quotes (not counted toward minimum)
 
-| Check | Status |
-|-------|--------|
-| Problem statement consistent | PASS/FAIL |
-| Statistics match evidence.yaml | PASS/FAIL |
-| Quotes match customer-voice.md | PASS/FAIL |
+| # | Quote excerpt | Issue |
+|---|-------------|-------|
+| [N] | "[First few words...]" | [Missing source / Missing date / No attribution] |
+
+## 4. Thesis Checks (6 checks)
+
+| # | Section | Status |
+|---|---------|--------|
+| 16 | Problem statement with content | PASS/FAIL |
+| 17 | Key statistics table with source column | PASS/FAIL |
+| 18 | Customer voice section with quote(s) | PASS/FAIL |
+| 19 | Capital alignment section | PASS/FAIL |
+| 20 | Evidence summary with citation counts | PASS/FAIL |
+| 21 | Gate criteria checklist | PASS/FAIL |
+
+## 5. Cross-Validation (3 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 22 | Problem statement matches evidence.yaml | PASS/FAIL | [Match / Mismatch description] |
+| 23 | Statistics in thesis appear in evidence.yaml | PASS/FAIL | [N matched, N untracked] |
+| 24 | Quotes in thesis appear in customer-voice.md | PASS/FAIL | [N matched, N untracked] |
+
+## 6. Processing Log Checks (3 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 25 | All research files listed | PASS/FAIL | [Expected: N, Found: N] |
+| 26 | Excluded evidence documented | PASS/FAIL | [Section present: Y/N] |
+| 27 | Conflicts documented | PASS/FAIL | [Section present: Y/N] |
+
+## Warnings
+
+[List any WARNING items — these don't block gate review but should be noted]
 
 ## Failures
 
-[List each failure with specific detail about what's missing or inconsistent]
+[List each FAIL with:
+- Check number and name
+- What was expected
+- What was found
+- Specific remediation needed]
 
 ## Recommendation
 
-**READY FOR GATE REVIEW** / **NEEDS REVISION: [specific items]**
+**READY FOR GATE REVIEW** / **READY FOR GATE REVIEW WITH WARNINGS** / **NEEDS REVISION: [specific items]**
+
+Checks completed: [X]/27
+Checks passed: [X]/27
+Checks failed: [X]/27
+Warnings: [X]/27
 ```
