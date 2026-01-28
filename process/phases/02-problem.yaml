@@ -86,6 +86,16 @@ skills:
       - "evidence"
       - "customer_voice"
 
+  validate:
+    skill: "02-problem-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    inputs:
+      - "problem_thesis"
+      - "evidence"
+      - "customer_voice"
+    output: "{project}/phases/02-problem/validation-report.md"
+
 gate:
   question: "Is this problem real, significant, and worth solving?"
 

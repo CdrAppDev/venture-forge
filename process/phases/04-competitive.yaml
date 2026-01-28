@@ -66,6 +66,12 @@ skills:
       - "competitive_thesis"
       - "competitor_profiles"
 
+  validate:
+    skill: "04-competitive-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    output: "{project}/phases/04-competitive/validation-report.md"
+
 gate:
   question: "Can we differentiate and win against competition?"
 

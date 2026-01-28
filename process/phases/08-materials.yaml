@@ -63,6 +63,12 @@ skills:
       - "executive_summary"
       - "one_pager"
 
+  validate:
+    skill: "08-materials/validate"
+    when: "before_gate"
+    description: "Check materials for completeness and consistency"
+    output: "{project}/phases/08-materials/validation-report.md"
+
 gate:
   question: "Are materials complete, consistent, and compelling?"
 

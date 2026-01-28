@@ -60,6 +60,12 @@ skills:
       - "business_thesis"
       - "financial_model"
 
+  validate:
+    skill: "06-business-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    output: "{project}/phases/06-business/validation-report.md"
+
 gate:
   question: "Is the business model viable and fundable?"
 

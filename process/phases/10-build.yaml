@@ -60,6 +60,12 @@ skills:
       - "build_status"
       - "documentation"
 
+  validate:
+    skill: "10-build/validate"
+    when: "before_gate"
+    description: "Verify MVP is functional and deployable"
+    output: "{project}/phases/10-build/validation-report.md"
+
 gate:
   question: "Is the MVP functional and ready for customers?"
 

@@ -68,6 +68,15 @@ skills:
       - "capital_thesis"
       - "funder_profiles"
 
+  validate:
+    skill: "01-capital-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    inputs:
+      - "capital_thesis"
+      - "funder_profiles"
+    output: "{project}/phases/01-capital/validation-report.md"
+
 gate:
   question: "Do we understand what funders want and can we align to it?"
 

@@ -42,6 +42,12 @@ skills:
       - "risk_thesis"
       - "risk_register"
 
+  validate:
+    skill: "07-risk-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    output: "{project}/phases/07-risk/validation-report.md"
+
 gate:
   question: "Are the risks understood and manageable?"
 

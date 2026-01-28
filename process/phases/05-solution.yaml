@@ -51,6 +51,12 @@ skills:
       - "solution_thesis"
       - "feature_spec"
 
+  validate:
+    skill: "05-solution-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    output: "{project}/phases/05-solution/validation-report.md"
+
 gate:
   question: "Does this solution address the problem and competitive gaps?"
 

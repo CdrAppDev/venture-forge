@@ -65,6 +65,12 @@ skills:
     outputs:
       - "funding_status"
 
+  validate:
+    skill: "12-funding/validate"
+    when: "before_gate"
+    description: "Verify funding materials and applications are complete"
+    output: "{project}/phases/12-funding/validation-report.md"
+
 gate:
   question: "Have we secured funding?"
 

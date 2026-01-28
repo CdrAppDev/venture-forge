@@ -65,6 +65,12 @@ skills:
       - "ui_spec"
       - "tech_stack"
 
+  validate:
+    skill: "09-architecture/validate"
+    when: "before_gate"
+    description: "Check architecture spec for completeness"
+    output: "{project}/phases/09-architecture/validation-report.md"
+
 gate:
   question: "Is the architecture complete and buildable?"
 

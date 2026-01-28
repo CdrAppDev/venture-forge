@@ -71,6 +71,12 @@ skills:
       - "market_thesis"
       - "market_data"
 
+  validate:
+    skill: "03-market-thesis/validate"
+    when: "before_gate"
+    description: "Check outputs against gate criteria before human review"
+    output: "{project}/phases/03-market/validation-report.md"
+
 gate:
   question: "Is the market large enough and growing?"
 

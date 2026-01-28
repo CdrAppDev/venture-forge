@@ -60,6 +60,12 @@ skills:
       - "customer_data"
       - "revenue_proof"
 
+  validate:
+    skill: "11-traction/validate"
+    when: "before_gate"
+    description: "Verify traction evidence is documented"
+    output: "{project}/phases/11-traction/validation-report.md"
+
 gate:
   question: "Do we have proof that customers will pay?"
 
