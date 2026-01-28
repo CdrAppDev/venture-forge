@@ -32,11 +32,11 @@ The orchestration layer (itself an AI agent) coordinates this work across dozens
 │                                                                              │
 │  ┌─────────────────────────────────────────────────────────────────────┐    │
 │  │                         RESEARCH LAYER                               │    │
-│  │                    Gemini Deep Research API                          │    │
+│  │                 Claude Deep Research (Manual Workflow)               │    │
 │  │                                                                      │    │
-│  │  • Multi-step autonomous research (80-160 searches/task)            │    │
-│  │  • Automatic citation tracking                                       │    │
-│  │  • Comprehensive reports with sources                                │    │
+│  │  • Claude Code generates research prompts                           │    │
+│  │  • User runs prompts in Claude Deep Research                        │    │
+│  │  • Results uploaded to project research/ folder                     │    │
 │  └─────────────────────────────────────────────────────────────────────┘    │
 │                                    │                                         │
 │                                    ▼                                         │
@@ -138,7 +138,7 @@ problem_brief:
       source: string
 ```
 
-**Tools**: Gemini Deep Research API, web search, industry databases
+**Tools**: Claude Deep Research (manual), web search, industry databases
 
 **Quality Standards**:
 - Minimum 3 third-party sources per claim
@@ -189,7 +189,7 @@ market_sizing:
       date: string
 ```
 
-**Tools**: Gemini Deep Research API, industry reports, government databases
+**Tools**: Claude Deep Research (manual), industry reports, government databases
 
 ---
 
@@ -782,7 +782,7 @@ All state lives in the file system:
 
 To process multiple opportunities:
 1. Capital Scout identifies funding sources
-2. Problem Research explores problem spaces (parallel via Gemini)
+2. Problem Research explores problem spaces (via Claude Deep Research)
 3. Market/Competitive agents process in parallel
 4. Human reviews at each gate (batch mode)
 5. Build agents work sequentially per opportunity

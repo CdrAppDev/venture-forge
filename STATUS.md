@@ -38,11 +38,18 @@ Venture Forge is a **company factory** - a framework that systematically creates
 
 ## Technology Stack
 
-- **Research**: Gemini Deep Research API (multi-step autonomous research with citations)
+- **Research**: Claude Deep Research (manual workflow)
 - **Processing/Generation**: Claude Opus 4.5 (synthesis, materials, code)
 - **Orchestration**: Claude Code (workflow management)
 - **Storage**: File system + GitHub
 - **No custom software needed** - Claude Code IS the platform
+
+### Research Workflow
+
+1. **Generate prompts** - Claude Code creates research prompts for each phase
+2. **Run research** - User runs prompts manually in Claude Deep Research
+3. **Upload results** - User saves results to `research/` folder in each project
+4. **Process & synthesize** - Claude Code processes research into phase outputs
 
 ## Proof Points
 
@@ -61,7 +68,7 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 
 1. **No costs/money in the thesis** - Don't mention costs, budgets, or "zero capital" - just describe the work
 2. **Software-first** - All ventures are software products
-3. **Gemini for research** - Use Gemini Deep Research API for comprehensive cited research
+3. **Claude for research** - Use Claude Deep Research (manual workflow) for comprehensive cited research
 4. **Claude for everything else** - Processing, generation, orchestration, code
 5. **13 phases, not 10** - Extended to include MVP build and revenue
 6. **Evidence-backed** - Every claim must have third-party citation
@@ -79,8 +86,7 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 
 - [x] Update `docs/WORKFLOW.md` to match 13-phase model
 - [x] Update `docs/AGENTS.md` to include build agents
-- [ ] Create research prompt templates for each phase
-- [ ] Document the Gemini Deep Research integration
+- [ ] Create Claude Deep Research prompt templates for each phase
 - [ ] Continue ClaimIQ through remaining phases
 - [ ] Stakeholder presentation and approval
 

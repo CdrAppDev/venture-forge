@@ -37,10 +37,17 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 
 ### Technology Stack
 
-- **Research**: Gemini Deep Research API
+- **Research**: Claude Deep Research (manual workflow)
 - **Processing/Generation**: Claude Opus 4.5
 - **Orchestration**: Claude Code
 - **Storage**: Files + GitHub
+
+### Research Workflow
+
+1. **Generate prompts** - Claude Code creates research prompts for each phase
+2. **Run research** - User runs prompts manually in Claude Deep Research
+3. **Upload results** - User saves results to `research/` folder in each project
+4. **Process & synthesize** - Claude Code processes research into phase outputs
 
 ### Key Principles
 
@@ -92,6 +99,6 @@ RHTP Research: `/Users/chrisroberts/Projects/rhtp/`
 
 1. Update `docs/WORKFLOW.md` to 13-phase model
 2. Update `docs/AGENTS.md` to include build phase agents
-3. Create Gemini Deep Research prompt templates
+3. Create Claude Deep Research prompt templates
 4. Continue ClaimIQ through phases 7-13
 5. Stakeholder presentation and greenlight
