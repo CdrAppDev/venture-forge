@@ -1,0 +1,132 @@
+id: "02-problem"
+name: "Problem Thesis"
+version: "1.0.0"
+
+purpose: "Validate that the problem is real, significant, and worth solving"
+
+prerequisites:
+  - phase: "01-capital"
+    status: "approved"
+    outputs_required:
+      - "capital_thesis"
+
+inputs:
+  - name: "capital_thesis"
+    description: "Approved capital thesis with funder criteria"
+    location: "{project}/phases/01-capital/thesis.md"
+    required: true
+
+  - name: "research_results"
+    description: "Claude Deep Research results uploaded by user"
+    location: "{project}/research/02-problem/"
+    required: true
+    note: "User runs research prompts manually, uploads results here"
+
+outputs:
+  - name: "problem_thesis"
+    description: "Validated problem statement with evidence"
+    location: "{project}/phases/02-problem/thesis.md"
+    format: "markdown"
+
+  - name: "evidence"
+    description: "Structured evidence with citations"
+    location: "{project}/phases/02-problem/evidence.yaml"
+    format: "yaml"
+
+  - name: "customer_voice"
+    description: "Extracted customer language and pain points"
+    location: "{project}/phases/02-problem/customer-voice.md"
+    format: "markdown"
+
+research_requirements:
+  - id: "prevalence"
+    description: "How widespread is this problem? Who experiences it?"
+    citation_minimum: 3
+
+  - id: "severity"
+    description: "How painful is this problem? What does it cost (money, time, outcomes)?"
+    citation_minimum: 3
+
+  - id: "customer_voice"
+    description: "How do affected people describe this problem in their own words?"
+    sources:
+      - "Industry forums and communities"
+      - "Product reviews (G2, Capterra, app stores)"
+      - "Reddit and social discussions"
+      - "Support forums and help requests"
+      - "LinkedIn and Twitter discussions"
+    citation_minimum: 5
+
+  - id: "current_solutions"
+    description: "How are people solving this today? What's broken about those solutions?"
+    citation_minimum: 3
+
+  - id: "cost_of_status_quo"
+    description: "What is the quantified cost of not solving this problem?"
+    citation_minimum: 2
+
+skills:
+  generate_prompts:
+    skill: "02-problem-thesis/generate-prompts"
+    when: "before_research"
+    description: "Generate Claude Deep Research prompts for problem validation"
+    inputs:
+      - "capital_thesis"
+    output: "{project}/research/02-problem-prompts.md"
+
+  process_research:
+    skill: "02-problem-thesis/process-research"
+    when: "after_research"
+    description: "Process research results into problem thesis"
+    inputs:
+      - "capital_thesis"
+      - "research_results"
+    outputs:
+      - "problem_thesis"
+      - "evidence"
+      - "customer_voice"
+
+gate:
+  question: "Is this problem real, significant, and worth solving?"
+
+  criteria:
+    - id: "problem_documented"
+      description: "Problem is clearly stated with third-party evidence"
+      required: true
+
+    - id: "prevalence_quantified"
+      description: "Affected population is sized with sources"
+      required: true
+
+    - id: "severity_quantified"
+      description: "Cost/impact is quantified (money, time, or outcomes)"
+      required: true
+
+    - id: "customer_voice_captured"
+      description: "Real customer language extracted from public sources"
+      required: true
+
+    - id: "capital_aligned"
+      description: "Problem aligns with funder criteria from Phase 1"
+      required: true
+
+  outcomes:
+    proceed:
+      description: "Problem validated, move to Market Thesis"
+      next_phase: "03-market"
+
+    revise:
+      description: "Evidence insufficient, generate new research prompts"
+      action: "Identify gaps, re-run generate_prompts with refinements"
+
+    kill:
+      description: "Problem not real, not significant, or misaligned with capital"
+      action: "Archive opportunity with learnings"
+
+learnings: []
+# Populated after running projects through this phase
+# Example:
+# - date: "2025-02-15"
+#   project: "ClaimIQ"
+#   learning: "Healthcare problems need regulatory context included in research"
+#   action_taken: "Added regulatory requirements to research_requirements"

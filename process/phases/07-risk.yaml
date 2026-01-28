@@ -1,0 +1,75 @@
+id: "07-risk"
+name: "Risk Thesis"
+version: "1.0.0"
+
+purpose: "Identify what could go wrong and how to mitigate"
+
+prerequisites:
+  - phase: "06-business"
+    status: "approved"
+
+inputs:
+  - name: "all_prior_theses"
+    description: "All phase outputs 01-06"
+    location: "{project}/phases/"
+    required: true
+
+outputs:
+  - name: "risk_thesis"
+    location: "{project}/phases/07-risk/thesis.md"
+    format: "markdown"
+
+  - name: "risk_register"
+    location: "{project}/phases/07-risk/risk-register.yaml"
+    format: "yaml"
+
+# Synthesizes prior phases, minimal new research
+research_requirements:
+  - id: "failure_modes"
+    description: "How do similar ventures fail? What kills startups in this space?"
+    citation_minimum: 2
+
+  - id: "regulatory_risks"
+    description: "Regulatory changes or compliance risks"
+    citation_minimum: 1
+
+skills:
+  synthesize:
+    skill: "07-risk-thesis/synthesize"
+    when: "execution"
+    description: "Analyze all prior phases for risks"
+    outputs:
+      - "risk_thesis"
+      - "risk_register"
+
+gate:
+  question: "Are the risks understood and manageable?"
+
+  criteria:
+    - id: "risks_identified"
+      description: "Key risks across all categories identified"
+      required: true
+
+    - id: "mitigations_defined"
+      description: "Each significant risk has a mitigation plan"
+      required: true
+
+    - id: "investor_objections_anticipated"
+      description: "Likely investor questions answered"
+      required: true
+
+    - id: "honest_assessment"
+      description: "Risks presented honestly, not hidden"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "08-materials"
+
+    revise:
+      action: "Deeper risk analysis needed"
+
+    kill:
+      action: "Risks too severe, no viable mitigation"
+
+learnings: []

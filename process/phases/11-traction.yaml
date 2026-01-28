@@ -1,0 +1,93 @@
+id: "11-traction"
+name: "Customer Traction"
+version: "1.0.0"
+
+purpose: "Launch MVP, acquire customers, generate revenue"
+
+prerequisites:
+  - phase: "10-build"
+    status: "approved"
+
+inputs:
+  - name: "working_software"
+    location: "{project}/build/"
+    required: true
+
+  - name: "pitch_materials"
+    location: "{project}/materials/"
+    required: true
+
+  - name: "market_thesis"
+    location: "{project}/phases/03-market/thesis.md"
+    required: true
+
+  - name: "customer_voice"
+    location: "{project}/phases/02-problem/customer-voice.md"
+    required: true
+
+outputs:
+  - name: "traction_report"
+    description: "Metrics and customer evidence"
+    location: "{project}/phases/11-traction/traction-report.md"
+    format: "markdown"
+
+  - name: "customer_data"
+    description: "Customer list and engagement metrics"
+    location: "{project}/phases/11-traction/customers.yaml"
+    format: "yaml"
+
+  - name: "revenue_proof"
+    description: "Evidence of revenue (anonymized if needed)"
+    location: "{project}/phases/11-traction/revenue.yaml"
+    format: "yaml"
+
+research_requirements: []
+
+skills:
+  generate_launch_plan:
+    skill: "11-traction/generate-launch-plan"
+    when: "start"
+    description: "Create customer acquisition and launch plan"
+    outputs:
+      - location: "{project}/phases/11-traction/launch-plan.md"
+
+  document_traction:
+    skill: "11-traction/document-traction"
+    when: "ongoing"
+    description: "Document customer wins and revenue"
+    outputs:
+      - "traction_report"
+      - "customer_data"
+      - "revenue_proof"
+
+gate:
+  question: "Do we have proof that customers will pay?"
+
+  criteria:
+    - id: "revenue_generated"
+      description: "At least $1 of revenue (or clear path to it)"
+      required: true
+
+    - id: "customers_documented"
+      description: "Customer names/types documented"
+      required: true
+
+    - id: "usage_evidence"
+      description: "Evidence of actual product usage"
+      required: true
+
+    - id: "feedback_captured"
+      description: "Customer feedback documented for iteration"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "12-funding"
+
+    revise:
+      action: "Continue customer acquisition efforts"
+
+    kill:
+      action: "Cannot achieve traction, pivot or abandon"
+
+learnings: []

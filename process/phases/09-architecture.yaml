@@ -1,0 +1,102 @@
+id: "09-architecture"
+name: "MVP Architecture"
+version: "1.0.0"
+
+purpose: "Create detailed technical specification for MVP development"
+
+prerequisites:
+  - phase: "08-materials"
+    status: "approved"
+
+inputs:
+  - name: "solution_thesis"
+    location: "{project}/phases/05-solution/thesis.md"
+    required: true
+
+  - name: "feature_spec"
+    location: "{project}/phases/05-solution/features.yaml"
+    required: true
+
+  - name: "business_thesis"
+    location: "{project}/phases/06-business/thesis.md"
+    required: true
+
+outputs:
+  - name: "architecture_doc"
+    description: "System architecture and technical decisions"
+    location: "{project}/phases/09-architecture/architecture.md"
+    format: "markdown"
+
+  - name: "data_model"
+    description: "Database schema and data relationships"
+    location: "{project}/phases/09-architecture/data-model.yaml"
+    format: "yaml"
+
+  - name: "api_spec"
+    description: "API endpoints and contracts"
+    location: "{project}/phases/09-architecture/api-spec.yaml"
+    format: "yaml"
+
+  - name: "ui_spec"
+    description: "Screen inventory and user flows"
+    location: "{project}/phases/09-architecture/ui-spec.md"
+    format: "markdown"
+
+  - name: "tech_stack"
+    description: "Technology choices with rationale"
+    location: "{project}/phases/09-architecture/tech-stack.yaml"
+    format: "yaml"
+
+research_requirements: []
+# Technical design, no research
+
+skills:
+  generate_spec:
+    skill: "09-architecture/generate-spec"
+    when: "execution"
+    description: "Generate full technical specification"
+    inputs:
+      - "solution_thesis"
+      - "feature_spec"
+    outputs:
+      - "architecture_doc"
+      - "data_model"
+      - "api_spec"
+      - "ui_spec"
+      - "tech_stack"
+
+gate:
+  question: "Is the architecture complete and buildable?"
+
+  criteria:
+    - id: "mvp_scoped"
+      description: "MVP features clearly bounded, no scope creep"
+      required: true
+
+    - id: "data_model_complete"
+      description: "All entities and relationships defined"
+      required: true
+
+    - id: "api_defined"
+      description: "All endpoints specified"
+      required: true
+
+    - id: "ui_flows_mapped"
+      description: "User journeys and screens documented"
+      required: true
+
+    - id: "tech_justified"
+      description: "Technology choices have clear rationale"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "10-build"
+
+    revise:
+      action: "Refine architecture based on feedback"
+
+    kill:
+      action: "Technical complexity too high for MVP"
+
+learnings: []

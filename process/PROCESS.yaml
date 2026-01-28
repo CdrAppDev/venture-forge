@@ -1,0 +1,93 @@
+version: "1.0.0"
+name: "Venture Forge"
+description: "Capital-first venture creation process"
+
+principles:
+  - id: capital-first
+    statement: "Start with what funders want, work backwards"
+    rationale: "Ventures built to funder criteria survive due diligence by design"
+
+  - id: evidence-backed
+    statement: "Every claim must have third-party citation"
+    rationale: "If our research and funder due diligence draw from the same sources, they reach the same conclusions"
+
+  - id: customer-voice-from-research
+    statement: "Extract customer voice from public sources, not interviews"
+    rationale: "AI can mine forums, reviews, and discussions at scale; revenue validates better than interviews"
+
+  - id: traction-before-funding
+    statement: "Get revenue before seeking funding"
+    rationale: "Funders want proof; $1 of revenue beats promises"
+
+  - id: ai-executes-humans-decide
+    statement: "AI performs research and generation; humans review and approve"
+    rationale: "Leverage AI for scale, humans for judgment"
+
+file_conventions:
+  project_root: "{project}/"
+  research_input: "{project}/research/"
+  research_prompts: "{project}/research/{phase_id}-prompts.md"
+  research_results: "{project}/research/{phase_id}/"
+  phase_output: "{project}/phases/{phase_id}/"
+  evidence_library: "{project}/evidence/"
+  materials: "{project}/materials/"
+
+phases:
+  - id: "01-capital"
+    name: "Capital Thesis"
+    file: "phases/01-capital.yaml"
+
+  - id: "02-problem"
+    name: "Problem Thesis"
+    file: "phases/02-problem.yaml"
+
+  - id: "03-market"
+    name: "Market Thesis"
+    file: "phases/03-market.yaml"
+
+  - id: "04-competitive"
+    name: "Competitive Thesis"
+    file: "phases/04-competitive.yaml"
+
+  - id: "05-solution"
+    name: "Solution Thesis"
+    file: "phases/05-solution.yaml"
+
+  - id: "06-business"
+    name: "Business Thesis"
+    file: "phases/06-business.yaml"
+
+  - id: "07-risk"
+    name: "Risk Thesis"
+    file: "phases/07-risk.yaml"
+
+  - id: "08-materials"
+    name: "Materials Assembly"
+    file: "phases/08-materials.yaml"
+
+  - id: "09-architecture"
+    name: "MVP Architecture"
+    file: "phases/09-architecture.yaml"
+
+  - id: "10-build"
+    name: "MVP Build"
+    file: "phases/10-build.yaml"
+
+  - id: "11-traction"
+    name: "Customer Traction"
+    file: "phases/11-traction.yaml"
+
+  - id: "12-funding"
+    name: "Funding Execution"
+    file: "phases/12-funding.yaml"
+
+gate_outcomes:
+  proceed:
+    description: "Phase complete, move to next phase"
+    action: "Advance to next phase"
+  revise:
+    description: "Output insufficient, redo with feedback"
+    action: "Re-execute phase skills with revision notes"
+  kill:
+    description: "Opportunity not viable, abandon"
+    action: "Archive opportunity, document learnings"

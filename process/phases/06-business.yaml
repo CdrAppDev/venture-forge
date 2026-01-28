@@ -1,0 +1,93 @@
+id: "06-business"
+name: "Business Thesis"
+version: "1.0.0"
+
+purpose: "Define how the solution makes money and validate unit economics"
+
+prerequisites:
+  - phase: "05-solution"
+    status: "approved"
+
+inputs:
+  - name: "solution_thesis"
+    location: "{project}/phases/05-solution/thesis.md"
+    required: true
+
+  - name: "market_thesis"
+    location: "{project}/phases/03-market/thesis.md"
+    required: true
+
+  - name: "competitive_thesis"
+    location: "{project}/phases/04-competitive/thesis.md"
+    required: true
+
+  - name: "research_results"
+    location: "{project}/research/06-business/"
+    required: true
+
+outputs:
+  - name: "business_thesis"
+    location: "{project}/phases/06-business/thesis.md"
+    format: "markdown"
+
+  - name: "financial_model"
+    location: "{project}/phases/06-business/model.yaml"
+    format: "yaml"
+
+research_requirements:
+  - id: "pricing_research"
+    description: "How do competitors and alternatives price? What do customers pay?"
+    citation_minimum: 3
+
+  - id: "unit_economics_benchmarks"
+    description: "Industry benchmarks for CAC, LTV, margins in this space"
+    citation_minimum: 2
+
+  - id: "business_model_patterns"
+    description: "What revenue models work in this market?"
+    citation_minimum: 2
+
+skills:
+  generate_prompts:
+    skill: "06-business-thesis/generate-prompts"
+    when: "before_research"
+    output: "{project}/research/06-business-prompts.md"
+
+  process_research:
+    skill: "06-business-thesis/process-research"
+    when: "after_research"
+    outputs:
+      - "business_thesis"
+      - "financial_model"
+
+gate:
+  question: "Is the business model viable and fundable?"
+
+  criteria:
+    - id: "revenue_model_defined"
+      description: "Clear revenue model with pricing strategy"
+      required: true
+
+    - id: "unit_economics_positive"
+      description: "LTV/CAC ratio viable (target 3:1+)"
+      required: true
+
+    - id: "pricing_validated"
+      description: "Pricing backed by competitive research"
+      required: true
+
+    - id: "projections_reasonable"
+      description: "Financial projections based on stated assumptions"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "07-risk"
+
+    revise:
+      action: "Refine business model or pricing"
+
+    kill:
+      action: "Unit economics don't work"
+
+learnings: []

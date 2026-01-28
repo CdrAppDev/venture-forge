@@ -1,0 +1,100 @@
+id: "12-funding"
+name: "Funding Execution"
+version: "1.0.0"
+
+purpose: "Close funding with evidence of traction"
+
+prerequisites:
+  - phase: "11-traction"
+    status: "approved"
+
+inputs:
+  - name: "all_materials"
+    location: "{project}/materials/"
+    required: true
+
+  - name: "evidence_library"
+    location: "{project}/evidence/"
+    required: true
+
+  - name: "traction_report"
+    location: "{project}/phases/11-traction/traction-report.md"
+    required: true
+
+  - name: "capital_thesis"
+    location: "{project}/phases/01-capital/thesis.md"
+    required: true
+
+outputs:
+  - name: "funding_applications"
+    description: "Submitted applications and pitches"
+    location: "{project}/phases/12-funding/applications/"
+    format: "markdown"
+
+  - name: "data_room"
+    description: "Due diligence materials"
+    location: "{project}/phases/12-funding/data-room/"
+    format: "mixed"
+
+  - name: "funding_status"
+    description: "Application tracking and outcomes"
+    location: "{project}/phases/12-funding/status.yaml"
+    format: "yaml"
+
+research_requirements: []
+
+skills:
+  prepare_applications:
+    skill: "12-funding/prepare-applications"
+    when: "start"
+    description: "Prepare funding applications with traction evidence"
+    outputs:
+      - "funding_applications"
+
+  build_data_room:
+    skill: "12-funding/build-data-room"
+    when: "start"
+    description: "Assemble due diligence materials"
+    outputs:
+      - "data_room"
+
+  track_status:
+    skill: "12-funding/track-status"
+    when: "ongoing"
+    description: "Track application status and outcomes"
+    outputs:
+      - "funding_status"
+
+gate:
+  question: "Have we secured funding?"
+
+  criteria:
+    - id: "applications_submitted"
+      description: "Funding applications submitted to target sources"
+      required: true
+
+    - id: "traction_highlighted"
+      description: "Customer traction prominently featured"
+      required: true
+
+    - id: "data_room_ready"
+      description: "Due diligence materials prepared"
+      required: true
+
+    - id: "funding_closed"
+      description: "Funding commitment received"
+      required: false
+      note: "Process complete at submission; closing tracked separately"
+
+  outcomes:
+    proceed:
+      next_phase: null
+      description: "Venture funded, move to operations"
+
+    revise:
+      action: "Address funder feedback, resubmit"
+
+    kill:
+      action: "Funding not achievable, pivot or wind down"
+
+learnings: []

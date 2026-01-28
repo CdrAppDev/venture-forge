@@ -1,0 +1,97 @@
+id: "10-build"
+name: "MVP Build"
+version: "1.0.0"
+
+purpose: "Build the MVP using AI-accelerated development"
+
+prerequisites:
+  - phase: "09-architecture"
+    status: "approved"
+
+inputs:
+  - name: "architecture_doc"
+    location: "{project}/phases/09-architecture/architecture.md"
+    required: true
+
+  - name: "data_model"
+    location: "{project}/phases/09-architecture/data-model.yaml"
+    required: true
+
+  - name: "api_spec"
+    location: "{project}/phases/09-architecture/api-spec.yaml"
+    required: true
+
+  - name: "ui_spec"
+    location: "{project}/phases/09-architecture/ui-spec.md"
+    required: true
+
+  - name: "tech_stack"
+    location: "{project}/phases/09-architecture/tech-stack.yaml"
+    required: true
+
+outputs:
+  - name: "working_software"
+    description: "Deployed, functional MVP"
+    location: "{project}/build/"
+    format: "code"
+
+  - name: "build_status"
+    description: "Build progress and deployment info"
+    location: "{project}/phases/10-build/status.yaml"
+    format: "yaml"
+
+  - name: "documentation"
+    description: "README and deployment docs"
+    location: "{project}/build/README.md"
+    format: "markdown"
+
+research_requirements: []
+
+# This phase uses Claude Code directly for development
+# Skills provide structure but execution is iterative coding
+skills:
+  build_mvp:
+    skill: "10-build/build-mvp"
+    when: "execution"
+    description: "AI-accelerated MVP development with Claude Code"
+    note: "This skill provides guidelines; actual build is iterative"
+    outputs:
+      - "working_software"
+      - "build_status"
+      - "documentation"
+
+gate:
+  question: "Is the MVP functional and ready for customers?"
+
+  criteria:
+    - id: "core_features_working"
+      description: "All MVP features functional"
+      required: true
+
+    - id: "deployed"
+      description: "Software deployed and accessible"
+      required: true
+
+    - id: "tested"
+      description: "Core flows tested and working"
+      required: true
+
+    - id: "documented"
+      description: "Basic documentation exists"
+      required: true
+
+    - id: "secure"
+      description: "Basic security review passed"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "11-traction"
+
+    revise:
+      action: "Fix bugs or incomplete features"
+
+    kill:
+      action: "Technical failure, cannot deliver MVP"
+
+learnings: []

@@ -1,0 +1,84 @@
+id: "05-solution"
+name: "Solution Thesis"
+version: "1.0.0"
+
+purpose: "Design the solution that addresses the validated problem and competitive gaps"
+
+prerequisites:
+  - phase: "04-competitive"
+    status: "approved"
+
+inputs:
+  - name: "problem_thesis"
+    location: "{project}/phases/02-problem/thesis.md"
+    required: true
+
+  - name: "market_thesis"
+    location: "{project}/phases/03-market/thesis.md"
+    required: true
+
+  - name: "competitive_thesis"
+    location: "{project}/phases/04-competitive/thesis.md"
+    required: true
+
+  - name: "customer_voice"
+    location: "{project}/phases/02-problem/customer-voice.md"
+    required: true
+
+outputs:
+  - name: "solution_thesis"
+    location: "{project}/phases/05-solution/thesis.md"
+    format: "markdown"
+
+  - name: "feature_spec"
+    location: "{project}/phases/05-solution/features.yaml"
+    format: "yaml"
+
+# Note: This phase synthesizes prior research rather than requiring new research
+research_requirements: []
+
+skills:
+  synthesize:
+    skill: "05-solution-thesis/synthesize"
+    when: "execution"
+    description: "Synthesize prior phases into solution design"
+    inputs:
+      - "problem_thesis"
+      - "market_thesis"
+      - "competitive_thesis"
+      - "customer_voice"
+    outputs:
+      - "solution_thesis"
+      - "feature_spec"
+
+gate:
+  question: "Does this solution address the problem and competitive gaps?"
+
+  criteria:
+    - id: "problem_solution_fit"
+      description: "Solution directly addresses validated problem"
+      required: true
+
+    - id: "competitive_differentiation"
+      description: "Solution exploits identified market gaps"
+      required: true
+
+    - id: "features_prioritized"
+      description: "MVP features clearly defined and scoped"
+      required: true
+
+    - id: "customer_language_used"
+      description: "Solution described in customer terms"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "06-business"
+
+    revise:
+      action: "Refine solution based on feedback"
+
+    kill:
+      action: "No viable solution for this problem/market"
+
+learnings: []

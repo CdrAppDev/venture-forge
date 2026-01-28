@@ -1,0 +1,96 @@
+id: "08-materials"
+name: "Materials Assembly"
+version: "1.0.0"
+
+purpose: "Compile evidence library and generate investor-ready pitch materials"
+
+prerequisites:
+  - phase: "07-risk"
+    status: "approved"
+
+inputs:
+  - name: "all_theses"
+    description: "All phase outputs 01-07"
+    location: "{project}/phases/"
+    required: true
+
+  - name: "all_evidence"
+    description: "All evidence.yaml files from prior phases"
+    location: "{project}/phases/*/evidence.yaml"
+    required: true
+
+outputs:
+  - name: "evidence_library"
+    description: "Consolidated evidence with all citations"
+    location: "{project}/evidence/library.yaml"
+    format: "yaml"
+
+  - name: "pitch_deck"
+    description: "Investor pitch deck content"
+    location: "{project}/materials/pitch-deck.md"
+    format: "markdown"
+
+  - name: "executive_summary"
+    description: "One-page executive summary"
+    location: "{project}/materials/executive-summary.md"
+    format: "markdown"
+
+  - name: "one_pager"
+    description: "Single page overview for quick review"
+    location: "{project}/materials/one-pager.md"
+    format: "markdown"
+
+research_requirements: []
+# This phase synthesizes, no new research
+
+skills:
+  compile_evidence:
+    skill: "08-materials/compile-evidence"
+    when: "first"
+    description: "Consolidate all evidence into library"
+    outputs:
+      - "evidence_library"
+
+  generate_materials:
+    skill: "08-materials/generate-materials"
+    when: "after_evidence"
+    description: "Generate pitch materials from evidence"
+    inputs:
+      - "all_theses"
+      - "evidence_library"
+    outputs:
+      - "pitch_deck"
+      - "executive_summary"
+      - "one_pager"
+
+gate:
+  question: "Are materials complete, consistent, and compelling?"
+
+  criteria:
+    - id: "evidence_compiled"
+      description: "All citations consolidated and verified"
+      required: true
+
+    - id: "narrative_consistent"
+      description: "Same statistics used across all materials"
+      required: true
+
+    - id: "all_claims_cited"
+      description: "Every claim in materials has citation"
+      required: true
+
+    - id: "pitch_complete"
+      description: "Pitch deck covers: problem, solution, market, competition, business model, team, ask"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "09-architecture"
+
+    revise:
+      action: "Fix inconsistencies or gaps in materials"
+
+    kill:
+      action: "Story doesn't hold together, revisit earlier phases"
+
+learnings: []

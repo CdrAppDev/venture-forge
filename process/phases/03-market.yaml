@@ -1,0 +1,111 @@
+id: "03-market"
+name: "Market Thesis"
+version: "1.0.0"
+
+purpose: "Validate market size and identify target segments"
+
+prerequisites:
+  - phase: "02-problem"
+    status: "approved"
+    outputs_required:
+      - "problem_thesis"
+
+inputs:
+  - name: "problem_thesis"
+    description: "Approved problem thesis with validated problem"
+    location: "{project}/phases/02-problem/thesis.md"
+    required: true
+
+  - name: "research_results"
+    description: "Claude Deep Research results on market sizing"
+    location: "{project}/research/03-market/"
+    required: true
+
+outputs:
+  - name: "market_thesis"
+    description: "Market sizing with TAM/SAM/SOM"
+    location: "{project}/phases/03-market/thesis.md"
+    format: "markdown"
+
+  - name: "market_data"
+    description: "Structured market data and calculations"
+    location: "{project}/phases/03-market/market-data.yaml"
+    format: "yaml"
+
+research_requirements:
+  - id: "tam"
+    description: "Total Addressable Market - entire market for this solution"
+    citation_minimum: 2
+
+  - id: "sam"
+    description: "Serviceable Addressable Market - portion we could realistically serve"
+    citation_minimum: 2
+
+  - id: "som"
+    description: "Serviceable Obtainable Market - realistic near-term target"
+    citation_minimum: 1
+
+  - id: "segments"
+    description: "Market segments and their characteristics"
+    citation_minimum: 2
+
+  - id: "growth_trends"
+    description: "Market growth trends and projections"
+    citation_minimum: 2
+
+skills:
+  generate_prompts:
+    skill: "03-market-thesis/generate-prompts"
+    when: "before_research"
+    inputs:
+      - "problem_thesis"
+    output: "{project}/research/03-market-prompts.md"
+
+  process_research:
+    skill: "03-market-thesis/process-research"
+    when: "after_research"
+    inputs:
+      - "problem_thesis"
+      - "research_results"
+    outputs:
+      - "market_thesis"
+      - "market_data"
+
+gate:
+  question: "Is the market large enough and growing?"
+
+  criteria:
+    - id: "tam_documented"
+      description: "TAM calculated with methodology and sources"
+      required: true
+
+    - id: "sam_realistic"
+      description: "SAM is defensible and appropriately scoped"
+      required: true
+
+    - id: "som_achievable"
+      description: "SOM represents achievable near-term target"
+      required: true
+
+    - id: "growth_positive"
+      description: "Market is growing or has positive tailwinds"
+      required: true
+
+    - id: "segments_identified"
+      description: "Target segments clearly defined"
+      required: true
+
+  outcomes:
+    proceed:
+      description: "Market validated, move to Competitive Thesis"
+      next_phase: "04-competitive"
+
+    revise:
+      description: "Market sizing needs refinement or different segmentation"
+      action: "Identify gaps, re-run research"
+
+    kill:
+      description: "Market too small or declining"
+      action: "Archive opportunity"
+
+learnings: []

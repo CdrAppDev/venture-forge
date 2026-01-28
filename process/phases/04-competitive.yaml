@@ -1,0 +1,99 @@
+id: "04-competitive"
+name: "Competitive Thesis"
+version: "1.0.0"
+
+purpose: "Map competitive landscape and identify defensible positioning"
+
+prerequisites:
+  - phase: "03-market"
+    status: "approved"
+    outputs_required:
+      - "market_thesis"
+
+inputs:
+  - name: "problem_thesis"
+    location: "{project}/phases/02-problem/thesis.md"
+    required: true
+
+  - name: "market_thesis"
+    location: "{project}/phases/03-market/thesis.md"
+    required: true
+
+  - name: "research_results"
+    location: "{project}/research/04-competitive/"
+    required: true
+
+outputs:
+  - name: "competitive_thesis"
+    location: "{project}/phases/04-competitive/thesis.md"
+    format: "markdown"
+
+  - name: "competitor_profiles"
+    location: "{project}/phases/04-competitive/competitors.yaml"
+    format: "yaml"
+
+research_requirements:
+  - id: "direct_competitors"
+    description: "Companies solving the same problem for same customers"
+    citation_minimum: 3
+
+  - id: "indirect_competitors"
+    description: "Alternative solutions and workarounds"
+    citation_minimum: 2
+
+  - id: "competitor_weaknesses"
+    description: "Known limitations, complaints, gaps in existing solutions"
+    citation_minimum: 3
+
+  - id: "market_gaps"
+    description: "Underserved segments or unmet needs"
+    citation_minimum: 2
+
+  - id: "competitive_dynamics"
+    description: "Funding, acquisitions, market consolidation trends"
+    citation_minimum: 2
+
+skills:
+  generate_prompts:
+    skill: "04-competitive-thesis/generate-prompts"
+    when: "before_research"
+    output: "{project}/research/04-competitive-prompts.md"
+
+  process_research:
+    skill: "04-competitive-thesis/process-research"
+    when: "after_research"
+    outputs:
+      - "competitive_thesis"
+      - "competitor_profiles"
+
+gate:
+  question: "Can we differentiate and win against competition?"
+
+  criteria:
+    - id: "competitors_mapped"
+      description: "All significant competitors identified and profiled"
+      required: true
+
+    - id: "gaps_identified"
+      description: "Clear market gaps or underserved segments found"
+      required: true
+
+    - id: "positioning_defensible"
+      description: "Differentiation is backed by evidence, not opinion"
+      required: true
+
+    - id: "honest_about_risks"
+      description: "Competitive risks acknowledged with mitigations"
+      required: true
+
+  outcomes:
+    proceed:
+      next_phase: "05-solution"
+
+    revise:
+      action: "Need deeper competitive research or different positioning"
+
+    kill:
+      action: "Market too crowded, no defensible position"
+
+learnings: []
