@@ -25,10 +25,12 @@ principles:
 
 file_conventions:
   project_root: "{project}/"
-  research_input: "{project}/research/"
+  inputs: "{project}/inputs/"
   research_prompts: "{project}/research/{phase_id}-prompts.md"
   research_results: "{project}/research/{phase_id}/"
   phase_output: "{project}/phases/{phase_id}/"
+  phase_sources: "{project}/phases/{phase_id}/sources.md"
+  presentation: "{project}/docs/"
   evidence_library: "{project}/evidence/"
   materials: "{project}/materials/"
 

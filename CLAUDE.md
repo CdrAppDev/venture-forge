@@ -10,7 +10,7 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 
 ## The Framework
 
-### 13 Phases (Research → Funded)
+### 12 Phases (Research → Funded)
 
 **Research & Validation (1-4)**
 1. Capital Thesis - What funders want
@@ -23,17 +23,16 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 6. Business Thesis - How it makes money
 7. Risk Thesis - What could go wrong
 
-**Materials (8-9)**
-8. Case Assembly - Evidence library
-9. Narrative Assembly - Pitch materials
+**Materials (8)**
+8. Materials Assembly - Evidence library + pitch materials
 
-**Build & Traction (10-12)**
-10. MVP Architecture - Tech spec, design
-11. MVP Build - AI-accelerated development
-12. Customer Traction - LOI or first customer (funders need proof)
+**Build & Traction (9-11)**
+9. MVP Architecture - Tech spec, design
+10. MVP Build - AI-accelerated development
+11. Customer Traction - LOI or first customer (funders need proof)
 
-**Funding (13)**
-13. Funding Execution - Close funding with traction proof
+**Funding (12)**
+12. Funding Execution - Close funding with traction proof
 
 ### Technology Stack
 
@@ -66,6 +65,7 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 | `STATUS.md` | Framework status and what needs work |
 | `docs/THESIS.md` | Full thesis document |
 | `docs/index.html` | Web presentation (GitHub Pages) |
+| `docs/QUALITY-GATES.md` | Gate review checklists and decision criteria |
 | `process/PROCESS.yaml` | Phase definitions and file conventions |
 | `process/phases/*.yaml` | Individual phase specs with gate criteria |
 | `skills/vf-*/SKILL.md` | Agent skills for each phase step |
@@ -146,7 +146,6 @@ Every phase MUST produce these files in `{project}/phases/{phase_id}/`:
 
 ## What Needs Work
 
-1. Update `docs/WORKFLOW.md` to 13-phase model
-2. Update `docs/AGENTS.md` to include build phase agents
-3. Create Claude Deep Research prompt templates for phases 3+
-4. Build skills for phases 3-12
+1. Build skills for phases 3-12
+2. Test Phase 02 with CyberShield Rural (next)
+3. Complete CyberShield Rural Phase 01 gate review

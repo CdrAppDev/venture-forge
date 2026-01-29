@@ -11,7 +11,7 @@ Venture Forge is a **company factory** - a framework that systematically creates
 - **Live URL**: https://cdrappdev.github.io/venture-forge/
 - **GitHub Repo**: https://github.com/CdrAppDev/venture-forge
 
-## The 13-Phase Workflow
+## The 12-Phase Workflow
 
 ### Research & Validation (1-4)
 1. **Capital Thesis** - Where is funding flowing? What do funders want?
@@ -24,17 +24,16 @@ Venture Forge is a **company factory** - a framework that systematically creates
 6. **Business Thesis** - How does it make money? Unit economics
 7. **Risk Thesis** - What could go wrong? Mitigations
 
-### Materials (8-9)
-8. **Case Assembly** - Evidence library, all claims cited
-9. **Narrative Assembly** - Pitch deck, summaries, materials
+### Materials (8)
+8. **Materials Assembly** - Evidence library + pitch materials
 
-### Build & Traction (10-12)
-10. **MVP Architecture** - Tech spec, data model, UI/UX, dev plan
-11. **MVP Build** - AI-accelerated development, working software
-12. **Customer Traction** - LOI or first paying customer (funders need proof)
+### Build & Traction (9-11)
+9. **MVP Architecture** - Tech spec, data model, UI/UX, dev plan
+10. **MVP Build** - AI-accelerated development, working software
+11. **Customer Traction** - LOI or first paying customer (funders need proof)
 
-### Funding (13)
-13. **Funding Execution** - Applications with traction, pitches, close
+### Funding (12)
+12. **Funding Execution** - Applications with traction, pitches, close
 
 ## Technology Stack
 
@@ -70,7 +69,7 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 2. **Software-first** - All ventures are software products
 3. **Claude for research** - Use Claude Deep Research (manual workflow) for comprehensive cited research
 4. **Claude for everything else** - Processing, generation, orchestration, code
-5. **13 phases, not 10** - Extended to include MVP build and revenue
+5. **12 phases** - Research through funding, including MVP build and traction
 6. **Evidence-backed** - Every claim must have third-party citation
 
 ## Portfolio State
@@ -85,7 +84,7 @@ Run `status` to see the full portfolio dashboard.
 - [x] Thesis document (`docs/THESIS.md`)
 - [x] Web presentation (`docs/index.html`)
 - [x] GitHub Pages hosting
-- [x] 13-phase workflow defined
+- [x] 12-phase workflow defined (process/PROCESS.yaml)
 - [x] Technology architecture defined
 - [x] Proof point documented (RHTP → 5 opportunities)
 - [x] Phase 01-02 skills built (generate-prompts, process-research, validate)
@@ -105,9 +104,9 @@ Run `status` to see the full portfolio dashboard.
 
 ## What's Next
 
-- [ ] Create Claude Deep Research prompt templates for phases 3+
+- [ ] Test Phase 02 with CyberShield Rural (Problem Thesis)
+- [ ] Complete CyberShield Rural Phase 01 gate review (4 pending decisions)
 - [ ] Build skills for phases 3-12
-- [ ] Complete CyberShield Rural gate review and advance to Phase 02
 - [ ] Stakeholder presentation and approval
 
 ## Files to Read for Context
