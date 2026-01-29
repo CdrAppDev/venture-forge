@@ -73,6 +73,13 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 5. **13 phases, not 10** - Extended to include MVP build and revenue
 6. **Evidence-backed** - Every claim must have third-party citation
 
+## Portfolio State
+
+See `portfolio.yaml` for current status of all projects.
+See `portfolio/{project}.yaml` for detailed phase history per project.
+
+Run `status` to see the full portfolio dashboard.
+
 ## What's Done
 
 - [x] Thesis document (`docs/THESIS.md`)
@@ -81,19 +88,22 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 - [x] 13-phase workflow defined
 - [x] Technology architecture defined
 - [x] Proof point documented (RHTP → 5 opportunities)
+- [x] Phase 01-02 skills built (generate-prompts, process-research, validate)
+- [x] Portfolio state system (registry + per-project detail files)
+- [x] CyberShield Rural Phase 01 Capital Thesis complete (gate-review)
 
 ## What's Next
 
-- [x] Update `docs/WORKFLOW.md` to match 13-phase model
-- [x] Update `docs/AGENTS.md` to include build agents
-- [ ] Create Claude Deep Research prompt templates for each phase
-- [ ] Continue ClaimIQ through remaining phases
+- [ ] Create Claude Deep Research prompt templates for phases 3+
+- [ ] Build skills for phases 3-12
+- [ ] Complete CyberShield Rural gate review and advance to Phase 02
 - [ ] Stakeholder presentation and approval
 
 ## Files to Read for Context
 
 To understand the full framework:
-1. `docs/THESIS.md` - The complete thesis
-2. `presentation/index.html` - Visual presentation
-3. `/Users/chrisroberts/Projects/rhtp/compass_artifact_*.md` - RHTP research
-4. `/Users/chrisroberts/Projects/claimiq/` - ClaimIQ proof point
+1. `portfolio.yaml` - Portfolio registry (start here)
+2. `CLAUDE.md` - Commands, resume logic, update rules
+3. `docs/THESIS.md` - The complete thesis
+4. `presentation/index.html` - Visual presentation
+5. `process/PROCESS.yaml` - Phase definitions and file conventions

@@ -1,0 +1,11 @@
+name: "ShiftSmart"
+description: "Workforce scheduling for rural healthcare"
+path: "/Users/chrisroberts/Projects/shiftsmart-health"
+repo: ""
+vertical: "healthcare-workforce"
+created: "2025-01-01"
+
+current_phase: "01-capital"
+phase_status: "pending"
+
+phases: {}

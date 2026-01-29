@@ -1,0 +1,15 @@
+name: "ClaimIQ"
+description: "AI denial prevention for rural hospitals"
+path: "/Users/chrisroberts/Projects/claimiq"
+repo: ""
+vertical: "healthcare-revenue-cycle"
+created: "2025-01-01"
+
+current_phase: "11-build"
+phase_status: "in-progress"
+
+phases:
+  01-capital:
+    status: "complete"
+    gate_decision: "proceed"
+    gate_notes: "Pre-framework. Research done via RHTP."

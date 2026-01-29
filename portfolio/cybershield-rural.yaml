@@ -1,0 +1,30 @@
+name: "CyberShield Rural"
+description: "Managed cybersecurity for critical access and rural hospitals"
+path: "/Users/chrisroberts/Projects/cybershield-rural"
+repo: ""
+vertical: "healthcare-cybersecurity"
+created: "2026-01-28"
+
+current_phase: "01-capital"
+phase_status: "gate-review"
+
+phases:
+  01-capital:
+    status: "gate-review"
+    started: "2026-01-28"
+    research_files: 5
+    research_words: 12650
+    validation: "30/31 passed, 1 warning"
+    validation_detail: "7 VC funders with unknown timelines (expected for VC processes)"
+    viable_funders: 12
+    total_funders_analyzed: 35
+    citations: 169
+    presentation: "presentation/index.html"
+    gate_decision: null
+    gate_date: null
+    gate_notes: ""
+    pending_decisions:
+      - "Proceed to Phase 02?"
+      - "Which funding track to prioritize (grants vs equity)?"
+      - "Accelerator timing (pre-MVP or post-MVP)?"
+      - "SCRA engagement timing?"

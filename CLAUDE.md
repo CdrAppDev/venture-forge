@@ -61,44 +61,77 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 
 | File | Purpose |
 |------|---------|
-| `STATUS.md` | Current state, what's done, what's next |
+| `portfolio.yaml` | **Portfolio registry — read this first** |
+| `portfolio/{project}.yaml` | Detailed phase history per project |
+| `STATUS.md` | Framework status and what needs work |
 | `docs/THESIS.md` | Full thesis document |
 | `presentation/index.html` | Web presentation |
-| `docs/WORKFLOW.md` | Phase details (needs update to 13 phases) |
-| `docs/AGENTS.md` | Agent specs (needs update for build agents) |
+| `process/PROCESS.yaml` | Phase definitions and file conventions |
+| `process/phases/*.yaml` | Individual phase specs with gate criteria |
+| `skills/vf-*/SKILL.md` | Agent skills for each phase step |
+
+## Portfolio Management
+
+### How It Works
+
+Projects are tracked in two layers:
+- **`portfolio.yaml`** — registry with one entry per project (name, path, current phase, status)
+- **`portfolio/{project}.yaml`** — detailed history (phase-by-phase decisions, validation results, notes)
+
+State lives here in venture-forge. Work products live in each project's own repo.
+
+### Commands
+
+| Command | What to Do |
+|---------|------------|
+| `status` | Read `portfolio.yaml`, show a table of all projects with current phase and status |
+| `continue [project]` | Read `portfolio.yaml` for phase/status, read `portfolio/{project}.yaml` for detail, execute the next step based on resume logic below |
+| `review [project]` | Read `portfolio/{project}.yaml` to find project path and current phase, then read the phase outputs |
+
+### Resume Logic
+
+When a user says `continue [project]`, read the `phase_status` and execute accordingly:
+
+| phase_status | What to Do |
+|---|---|
+| `pending` | Run `vf-{phase}-generate-prompts` skill for the project. Update status to `research`. |
+| `research` | Tell user to run prompts in Claude Deep Research and upload results to `{project}/research/{phase_id}/`. Once uploaded, update status to `processing`. |
+| `processing` | Run `vf-{phase}-process-research` skill. Update status to `validation`. |
+| `validation` | Run `vf-{phase}-validate` skill. Update status to `gate-review`. |
+| `gate-review` | Read `pending_decisions` from the detail file. Present gate decisions to the human. Wait for their decision. |
+| `complete` | Advance `current_phase` to the next phase per `process/PROCESS.yaml`. Set new phase status to `pending`. |
+
+### Update Rules
+
+- **After every status change:** update BOTH `portfolio.yaml` (registry) and `portfolio/{project}.yaml` (detail)
+- **After gate decision:** record `gate_decision`, `gate_date`, and `gate_notes` in the detail file
+- **On `proceed`:** mark current phase `complete`, set `current_phase` to next phase, set `phase_status` to `pending`
+- **On `revise`:** keep current phase, set `phase_status` to `processing`, add revision notes to `gate_notes`
+- **On `kill`:** set `phase_status` to `killed`, add notes explaining why
+
+### Project Paths
+
+Each project is a separate repo. The `path` field in portfolio files points to the project root. All file conventions from `process/PROCESS.yaml` apply:
+
+```
+{project}/inputs/              # Human-provided context
+{project}/research/{phase_id}/ # Claude Deep Research outputs
+{project}/phases/{phase_id}/   # Phase deliverables
+{project}/presentation/        # Web presentations
+```
 
 ## Live Presentation
 
 - **URL**: https://cdrappdev.github.io/venture-forge/
 - **Repo**: https://github.com/CdrAppDev/venture-forge
 
-## Proof Points
-
-RHTP research → 5 opportunities:
-1. ClaimIQ (in development) - `/Users/chrisroberts/Projects/claimiq/`
-2. CyberShield - `/Users/chrisroberts/Projects/cybershield-rural/`
-3. VitalLink - `/Users/chrisroberts/Projects/vitallink-rpm/`
-4. MindBridge - `/Users/chrisroberts/Projects/mindbridge-rural/`
-5. ShiftSmart - `/Users/chrisroberts/Projects/shiftsmart-health/`
-
-RHTP Research: `/Users/chrisroberts/Projects/rhtp/`
-
 ## Communication Guidelines
 
 **NEVER mention costs, budgets, money, or "zero capital"** in thesis or presentation materials. Don't position things as "free" or "no investment needed" - just describe the work without financial framing.
-
-## Commands
-
-| Command | Description |
-|---------|-------------|
-| `status` | Show portfolio state |
-| `continue [opportunity]` | Work on next phase |
-| `review [opportunity]` | Show current phase output |
 
 ## What Needs Work
 
 1. Update `docs/WORKFLOW.md` to 13-phase model
 2. Update `docs/AGENTS.md` to include build phase agents
-3. Create Claude Deep Research prompt templates
-4. Continue ClaimIQ through phases 7-13
-5. Stakeholder presentation and greenlight
+3. Create Claude Deep Research prompt templates for phases 3+
+4. Build skills for phases 3-12

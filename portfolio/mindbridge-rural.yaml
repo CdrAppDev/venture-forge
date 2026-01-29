@@ -1,0 +1,11 @@
+name: "MindBridge"
+description: "Integrated behavioral health for primary care"
+path: "/Users/chrisroberts/Projects/mindbridge-rural"
+repo: ""
+vertical: "healthcare-behavioral"
+created: "2025-01-01"
+
+current_phase: "01-capital"
+phase_status: "pending"
+
+phases: {}

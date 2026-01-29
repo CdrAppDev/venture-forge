@@ -1,0 +1,34 @@
+# Venture Forge Portfolio Registry
+# Dashboard view — one entry per project.
+# Detail files: portfolio/{project}.yaml
+
+projects:
+  cybershield-rural:
+    name: "CyberShield Rural"
+    path: "/Users/chrisroberts/Projects/cybershield-rural"
+    current_phase: "01-capital"
+    phase_status: "gate-review"
+
+  claimiq:
+    name: "ClaimIQ"
+    path: "/Users/chrisroberts/Projects/claimiq"
+    current_phase: "11-build"
+    phase_status: "in-progress"
+
+  vitallink-rpm:
+    name: "VitalLink"
+    path: "/Users/chrisroberts/Projects/vitallink-rpm"
+    current_phase: "01-capital"
+    phase_status: "pending"
+
+  mindbridge-rural:
+    name: "MindBridge"
+    path: "/Users/chrisroberts/Projects/mindbridge-rural"
+    current_phase: "01-capital"
+    phase_status: "pending"
+
+  shiftsmart-health:
+    name: "ShiftSmart"
+    path: "/Users/chrisroberts/Projects/shiftsmart-health"
+    current_phase: "01-capital"
+    phase_status: "pending"

@@ -1,0 +1,11 @@
+name: "VitalLink"
+description: "Remote patient monitoring for rural populations"
+path: "/Users/chrisroberts/Projects/vitallink-rpm"
+repo: ""
+vertical: "healthcare-rpm"
+created: "2025-01-01"
+
+current_phase: "01-capital"
+phase_status: "pending"
+
+phases: {}
