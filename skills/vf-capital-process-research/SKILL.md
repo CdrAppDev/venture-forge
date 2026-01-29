@@ -1,10 +1,11 @@
 ---
 name: vf-capital-process-research
 description: Process uploaded Claude Deep Research results into a validated Capital Thesis with structured funder profiles. Activate after the user uploads research files to {project}/research/01-capital/. Reads funder criteria input and all research results, extracts cited evidence per funder, builds funder-profiles.yaml, synthesizes thesis.md with inline citations, and produces a processing-log.md audit trail documenting all processing decisions.
-version: 1.0.0
 license: MIT
-phase: 01-capital
-when: after_research
+metadata:
+  version: "1.0.0"
+  phase: 01-capital
+  when: after_research
 ---
 
 # Capital Thesis: Process Research
@@ -97,3 +98,10 @@ The processing log MUST document:
 - [ ] Processing log is complete with all audit trail sections
 
 See `references/output-templates.md` for exact output formats.
+
+## Writing Governance
+
+Follow all rules in `skills/vf-write/SKILL.md`. Before writing thesis.md narrative:
+- Load `skills/vf-write/references/register-rules.md` — Phase 01 uses research register
+- Load `skills/vf-write/references/word-boundaries.md` — check narrative against prohibited terms
+- Log connective claims (sentences connecting separately-sourced data) in the Decisions Made section of processing-log.md

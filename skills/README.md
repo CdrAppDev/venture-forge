@@ -27,9 +27,11 @@ This means dozens of skills can exist without overwhelming context.
 ---
 name: vf-problem-generate-prompts
 description: Generate Claude Deep Research prompts for Phase 02...
-version: 1.0.0
-phase: 02-problem
-when: before_research
+license: MIT
+metadata:
+  version: "1.0.0"
+  phase: 02-problem
+  when: before_research
 ---
 
 # Skill Title
@@ -38,6 +40,12 @@ when: before_research
 
 See `references/` for detailed templates.
 ```
+
+**Frontmatter rules (per [Agent Skills spec](https://agentskills.io/specification)):**
+- Only 6 top-level fields allowed: `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`
+- `name` and `description` are required
+- Custom fields (`version`, `phase`, `when`) go under `metadata:`
+- `name` must match the directory name exactly
 
 ## Skill Types
 
@@ -49,6 +57,8 @@ See `references/` for detailed templates.
 | validate | Check outputs against gate criteria | `vf-{phase}-validate` |
 | generate-spec | Create technical specifications | `vf-{phase}-generate-spec` |
 | compile-evidence | Consolidate evidence library | `vf-{phase}-compile-evidence` |
+| governance | Writing and quality rules referenced by other skills | `vf-write` |
+| present | Generate HTML presentations from phase outputs | `vf-present` |
 
 ## How Skills Are Used
 
@@ -74,9 +84,13 @@ Skills improve through use. Every project run is an opportunity to refine them.
 | Skill | Phase | Status |
 |-------|-------|--------|
 | `vf-capital-generate-prompts` | 01 | Complete |
+| `vf-capital-process-research` | 01 | Complete |
+| `vf-capital-validate` | 01 | Complete |
 | `vf-problem-generate-prompts` | 02 | Complete |
 | `vf-problem-process-research` | 02 | Complete |
 | `vf-problem-validate` | 02 | Complete |
+| `vf-present` | all | Complete |
+| `vf-write` | all | Complete |
 | Remaining phases | 03-12 | To be built |
 
 Skills for phases 03-12 will be built as the process is tested with real projects.

@@ -1,10 +1,11 @@
 ---
 name: vf-capital-generate-prompts
 description: Generate Claude Deep Research prompts for Phase 01 Capital Thesis. Activate when starting a new venture opportunity and funder criteria input exists at {project}/inputs/funder-criteria.md. Reads funder criteria, identifies knowledge gaps, and produces 3-4 customized research prompts covering funding landscape, specific funder deep dives, application requirements, and recent funding activity. Each prompt includes context blocks, scope bounds, citation format, uncertainty permission, and sequencing per prompt engineering standards.
-version: 1.0.0
 license: MIT
-phase: 01-capital
-when: before_research
+metadata:
+  version: "1.0.0"
+  phase: 01-capital
+  when: before_research
 ---
 
 # Capital Thesis: Generate Research Prompts

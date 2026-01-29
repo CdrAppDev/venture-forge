@@ -1,10 +1,11 @@
 ---
 name: vf-problem-generate-prompts
 description: Generate Claude Deep Research prompts for Phase 02 Problem Thesis. Activate when Phase 01 Capital Thesis is approved and exists at {project}/phases/01-capital/thesis.md. Reads the capital thesis to identify the problem hypothesis, then produces 4-5 customized research prompts covering problem prevalence/severity, customer voice from public sources (forums, reviews, Reddit, LinkedIn), current solutions and gaps, cost of status quo, and regulatory context. Each prompt includes context blocks, scope bounds, citation format, uncertainty permission, and sequencing per prompt engineering standards.
-version: 1.0.0
 license: MIT
-phase: 02-problem
-when: before_research
+metadata:
+  version: "1.0.0"
+  phase: 02-problem
+  when: before_research
 ---
 
 # Problem Thesis: Generate Research Prompts

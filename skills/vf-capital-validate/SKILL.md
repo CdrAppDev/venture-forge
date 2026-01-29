@@ -1,10 +1,11 @@
 ---
 name: vf-capital-validate
 description: Run exhaustive validation of Capital Thesis outputs against all Phase 01 gate criteria before human review. Activate after vf-capital-process-research completes and outputs exist at {project}/phases/01-capital/. Checks file existence, funder profile completeness, citation minimums, thesis structure, cross-file consistency, and timeline coverage. Produces a validation report with per-check PASS/FAIL and overall recommendation. Optionally runs validate.py for deterministic checks.
-version: 1.0.0
 license: MIT
-phase: 01-capital
-when: before_gate
+metadata:
+  version: "1.0.0"
+  phase: 01-capital
+  when: before_gate
 ---
 
 # Capital Thesis: Validate
@@ -128,11 +129,22 @@ Scan thesis.md narrative sections for inline citation compliance:
 - Processing log documents any excluded evidence with reasons
 - Processing log notes any conflicting data found
 
+### 10. Writing Governance (4 checks)
+
+Load `skills/vf-write/references/word-boundaries.md` and scan thesis.md:
+
+- **Prohibited word scan:** No prohibited terms (all-phase list) appear in thesis.md outside of direct quotes. Each violation is listed with the word, the line context, and the substitute.
+- **Heading register check:** All section headings in thesis.md use descriptive/analytical style (research register). Promotional, narrative, or first-person headings are flagged.
+- **Connective logic audit:** Identify sentences that connect data from 2+ different sources. Each must use hedging language (suggests, indicates, supports). Sentences using definitive language (proves, guarantees, means, ensures) are flagged. Cross-check against processing-log.md Decisions Made section.
+- **Counter-evidence check:** Cross-reference processing-log.md excluded evidence. If any excluded item was marked "contradicted by stronger source" or similar, verify the contradicting data appears in thesis.md with appropriate qualification.
+
+**Negative test:** A prohibited word inside quotation marks with a citation is an exception and should NOT be flagged. A prohibited word in narrative prose without quotes is a FAIL.
+
 ## Check Summary
 
-**Total checks: 38**
+**Total checks: 42**
 
-Report format: "Checks passed: X/38"
+Report format: "Checks passed: X/42"
 
 ## Output
 
@@ -154,8 +166,8 @@ See `references/report-template.md` for exact format.
 The briefing must be evidence-based, not a recommendation. State what the data supports. Do not tell the human what to decide. Separate blocking decisions from strategic ones so the human knows what must be resolved now versus what can wait.
 
 **Verdict rules:**
-- ALL 38 checks pass → **READY FOR GATE REVIEW**
+- ALL 42 checks pass → **READY FOR GATE REVIEW**
 - Any FAIL → **NEEDS REVISION** with every failure listed
 - Any WARNING → **READY FOR GATE REVIEW WITH WARNINGS** (list warnings)
 
-The validation report MUST include the check counter showing X/38 checks completed. If fewer than 38 checks are reported, the validation itself is invalid.
+The validation report MUST include the check counter showing X/42 checks completed. If fewer than 42 checks are reported, the validation itself is invalid.

@@ -8,10 +8,11 @@ description: >
   (project landing page). Each phase gets its own page; all pages share navigation
   and design system. Owns the design system — all projects share the same visual
   language. See references/ for design system, components, and per-phase section layouts.
-version: 1.0.0
 license: MIT
-phase: all
-when: after_validation
+metadata:
+  version: "1.0.0"
+  phase: all
+  when: after_validation
 ---
 
 # Presentation Generator
@@ -37,6 +38,8 @@ Build a standalone HTML presentation for a Venture Forge phase output. The prese
    - `{project}/phases/{phase_id}/sources.md` — citation list
 
 4. **Build source URL lookup.** Parse `sources.md` to create a mapping of source names to URLs. This mapping is used in step 5 to convert inline citations into clickable links.
+
+4b. **Load writing governance.** Read `skills/vf-write/references/presentation-fidelity.md`. All narrative chapters and section-lead text must comply with these fidelity rules. The phase type (research/materials/build) determines the writing register — see `skills/vf-write/references/register-rules.md`.
 
 5. **Build the HTML file.** Use `references/design-system.md` for all CSS and `references/component-library.md` for HTML patterns. For each section in phase-sections.yaml:
    - Use the specified component pattern

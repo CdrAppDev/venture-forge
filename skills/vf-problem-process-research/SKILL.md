@@ -1,10 +1,11 @@
 ---
 name: vf-problem-process-research
 description: Process uploaded Claude Deep Research results into a validated Problem Thesis with structured evidence and customer voice extraction. Activate after the user uploads research files to {project}/research/02-problem/. Reads capital thesis and all research results, extracts cited evidence into evidence.yaml, synthesizes customer voice into themed document, writes thesis.md with inline citations, and produces a processing-log.md audit trail documenting all processing decisions.
-version: 1.0.0
 license: MIT
-phase: 02-problem
-when: after_research
+metadata:
+  version: "1.0.0"
+  phase: 02-problem
+  when: after_research
 ---
 
 # Problem Thesis: Process Research
@@ -91,3 +92,10 @@ The processing log MUST document:
 - [ ] Processing log is complete with all audit trail sections
 
 See `references/output-templates.md` for exact output formats.
+
+## Writing Governance
+
+Follow all rules in `skills/vf-write/SKILL.md`. Before writing thesis.md narrative:
+- Load `skills/vf-write/references/register-rules.md` — Phase 02 uses research register
+- Load `skills/vf-write/references/word-boundaries.md` — check narrative against prohibited terms
+- Log connective claims (sentences connecting separately-sourced data) in the Decisions Made section of processing-log.md
