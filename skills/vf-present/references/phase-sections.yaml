@@ -106,8 +106,8 @@
       section_title: "Gate Review"
       component: gate-review
       data:
-        source: validation-report.md
-        extract: "Validation summary card (checks passed, warnings, result). Then gate decision cards — one per pending decision, amber accent, with question, context, and options."
+        source: validation-report.md + thesis.md
+        extract: "Evidence briefing first: key metrics, strengths list (green border), weaknesses list (amber border). Then validation summary card (checks passed, warnings, result). Then gate decision cards — one per pending decision, amber accent, with question, context, and options. Each option must include a consequence line explaining what happens next (next phase action, rework target, or archive)."
 
     - id: evidence
       section_num: "09"
@@ -201,8 +201,8 @@
       section_title: "Gate Review"
       component: gate-review
       data:
-        source: validation-report.md
-        extract: "Validation summary and gate decision cards"
+        source: validation-report.md + thesis.md
+        extract: "Evidence briefing first: key metrics, strengths (green), weaknesses (amber). Then validation summary card. Then gate decision cards with concrete consequences for each option."
 
     - id: sources
       section_num: "06"

@@ -577,14 +577,79 @@ h3 {
 }
 .gate-question { font-size: 1.05rem; font-weight: 600; }
 .gate-context { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
-.gate-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.gate-options { display: flex; flex-direction: column; gap: 0.5rem; }
 .gate-option {
-  padding: 0.4rem 0.8rem;
+  padding: 0.6rem 1rem;
   border: 1px solid var(--border);
   border-radius: 6px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
   background: var(--bg-secondary);
+  line-height: 1.5;
+}
+.gate-option strong { color: var(--text-primary); }
+.gate-consequence { color: var(--text-muted); font-size: 0.8rem; }
+
+/* EVIDENCE BRIEFING */
+.evidence-briefing {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.evidence-briefing h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+.evidence-briefing h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+.briefing-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.briefing-stat { text-align: center; }
+.briefing-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  display: block;
+}
+.briefing-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+.briefing-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.briefing-list { list-style: none; padding: 0; margin: 0; }
+.briefing-list li {
+  padding: 0.5rem 0 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  border-left: 3px solid transparent;
+}
+.briefing-list.strong li { border-left-color: var(--green); }
+.briefing-list.weak li { border-left-color: var(--amber); }
+h4.briefing-strong { color: var(--green); }
+h4.briefing-weak { color: var(--amber); }
+
+@media (max-width: 768px) {
+  .briefing-columns { grid-template-columns: 1fr; }
 }
 
 /* BAR CHART (CSS-only) */

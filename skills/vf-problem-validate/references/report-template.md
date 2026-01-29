@@ -90,12 +90,48 @@
 - What was found
 - Specific remediation needed]
 
+## Evidence Briefing
+
+### What the Evidence Shows
+
+[Auto-generated summary of key numbers from thesis.md and evidence.yaml:]
+- **Problem statement:** [One sentence from evidence.yaml]
+- **Prevalence statistics:** [N] cited
+- **Severity statistics:** [N] cited
+- **Customer voice quotes:** [N] with source attribution
+- **Total unique sources:** [N]
+- **Capital alignment:** [Aligned / Not aligned]
+- **Validation result:** [X]/33 checks passed, [N] warnings, [N] failures
+
+### What's Strong
+
+[List 3-5 strengths drawn from the data:]
+- [Strength 1 — specific, with data point. e.g., "Problem prevalence well-documented with 5 independent sources confirming 73% of rural hospitals lack adequate cybersecurity"]
+- [Strength 2]
+- [Strength 3]
+
+### What's Weak or Unresolved
+
+[List all weaknesses, gaps, and unknowns:]
+- [Weakness 1 — specific, with data point. e.g., "Cost of status quo relies on a single industry estimate — no government source confirms the figure"]
+- [Weakness 2]
+- [Any validation warnings or failures]
+
+### Gate Decisions
+
+**Decision 1: Is this problem real and significant enough to build for?**
+- **Proceed** → [What happens next. e.g., "Starts Phase 03 Market Thesis — research quantifies TAM/SAM/SOM for [specific market segment]."]
+- **Revise** → [What gets redone. e.g., "Re-runs problem research targeting [specific evidence gap]. Focus on: [missing data]."]
+- **Kill** → [What this means. e.g., "Archives project. Problem thesis data preserved for reference."]
+
+[Repeat for each pending decision]
+
 ## Recommendation
 
 **READY FOR GATE REVIEW** / **READY FOR GATE REVIEW WITH WARNINGS** / **NEEDS REVISION: [specific items]**
 
-Checks completed: [X]/27
-Checks passed: [X]/27
-Checks failed: [X]/27
-Warnings: [X]/27
+Checks completed: [X]/33
+Checks passed: [X]/33
+Checks failed: [X]/33
+Warnings: [X]/33
 ```

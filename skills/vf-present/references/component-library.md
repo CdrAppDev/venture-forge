@@ -526,9 +526,43 @@ Add new phase tag classes as needed following the same pattern.
 
 ## 17. Gate Review
 
-Validation summary card + decision cards with amber accent.
+Evidence briefing + validation summary + decision cards. The briefing helps the human make informed decisions without re-reading all the data.
 
 ```html
+<!-- Evidence briefing -->
+<div class="evidence-briefing">
+  <h3>Evidence Briefing</h3>
+
+  <div class="briefing-section">
+    <h4>What the Evidence Shows</h4>
+    <div class="briefing-stats">
+      <div class="briefing-stat">
+        <span class="briefing-stat-value">{Value}</span>
+        <span class="briefing-stat-label">{Label}</span>
+      </div>
+      <!-- Repeat for 4-6 key metrics -->
+    </div>
+  </div>
+
+  <div class="briefing-columns">
+    <div class="briefing-column">
+      <h4 class="briefing-strong">What's Strong</h4>
+      <ul class="briefing-list strong">
+        <li>{Strength with specific data point}</li>
+        <li>{Strength with specific data point}</li>
+        <li>{Strength with specific data point}</li>
+      </ul>
+    </div>
+    <div class="briefing-column">
+      <h4 class="briefing-weak">What's Weak or Unresolved</h4>
+      <ul class="briefing-list weak">
+        <li>{Weakness or gap with specific data point}</li>
+        <li>{Weakness or gap with specific data point}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- Validation summary -->
 <div class="validation-card">
   <div class="validation-status">
@@ -554,7 +588,7 @@ Validation summary card + decision cards with amber accent.
   </div>
 </div>
 
-<!-- Decision cards -->
+<!-- Decision cards with consequences -->
 <div class="gate-cards">
   <div class="gate-card">
     <div class="gate-card-header">
@@ -563,9 +597,18 @@ Validation summary card + decision cards with amber accent.
     </div>
     <p class="gate-context">{Context paragraph explaining the decision}</p>
     <div class="gate-options">
-      <div class="gate-option">{Option 1}</div>
-      <div class="gate-option">{Option 2}</div>
-      <div class="gate-option">{Option 3}</div>
+      <div class="gate-option">
+        <strong>{Option label}</strong>
+        <span class="gate-consequence">&rarr; {What happens if this option is chosen}</span>
+      </div>
+      <div class="gate-option">
+        <strong>{Option label}</strong>
+        <span class="gate-consequence">&rarr; {What happens if this option is chosen}</span>
+      </div>
+      <div class="gate-option">
+        <strong>{Option label}</strong>
+        <span class="gate-consequence">&rarr; {What happens if this option is chosen}</span>
+      </div>
     </div>
   </div>
   <!-- Repeat for each decision -->
@@ -573,10 +616,14 @@ Validation summary card + decision cards with amber accent.
 ```
 
 **Notes:**
+- Evidence briefing appears BEFORE the validation card — human reads the synthesis first
+- Briefing stats are extracted from the validation report's Evidence Briefing section
+- Strengths use green left border, weaknesses use amber left border
 - Validation card has green border when passing
 - Gate cards have amber left border (4px) — these are pending human decisions
 - Gate numbers use amber background circles
-- Options are non-interactive display elements (decisions made outside the presentation)
+- Each option now includes a `gate-consequence` span explaining what happens next
+- Consequences should be concrete: name the next phase, the specific rework, or the archive action
 
 ---
 

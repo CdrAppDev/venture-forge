@@ -129,6 +129,15 @@ Generate validation report at `{project}/phases/01-capital/validation-report.md`
 
 See `references/report-template.md` for exact format.
 
+**Evidence Briefing (required):** After all checks, synthesize an Evidence Briefing section in the report. This is the most important part of the report — it is what the human reads to make gate decisions. It must include:
+
+1. **What the evidence shows** — key numbers (funders analyzed, viable, citations, validation result)
+2. **What's strong** — 3-5 specific strengths from the data, each with a data point
+3. **What's weak or unresolved** — every gap, warning, and unknown, each with specifics
+4. **Gate decisions with consequences** — for each pending decision, explain what each option triggers in concrete terms (name the next phase and what it does, name the specific rework target, or explain what archiving means)
+
+The briefing must be evidence-based, not a recommendation. State what the data supports. Do not tell the human what to decide.
+
 **Verdict rules:**
 - ALL 36 checks pass → **READY FOR GATE REVIEW**
 - Any FAIL → **NEEDS REVISION** with every failure listed

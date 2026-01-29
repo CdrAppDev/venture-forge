@@ -93,12 +93,52 @@
 - What was found
 - Specific remediation needed]
 
+## Evidence Briefing
+
+### What the Evidence Shows
+
+[Auto-generated summary of key numbers from thesis.md and funder-profiles.yaml:]
+- **Funders analyzed:** [N]
+- **Viable funders:** [N] (of [N] analyzed)
+- **Total citations:** [N] across [N] unique sources
+- **Validation result:** [X]/36 checks passed, [N] warnings, [N] failures
+
+### What's Strong
+
+[List 3-5 strengths drawn from the data. These are things the evidence clearly supports:]
+- [Strength 1 — specific, with data point. e.g., "Multiple funding tracks available (federal grants + state programs + VC), reducing single-source dependency"]
+- [Strength 2]
+- [Strength 3]
+
+### What's Weak or Unresolved
+
+[List all weaknesses, gaps, and unknowns. Be direct:]
+- [Weakness 1 — specific, with data point. e.g., "7 of 12 viable funders are VC with unknown application timelines"]
+- [Weakness 2]
+- [Any validation warnings or failures]
+
+### Gate Decisions
+
+[For each pending decision, explain the options and what each triggers:]
+
+**Decision 1: [Question]**
+- **Proceed** → [What happens next. e.g., "Starts Phase 02 Problem Thesis — research validates whether [specific problem] is real, documented, and severe enough to build for."]
+- **Revise** → [What gets redone. e.g., "Re-runs capital research targeting [specific gap]. Estimated rework: re-process with expanded funder criteria."]
+- **Kill** → [What this means. e.g., "Archives CyberShield Rural. Capital thesis data preserved in phases/01-capital/ for reference."]
+
+**Decision 2: [Question]**
+- **Option A** → [Concrete consequence]
+- **Option B** → [Concrete consequence]
+- **Option C** → [Concrete consequence]
+
+[Repeat for each pending decision]
+
 ## Recommendation
 
 **READY FOR GATE REVIEW** / **READY FOR GATE REVIEW WITH WARNINGS** / **NEEDS REVISION: [specific items]**
 
-Checks completed: [X]/31
-Checks passed: [X]/31
-Checks failed: [X]/31
-Warnings: [X]/31
+Checks completed: [X]/36
+Checks passed: [X]/36
+Checks failed: [X]/36
+Warnings: [X]/36
 ```
