@@ -94,15 +94,15 @@ capital_alignment:
 
 ## Problem Statement
 
-[One paragraph stating the problem clearly, with key statistics inline]
+[One paragraph stating the problem clearly, with key statistics inline. EVERY statistic must have an inline citation in the format (Source Name, Date). Example: "68% have no dedicated cybersecurity leader (Black Book Research, June 2025), 73% lack adequate defenses (Black Book Research, June 2025)"]
 
 ## Who Experiences This Problem
 
-[Description of affected population with size/scope statistics]
+[Description of affected population with size/scope statistics. Every statistic must include inline citation: (Source Name, Date)]
 
 ## Severity and Impact
 
-[Quantified impact - financial, time, outcomes]
+[Quantified impact - financial, time, outcomes. Every metric must include inline citation: (Source Name, Date)]
 
 ### Key Statistics
 
@@ -122,15 +122,19 @@ capital_alignment:
 
 ## Customer Voice
 
-[Summary of how customers describe this problem, with representative quotes]
+[Summary of how customers describe this problem, with representative quotes. Each quote must include speaker name, title, organization, and publication source inline.]
 
 ## Cost of Status Quo
 
-[What it costs to not solve this problem]
+[What it costs to not solve this problem. All cost figures must include inline citations: (Source Name, Date)]
 
 ## Alignment with Capital Thesis
 
-[How this problem aligns with Phase 1 funder criteria]
+[How this problem aligns with Phase 1 funder criteria. Reference specific funder requirements with citations.]
+
+## Inline Citation Standard
+
+**MANDATORY:** Every factual claim in this thesis must have an inline citation in the format `(Source Name, Date)`. A thesis with fewer than 80% of claims cited inline is incomplete. The sources.md file provides full bibliographic detail; thesis.md provides inline attribution for readability.
 
 ## Evidence Summary
 

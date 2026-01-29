@@ -143,6 +143,29 @@ These test cases define expected validator behavior across normal, edge case, an
 - Check #11 → FAIL
 - Detail: "capital_alignment.aligned is false — problem does not align with capital thesis"
 
+### TC-12b: Low inline citation coverage
+
+**Setup:**
+- All files exist and valid
+- `thesis.md` contains 30 factual claims
+- Only 15 have inline `(Source Name, Date)` citations (50% coverage)
+
+**Expected result:** FAIL
+- Inline citation density check → FAIL
+- Detail: "Inline citation coverage: 50% (15 of 30 factual claims cited). Required: 80%+"
+- Uncited claims listed in validation report
+
+### TC-12c: Borderline inline citation coverage
+
+**Setup:**
+- All files exist and valid
+- `thesis.md` contains 30 factual claims
+- 27 have inline citations (90% coverage)
+
+**Expected result:** WARNING
+- Inline citation density check → WARNING
+- Detail: "Inline citation coverage: 90% (27 of 30 factual claims cited). 3 uncited claims listed below."
+
 ---
 
 ## Out-of-Scope (should not trigger or should error gracefully)

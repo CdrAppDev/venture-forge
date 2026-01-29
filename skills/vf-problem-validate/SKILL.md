@@ -81,6 +81,17 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 **Negative test:** A statistic in thesis.md that does not appear in evidence.yaml is a FAIL (evidence of untracked claims).
 
+### 5b. Inline Citation Coverage (2 checks)
+
+Scan thesis.md narrative sections for inline citation compliance:
+
+- **Citation density:** Count factual claims (statistics, dollar figures, percentages, named programs, regulatory references) and count those with inline `(Source Name, Date)` citations. At least 80% must be cited inline.
+- **Uncited claims inventory:** List every factual claim in thesis.md that lacks an inline citation. Each uncited claim is logged in the validation report.
+
+**How to count:** A "factual claim" is any statement containing a specific number, percentage, dollar amount, date, named study, named program, or quantitative comparison. General framing sentences ("The problem is worsening") do not require citations. Specific claims ("attacks increased 278% from 2018-2022") do.
+
+**Negative test:** A thesis.md where fewer than 80% of factual claims have inline citations is a FAIL. A thesis.md with 80-95% coverage passes with WARNING.
+
 ### 6. Sources Validation (3 checks)
 
 - `sources.md` lists all unique sources cited across thesis.md, evidence.yaml, and customer-voice.md
@@ -102,9 +113,9 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 ## Check Summary
 
-**Total checks: 33**
+**Total checks: 35**
 
-Report format: "Checks passed: X/33"
+Report format: "Checks passed: X/35"
 
 ## Output
 
@@ -126,8 +137,8 @@ See `references/report-template.md` for exact format.
 The briefing must be evidence-based, not a recommendation. State what the data supports. Do not tell the human what to decide. Separate blocking decisions from strategic ones so the human knows what must be resolved now versus what can wait.
 
 **Verdict rules:**
-- ALL 33 checks pass → **READY FOR GATE REVIEW**
+- ALL 35 checks pass → **READY FOR GATE REVIEW**
 - Any FAIL → **NEEDS REVISION** with every failure listed
 - Any WARNING → **READY FOR GATE REVIEW WITH WARNINGS** (list warnings)
 
-The validation report MUST include the check counter showing X/33 checks completed. If fewer than 33 checks are reported, the validation itself is invalid.
+The validation report MUST include the check counter showing X/35 checks completed. If fewer than 35 checks are reported, the validation itself is invalid.

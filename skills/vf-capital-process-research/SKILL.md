@@ -52,6 +52,19 @@ Process uploaded Claude Deep Research results into a Capital Thesis with structu
 
 **Uncited claims cannot be used in the thesis.**
 
+## Inline Citation Rule (Mandatory)
+
+**Every factual claim, statistic, or data point in `thesis.md` MUST include an inline citation in the format `(Source Name, Date)` immediately after the claim.** This is not optional. The thesis narrative is the primary human-readable output — readers must be able to verify any claim without cross-referencing other files.
+
+**Format:** `CMS allocated $200M to South Carolina through the Rural Health Transformation program (CMS, December 2025)`
+
+**Rules:**
+- Every dollar figure, program size, deadline, or quantitative claim gets an inline citation
+- Every named program, fund, or funder criteria statement gets a citation on first mention
+- Funder deep dives cite the source for each criterion, portfolio example, and timeline
+- The sources.md file provides URLs and full bibliographic detail — thesis.md provides inline attribution for readability
+- A thesis.md with fewer than 80% of factual claims cited inline is considered incomplete and must be revised before validation
+
 ## Processing Rules
 
 1. **One profile per funder** — Every distinct funding source gets its own entry in `funder-profiles.yaml`, even if information is thin. Mark thin profiles with `confidence: low`.

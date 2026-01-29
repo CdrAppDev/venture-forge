@@ -83,11 +83,11 @@ funders:
 
 ## Executive Summary
 
-[2-3 sentences: What funders are available, what they want, and whether our venture can align. State the conclusion up front.]
+[2-3 sentences: What funders are available, what they want, and whether our venture can align. State the conclusion up front. Key figures must include inline citations: (Source Name, Date)]
 
 ## Funding Landscape
 
-[Overview of the funding environment for this vertical. How many active funders, what they're focused on, recent trends. All cited.]
+[Overview of the funding environment for this vertical. How many active funders, what they're focused on, recent trends. EVERY claim must include inline citation in the format (Source Name, Date).]
 
 ### Active Funding Sources
 
@@ -103,11 +103,11 @@ funders:
 **Amount:** [Range]
 **Viability:** [Strong/Moderate/Weak]
 
-**What They Fund:** [Description with citations]
+**What They Fund:** [Description with inline citations: (Source Name, Date)]
 
 **Criteria:**
-- [Criterion 1] (Source: [citation])
-- [Criterion 2] (Source: [citation])
+- [Criterion 1] (Source Name, Date)
+- [Criterion 2] (Source Name, Date)
 
 **Our Alignment:**
 - Strengths: [What we meet]

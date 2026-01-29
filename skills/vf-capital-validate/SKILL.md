@@ -88,6 +88,17 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 **Negative test:** A funder appearing in YAML but not in thesis (or vice versa) is a FAIL.
 
+### 5b. Inline Citation Coverage (2 checks)
+
+Scan thesis.md narrative sections for inline citation compliance:
+
+- **Citation density:** Count factual claims (dollar figures, program sizes, deadlines, percentages, named criteria) and count those with inline `(Source Name, Date)` citations. At least 80% must be cited inline.
+- **Uncited claims inventory:** List every factual claim in thesis.md that lacks an inline citation. Each uncited claim is logged in the validation report.
+
+**How to count:** A "factual claim" is any statement containing a specific number, percentage, dollar amount, date, named study, named program, or quantitative comparison. General framing sentences do not require citations. Specific claims do.
+
+**Negative test:** A thesis.md where fewer than 80% of factual claims have inline citations is a FAIL. A thesis.md with 80-95% coverage passes with WARNING.
+
 ### 6. Timeline Completeness (3 checks)
 
 - Each viable funder has timeline information (dates, cycles, or "unknown" flag)
@@ -119,9 +130,9 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 ## Check Summary
 
-**Total checks: 36**
+**Total checks: 38**
 
-Report format: "Checks passed: X/36"
+Report format: "Checks passed: X/38"
 
 ## Output
 
@@ -143,8 +154,8 @@ See `references/report-template.md` for exact format.
 The briefing must be evidence-based, not a recommendation. State what the data supports. Do not tell the human what to decide. Separate blocking decisions from strategic ones so the human knows what must be resolved now versus what can wait.
 
 **Verdict rules:**
-- ALL 36 checks pass → **READY FOR GATE REVIEW**
+- ALL 38 checks pass → **READY FOR GATE REVIEW**
 - Any FAIL → **NEEDS REVISION** with every failure listed
 - Any WARNING → **READY FOR GATE REVIEW WITH WARNINGS** (list warnings)
 
-The validation report MUST include the check counter showing X/36 checks completed. If fewer than 36 checks are reported, the validation itself is invalid.
+The validation report MUST include the check counter showing X/38 checks completed. If fewer than 38 checks are reported, the validation itself is invalid.

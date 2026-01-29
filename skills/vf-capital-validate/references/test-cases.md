@@ -133,6 +133,29 @@ These test cases define expected validator behavior across normal, edge case, an
 - Check #8 → FAIL
 - Detail: "Funder [Name] marked viable with low confidence but no justification"
 
+### TC-11b: Low inline citation coverage
+
+**Setup:**
+- All files exist and valid
+- `thesis.md` contains 40 factual claims
+- Only 20 have inline `(Source Name, Date)` citations (50% coverage)
+
+**Expected result:** FAIL
+- Inline citation density check → FAIL
+- Detail: "Inline citation coverage: 50% (20 of 40 factual claims cited). Required: 80%+"
+- Uncited claims listed in validation report
+
+### TC-11c: Borderline inline citation coverage
+
+**Setup:**
+- All files exist and valid
+- `thesis.md` contains 40 factual claims
+- 36 have inline citations (90% coverage)
+
+**Expected result:** WARNING
+- Inline citation density check → WARNING
+- Detail: "Inline citation coverage: 90% (36 of 40 factual claims cited). 4 uncited claims listed below."
+
 ---
 
 ## Out-of-Scope (should not trigger or should error gracefully)

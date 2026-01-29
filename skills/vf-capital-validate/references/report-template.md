@@ -7,7 +7,7 @@
 **Date:** [Date]
 **Validator:** Claude Code (vf-capital-validate v1.0.0)
 **Result:** PASS / FAIL / PASS WITH WARNINGS
-**Checks passed:** [X]/31
+**Checks passed:** [X]/38
 
 ## 1. File Checks (3 checks)
 
@@ -65,21 +65,49 @@
 | 24 | Citation counts match actual (±1) | PASS/FAIL | [Claimed: X, Actual: Y] |
 | 25 | Alignment gaps consistent | PASS/FAIL | [List any mismatches] |
 
+## 5b. Inline Citation Coverage (2 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 26 | Inline citation density ≥80% | PASS/WARN/FAIL | [N of M factual claims cited (X%)] |
+| 27 | Uncited claims inventory | PASS/WARN | [N uncited claims listed below] |
+
+### Uncited Claims (if any)
+
+| # | Claim | Section | Suggested Source |
+|---|-------|---------|-----------------|
+| [N] | [The uncited factual claim] | [Which section of thesis.md] | [Source from funder-profiles.yaml if available] |
+
 ## 6. Timeline Completeness (3 checks)
 
 | # | Check | Status | Detail |
 |---|-------|--------|--------|
-| 26 | Each viable funder has timeline info | PASS/FAIL | [List any missing] |
-| 27 | Timeline table has all viable funders | PASS/FAIL | [List any missing] |
-| 28 | Unknown timelines noted in thesis | PASS/FAIL/N/A | [List any unnoted] |
+| 28 | Each viable funder has timeline info | PASS/FAIL | [List any missing] |
+| 29 | Timeline table has all viable funders | PASS/FAIL | [List any missing] |
+| 30 | Unknown timelines noted in thesis | PASS/FAIL/N/A | [List any unnoted] |
 
-## 7. Processing Log Checks (3 checks)
+## 7. Sources Validation (3 checks)
 
 | # | Check | Status | Detail |
 |---|-------|--------|--------|
-| 29 | All research files listed | PASS/FAIL | [Expected: N, Found: N] |
-| 30 | Excluded evidence documented | PASS/FAIL | [Section present: Y/N] |
-| 31 | Conflicts documented | PASS/FAIL | [Section present: Y/N] |
+| 31 | All sources listed in sources.md | PASS/FAIL | [N sources cited, N listed] |
+| 32 | Each source has org, title, date, cited-for | PASS/FAIL | [N complete, N incomplete] |
+| 33 | Sources organized by category | PASS/FAIL | [Y/N] |
+
+## 8. URL Verification (2 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 34 | URLs formatted correctly | PASS/FAIL | [N valid, N malformed] |
+| 35 | Error URLs flagged | PASS/FAIL | [Y/N] |
+
+## 9. Processing Log Checks (3 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 36 | All research files listed | PASS/FAIL | [Expected: N, Found: N] |
+| 37 | Excluded evidence documented | PASS/FAIL | [Section present: Y/N] |
+| 38 | Conflicts documented | PASS/FAIL | [Section present: Y/N] |
 
 ## Warnings
 
@@ -101,7 +129,8 @@
 - **Funders analyzed:** [N]
 - **Viable funders:** [N] (of [N] analyzed)
 - **Total citations:** [N] across [N] unique sources
-- **Validation result:** [X]/36 checks passed, [N] warnings, [N] failures
+- **Inline citation coverage:** [X]% ([N] of [M] factual claims cited)
+- **Validation result:** [X]/38 checks passed, [N] warnings, [N] failures
 
 ### What's Strong
 
@@ -142,8 +171,8 @@
 
 **READY FOR GATE REVIEW** / **READY FOR GATE REVIEW WITH WARNINGS** / **NEEDS REVISION: [specific items]**
 
-Checks completed: [X]/36
-Checks passed: [X]/36
-Checks failed: [X]/36
-Warnings: [X]/36
+Checks completed: [X]/38
+Checks passed: [X]/38
+Checks failed: [X]/38
+Warnings: [X]/38
 ```

@@ -54,6 +54,19 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 
 **Uncited claims cannot be used in the thesis.**
 
+## Inline Citation Rule (Mandatory)
+
+**Every factual claim, statistic, or data point in `thesis.md` MUST include an inline citation in the format `(Source Name, Date)` immediately after the claim.** This is not optional. The thesis narrative is the primary human-readable output — readers must be able to verify any claim without cross-referencing other files.
+
+**Format:** `68% have no dedicated cybersecurity leader (Black Book Research, June 2025)`
+
+**Rules:**
+- Every percentage, dollar figure, count, or quantitative claim gets an inline citation
+- Every named program, policy, or regulation gets a citation on first mention
+- Direct quotes include the speaker's name, title, organization, and publication source
+- The sources.md file provides URLs and full bibliographic detail — thesis.md provides inline attribution for readability
+- A thesis.md with fewer than 80% of factual claims cited inline is considered incomplete and must be revised before validation
+
 ## Audit Trail Requirements
 
 The processing log MUST document:

@@ -7,7 +7,7 @@
 **Date:** [Date]
 **Validator:** Claude Code (vf-problem-validate v1.0.0)
 **Result:** PASS / FAIL / PASS WITH WARNINGS
-**Checks passed:** [X]/27
+**Checks passed:** [X]/35
 
 ## 1. File Checks (4 checks)
 
@@ -70,13 +70,26 @@
 | 23 | Statistics in thesis appear in evidence.yaml | PASS/FAIL | [N matched, N untracked] |
 | 24 | Quotes in thesis appear in customer-voice.md | PASS/FAIL | [N matched, N untracked] |
 
+## 5b. Inline Citation Coverage (2 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 25 | Inline citation density ≥80% | PASS/WARN/FAIL | [N of M factual claims cited (X%)] |
+| 26 | Uncited claims inventory | PASS/WARN | [N uncited claims listed below] |
+
+### Uncited Claims (if any)
+
+| # | Claim | Section | Suggested Source |
+|---|-------|---------|-----------------|
+| [N] | [The uncited factual claim] | [Which section of thesis.md] | [Source from evidence.yaml if available] |
+
 ## 6. Processing Log Checks (3 checks)
 
 | # | Check | Status | Detail |
 |---|-------|--------|--------|
-| 25 | All research files listed | PASS/FAIL | [Expected: N, Found: N] |
-| 26 | Excluded evidence documented | PASS/FAIL | [Section present: Y/N] |
-| 27 | Conflicts documented | PASS/FAIL | [Section present: Y/N] |
+| 27 | All research files listed | PASS/FAIL | [Expected: N, Found: N] |
+| 28 | Excluded evidence documented | PASS/FAIL | [Section present: Y/N] |
+| 29 | Conflicts documented | PASS/FAIL | [Section present: Y/N] |
 
 ## Warnings
 
@@ -101,7 +114,8 @@
 - **Customer voice quotes:** [N] with source attribution
 - **Total unique sources:** [N]
 - **Capital alignment:** [Aligned / Not aligned]
-- **Validation result:** [X]/33 checks passed, [N] warnings, [N] failures
+- **Inline citation coverage:** [X]% ([N] of [M] factual claims cited)
+- **Validation result:** [X]/35 checks passed, [N] warnings, [N] failures
 
 ### What's Strong
 
@@ -136,8 +150,8 @@
 
 **READY FOR GATE REVIEW** / **READY FOR GATE REVIEW WITH WARNINGS** / **NEEDS REVISION: [specific items]**
 
-Checks completed: [X]/33
-Checks passed: [X]/33
-Checks failed: [X]/33
-Warnings: [X]/33
+Checks completed: [X]/35
+Checks passed: [X]/35
+Checks failed: [X]/35
+Warnings: [X]/35
 ```
