@@ -432,6 +432,18 @@ h3 {
 .criteria-list li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent-light); }
 .criteria-source { font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
 
+/* INLINE SOURCE LINKS — clickable citations in narrative text */
+.source-link {
+  color: var(--accent-light);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent-light);
+  transition: color 0.2s, border-color 0.2s;
+}
+.source-link:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
 /* DUAL-TRACK STRATEGY */
 .dual-track { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; margin-bottom: 3rem; }
 .track {

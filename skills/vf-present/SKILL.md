@@ -36,27 +36,30 @@ Build a standalone HTML presentation for a Venture Forge phase output. The prese
    - `{project}/phases/{phase_id}/validation-report.md` — gate review data
    - `{project}/phases/{phase_id}/sources.md` — citation list
 
-4. **Build the HTML file.** Use `references/design-system.md` for all CSS and `references/component-library.md` for HTML patterns. For each section in phase-sections.yaml:
+4. **Build source URL lookup.** Parse `sources.md` to create a mapping of source names to URLs. This mapping is used in step 5 to convert inline citations into clickable links.
+
+5. **Build the HTML file.** Use `references/design-system.md` for all CSS and `references/component-library.md` for HTML patterns. For each section in phase-sections.yaml:
    - Use the specified component pattern
    - Populate with actual data from the phase outputs
    - Adapt section numbering (01, 02, 03...) sequentially
    - Build navigation links from the `nav_links` list
+   - **Link inline citations:** Every `(Source Name, Date)` citation in narrative text must be rendered as `(<a href="URL" target="_blank" class="source-link">Source Name, Date</a>)` using the URL from the source lookup map. Citations without URLs in sources.md remain as plain text.
 
-5. **Add JavaScript.** Include only the JS needed for components used in this phase:
+6. **Add JavaScript.** Include only the JS needed for components used in this phase:
    - Smooth scroll — always include
    - Filter tabs — include if any section uses `filter-table` component
    - Accordion toggle — include if any section uses `accordion` component
 
-6. **Write phase page** to `{project}/docs/phase-{NN}.html` (e.g., `phase-01.html`, `phase-02.html`).
+7. **Write phase page** to `{project}/docs/phase-{NN}.html` (e.g., `phase-01.html`, `phase-02.html`).
 
-7. **Update landing page.** Update `{project}/docs/index.html` — the project dashboard showing all phases, their status, and links to completed phase pages. If `index.html` doesn't exist, create it. Update phase card status badges and stats when new phases complete.
+8. **Update landing page.** Update `{project}/docs/index.html` — the project dashboard showing all phases, their status, and links to completed phase pages. If `index.html` doesn't exist, create it. Update phase card status badges and stats when new phases complete.
 
-8. **Add phase navigation.** Each phase page gets a fixed phase nav bar above the section nav:
+9. **Add phase navigation.** Each phase page gets a fixed phase nav bar above the section nav:
    - Previous phase link (if exists)
    - Project name linking to `index.html`
    - Next phase link (greyed out if not yet complete)
 
-9. **Quality check.** Before finishing, verify:
+10. **Quality check.** Before finishing, verify:
    - Every section from phase-sections.yaml is present in the HTML
    - All data from phase outputs appears (no placeholder text, no "TBD")
    - All external links use `target="_blank"`
@@ -103,3 +106,6 @@ If a phase is not yet defined in the map, build a reasonable layout using the av
 - [ ] Badge colors match semantic meaning
 - [ ] Footer has project name, phase, date, "Venture Forge"
 - [ ] Sources section lists all citations from sources.md
+- [ ] Inline citations are clickable links (where URL exists in sources.md)
+- [ ] Source links open in new tab with `target="_blank"`
+- [ ] Source link CSS (`.source-link`) is included in the style block
