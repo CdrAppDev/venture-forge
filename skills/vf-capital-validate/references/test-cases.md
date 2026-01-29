@@ -145,7 +145,7 @@ These test cases define expected validator behavior across normal, edge case, an
 - Detail: "Inline citation coverage: 50% (20 of 40 factual claims cited). Required: 80%+"
 - Uncited claims listed in validation report
 
-### TC-11c: Borderline inline citation coverage
+### TC-11c: Borderline inline citation coverage (WARNING)
 
 **Setup:**
 - All files exist and valid
@@ -155,6 +155,54 @@ These test cases define expected validator behavior across normal, edge case, an
 **Expected result:** WARNING
 - Inline citation density check → WARNING
 - Detail: "Inline citation coverage: 90% (36 of 40 factual claims cited). 4 uncited claims listed below."
+
+### TC-WG-01: Prohibited word in narrative prose
+
+**Setup:**
+- `thesis.md` contains "Rural hospitals face an existential crisis" in the problem statement
+- The phrase is NOT inside quotation marks
+
+**Expected result:** FAIL
+- WG-01 (prohibited word scan) → FAIL
+- Detail: "Prohibited word 'existential crisis' found. Substitute: 'significant challenge'"
+
+### TC-WG-02: Prohibited word inside direct quote
+
+**Setup:**
+- `thesis.md` contains: As Kate Pierce described, the situation is "desperate" for rural hospitals (Senate HSGAC testimony, March 2023)
+- The word "desperate" is inside quotation marks with a citation
+
+**Expected result:** PASS
+- WG-01 → PASS (exception rule: prohibited word inside quoted source)
+
+### TC-WG-03: Promotional heading in research phase
+
+**Setup:**
+- Research phase (01-07) thesis.md has heading "## The Massive Opportunity Ahead"
+
+**Expected result:** FAIL
+- WG-02 (heading register check) → FAIL
+- Detail: "Heading 'The Massive Opportunity Ahead' uses promotional language. Research register requires descriptive headings."
+
+### TC-WG-04: Connective claim with definitive language
+
+**Setup:**
+- `thesis.md` contains: "Given the $50B RHT program (CMS, December 2025), this proves that funding is available for cybersecurity ventures."
+- Two sources connected with "proves" instead of hedging language
+
+**Expected result:** FAIL
+- WG-03 (connective logic audit) → FAIL
+- Detail: "Connective claim uses 'proves' (prohibited). Substitute: 'suggests' or 'indicates'"
+
+### TC-WG-05: Excluded contradicted evidence not addressed
+
+**Setup:**
+- Processing log shows excluded evidence: "IBM reports $4.88M average breach cost" with reason "Contradicted by stronger IBM 2024 figure of $9.77M"
+- `thesis.md` uses $9.77M but makes no mention of the lower figure or the contradiction
+
+**Expected result:** FAIL
+- WG-04 (counter-evidence check) → FAIL
+- Detail: "Contradicted evidence ($4.88M vs $9.77M) not addressed in thesis. Winning figure used but contradiction not acknowledged."
 
 ---
 

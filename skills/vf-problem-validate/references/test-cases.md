@@ -155,7 +155,7 @@ These test cases define expected validator behavior across normal, edge case, an
 - Detail: "Inline citation coverage: 50% (15 of 30 factual claims cited). Required: 80%+"
 - Uncited claims listed in validation report
 
-### TC-12c: Borderline inline citation coverage
+### TC-12c: Borderline inline citation coverage (WARNING)
 
 **Setup:**
 - All files exist and valid
@@ -165,6 +165,54 @@ These test cases define expected validator behavior across normal, edge case, an
 **Expected result:** WARNING
 - Inline citation density check → WARNING
 - Detail: "Inline citation coverage: 90% (27 of 30 factual claims cited). 3 uncited claims listed below."
+
+### TC-WG-01: Prohibited word in narrative prose
+
+**Setup:**
+- `thesis.md` contains "Rural hospitals face a catastrophic cybersecurity failure"
+- The phrase is NOT inside quotation marks
+
+**Expected result:** FAIL
+- WG-01 (prohibited word scan) → FAIL
+- Detail: "Prohibited word 'catastrophic' found. Substitute: 'severe' or 'substantial'"
+
+### TC-WG-02: Prohibited word inside direct quote
+
+**Setup:**
+- `thesis.md` contains: Linda Burt described the aftermath: "You're dead in the water. We were down a minimum of 14 weeks." (NBC News, June 2023)
+- Emotional language is inside quotation marks with a citation
+
+**Expected result:** PASS
+- WG-01 → PASS (exception rule: prohibited word inside quoted source)
+
+### TC-WG-03: Promotional heading in research phase
+
+**Setup:**
+- Research phase (02) thesis.md has heading "## A Crisis Nobody Is Solving"
+
+**Expected result:** FAIL
+- WG-02 (heading register check) → FAIL
+- Detail: "Heading 'A Crisis Nobody Is Solving' uses promotional/narrative language. Research register requires descriptive headings."
+
+### TC-WG-04: Connective claim with definitive language
+
+**Setup:**
+- `thesis.md` contains: "Given 73% inadequate defenses (Black Book Research, June 2025) and $11M recovery cost (AHA/Microsoft, March 2025), this guarantees that rural hospitals cannot survive an attack."
+- Two sources connected with "guarantees" instead of hedging language
+
+**Expected result:** FAIL
+- WG-03 (connective logic audit) → FAIL
+- Detail: "Connective claim uses 'guarantees' (prohibited). Substitute: 'suggests' or 'indicates'"
+
+### TC-WG-05: Excluded contradicted evidence not addressed
+
+**Setup:**
+- Processing log shows excluded evidence: "Sophos 2025 shows improvement — only 49% hit by ransomware, down from 67%" with reason "Contradicted by broader trend data"
+- `thesis.md` uses 67% figure but makes no mention of the 2025 improvement
+
+**Expected result:** FAIL
+- WG-04 (counter-evidence check) → FAIL
+- Detail: "Contradicted evidence (49% vs 67%) not addressed in thesis. Counter-evidence showing improvement was excluded without thesis acknowledgment."
 
 ---
 

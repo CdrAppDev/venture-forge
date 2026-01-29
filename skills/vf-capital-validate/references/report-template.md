@@ -7,7 +7,7 @@
 **Date:** [Date]
 **Validator:** Claude Code (vf-capital-validate v1.0.0)
 **Result:** PASS / FAIL / PASS WITH WARNINGS
-**Checks passed:** [X]/38
+**Checks passed:** [X]/42
 
 ## 1. File Checks (3 checks)
 
@@ -109,6 +109,27 @@
 | 37 | Excluded evidence documented | PASS/FAIL | [Section present: Y/N] |
 | 38 | Conflicts documented | PASS/FAIL | [Section present: Y/N] |
 
+## 10. Writing Governance (4 checks)
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 39 | Prohibited word scan | PASS/FAIL | [N violations found] |
+| 40 | Heading register check | PASS/FAIL | [N headings checked, N violations] |
+| 41 | Connective logic audit | PASS/FAIL/WARN | [N connective claims, N unhedged, N unlogged] |
+| 42 | Counter-evidence check | PASS/FAIL | [N excluded contradictions, N unaddressed] |
+
+### Prohibited Word Violations (if any)
+
+| # | Word | Context | Substitute |
+|---|------|---------|-----------|
+| [N] | [prohibited word] | "[surrounding text...]" | [recommended substitute] |
+
+### Connective Logic Claims (if any)
+
+| # | Claim | Sources Connected | Hedging Used | Logged in Processing Log |
+|---|-------|-------------------|-------------|-------------------------|
+| [N] | "[claim text]" | [Source A + Source B] | [Yes/No — word used] | [Yes/No] |
+
 ## Warnings
 
 [List any WARNING items — these don't block gate review but should be noted]
@@ -130,7 +151,7 @@
 - **Viable funders:** [N] (of [N] analyzed)
 - **Total citations:** [N] across [N] unique sources
 - **Inline citation coverage:** [X]% ([N] of [M] factual claims cited)
-- **Validation result:** [X]/38 checks passed, [N] warnings, [N] failures
+- **Validation result:** [X]/42 checks passed, [N] warnings, [N] failures
 
 ### What's Strong
 
@@ -171,8 +192,8 @@
 
 **READY FOR GATE REVIEW** / **READY FOR GATE REVIEW WITH WARNINGS** / **NEEDS REVISION: [specific items]**
 
-Checks completed: [X]/38
-Checks passed: [X]/38
-Checks failed: [X]/38
-Warnings: [X]/38
+Checks completed: [X]/42
+Checks passed: [X]/42
+Checks failed: [X]/42
+Warnings: [X]/42
 ```

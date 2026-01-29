@@ -221,3 +221,9 @@
 # - Every factual claim links to its third-party source with source name label
 # - Chapters 1-3 tell the story specific to the phase
 # - The narrative exists for human decision-makers, not as documentation
+#
+# Writing governance (skills/vf-write):
+# - Research phases (01-07): analytical register — data-first paragraphs, descriptive headlines, no first person
+# - Materials phases (08-09, 13): persuasive register — story-first, evidence-anchored, first person allowed
+# - Build phases (10-12): technical register — specification-first, no marketing language
+# - See skills/vf-write/references/presentation-fidelity.md for narrative rendering rules
