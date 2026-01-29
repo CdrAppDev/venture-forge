@@ -98,7 +98,7 @@ When a user says `continue [project]`, read the `phase_status` and execute accor
 | `research` | Tell user to run prompts in Claude Deep Research and upload results to `{project}/research/{phase_id}/`. Once uploaded, update status to `processing`. |
 | `processing` | Run `vf-{phase}-process-research` skill. Update status to `validation`. |
 | `validation` | Run `vf-{phase}-validate` skill. Update status to `gate-review`. |
-| `gate-review` | Read the validation report's Evidence Briefing section. Present to the human: (1) what the evidence shows (key numbers), (2) what's strong, (3) what's weak or unresolved, (4) **blocking decisions** that must be resolved before the next phase can start (proceed/revise/kill), (5) **strategic decisions** that inform strategy but can be deferred — note which future phase will produce data relevant to each. Each option must explain its concrete consequence. Ask only for blocking decisions. |
+| `gate-review` | Run `vf-gate-review` skill. Auto-fixes mechanical issues, re-validates, presents evidence briefing to human, collects blocking decisions (proceed/revise/kill), updates portfolio files. |
 | `complete` | Advance `current_phase` to the next phase per `process/PROCESS.yaml`. Set new phase status to `pending`. |
 
 ### Update Rules

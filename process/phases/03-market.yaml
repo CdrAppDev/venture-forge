@@ -77,6 +77,11 @@ skills:
     description: "Check outputs against gate criteria before human review"
     output: "{project}/phases/03-market/validation-report.md"
 
+  gate_review:
+    skill: "vf-gate-review"
+    when: "gate_review"
+    description: "Auto-fix mechanical issues, present evidence briefing, collect human gate decision, update portfolio"
+
 gate:
   question: "Is the market large enough and growing?"
 

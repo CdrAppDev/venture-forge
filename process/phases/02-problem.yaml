@@ -87,6 +87,11 @@ skills:
     description: "Check outputs against gate criteria before human review"
     output: "{project}/phases/02-problem/validation-report.md"
 
+  gate_review:
+    skill: "vf-gate-review"
+    when: "gate_review"
+    description: "Auto-fix mechanical issues, present evidence briefing, collect human gate decision, update portfolio"
+
 gate:
   question: "Is this problem real, significant, and worth solving?"
 

@@ -57,6 +57,7 @@ See `references/` for detailed templates.
 | validate | Check outputs against gate criteria | `vf-{phase}-validate` |
 | generate-spec | Create technical specifications | `vf-{phase}-generate-spec` |
 | compile-evidence | Consolidate evidence library | `vf-{phase}-compile-evidence` |
+| gate-review | Auto-fix, present evidence briefing, collect human decisions, update portfolio | `vf-gate-review` |
 | governance | Writing and quality rules referenced by other skills | `vf-write` |
 | present | Generate HTML presentations from phase outputs | `vf-present` |
 
@@ -89,6 +90,7 @@ Skills improve through use. Every project run is an opportunity to refine them.
 | `vf-problem-generate-prompts` | 02 | Complete |
 | `vf-problem-process-research` | 02 | Complete |
 | `vf-problem-validate` | 02 | Complete |
+| `vf-gate-review` | all | Complete |
 | `vf-present` | all | Complete |
 | `vf-write` | all | Complete |
 | Remaining phases | 03-12 | To be built |
