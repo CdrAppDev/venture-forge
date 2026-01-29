@@ -1,12 +1,13 @@
 ---
 name: vf-present
 description: >
-  Generate a standalone HTML presentation for any Venture Forge phase output.
+  Generate standalone HTML presentations for Venture Forge phase outputs.
   Activate after validation passes (phase_status: gate-review) or when user
   requests a presentation. Reads phase outputs from {project}/phases/{phase_id}/
-  and produces {project}/docs/index.html. Owns the design system — all projects
-  share the same visual language. See references/ for design system, components,
-  and per-phase section layouts.
+  and produces {project}/docs/phase-{NN}.html plus updates {project}/docs/index.html
+  (project landing page). Each phase gets its own page; all pages share navigation
+  and design system. Owns the design system — all projects share the same visual
+  language. See references/ for design system, components, and per-phase section layouts.
 version: 1.0.0
 license: MIT
 phase: all
@@ -46,9 +47,16 @@ Build a standalone HTML presentation for a Venture Forge phase output. The prese
    - Filter tabs — include if any section uses `filter-table` component
    - Accordion toggle — include if any section uses `accordion` component
 
-6. **Write output** to `{project}/docs/index.html`.
+6. **Write phase page** to `{project}/docs/phase-{NN}.html` (e.g., `phase-01.html`, `phase-02.html`).
 
-7. **Quality check.** Before finishing, verify:
+7. **Update landing page.** Update `{project}/docs/index.html` — the project dashboard showing all phases, their status, and links to completed phase pages. If `index.html` doesn't exist, create it. Update phase card status badges and stats when new phases complete.
+
+8. **Add phase navigation.** Each phase page gets a fixed phase nav bar above the section nav:
+   - Previous phase link (if exists)
+   - Project name linking to `index.html`
+   - Next phase link (greyed out if not yet complete)
+
+9. **Quality check.** Before finishing, verify:
    - Every section from phase-sections.yaml is present in the HTML
    - All data from phase outputs appears (no placeholder text, no "TBD")
    - All external links use `target="_blank"`
@@ -58,8 +66,8 @@ Build a standalone HTML presentation for a Venture Forge phase output. The prese
 
 ## Output Rules
 
-- **Single file.** One `index.html` with embedded `<style>` and `<script>`. No external CSS, JS, or font files.
-- **GitHub Pages compatible.** File goes in `{project}/docs/` so Pages can serve from `/docs` on main branch.
+- **Multi-page site.** One `index.html` landing page plus one `phase-{NN}.html` per completed phase. Each page is self-contained with embedded `<style>` and `<script>`. No external CSS, JS, or font files.
+- **GitHub Pages compatible.** Files go in `{project}/docs/` so Pages can serve from `/docs` on main branch. Landing page at root, phase pages linked from it.
 - **No CDN dependencies.** Font stack uses system fonts (`Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`).
 - **Responsive.** Must work at desktop (1100px+), tablet (900px), and mobile (768px).
 - **Accessible.** Semantic HTML, contrast ratios maintained, interactive elements keyboard-navigable.
