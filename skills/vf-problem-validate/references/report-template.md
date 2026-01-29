@@ -119,12 +119,18 @@
 
 ### Gate Decisions
 
-**Decision 1: Is this problem real and significant enough to build for?**
+#### Blocking Decisions
+[These must be resolved before the next phase can start.]
+
+**Decision 1: Is this problem real and significant enough to build for?** `BLOCKING`
 - **Proceed** → [What happens next. e.g., "Starts Phase 03 Market Thesis — research quantifies TAM/SAM/SOM for [specific market segment]."]
 - **Revise** → [What gets redone. e.g., "Re-runs problem research targeting [specific evidence gap]. Focus on: [missing data]."]
 - **Kill** → [What this means. e.g., "Archives project. Problem thesis data preserved for reference."]
 
-[Repeat for each pending decision]
+#### Strategic Decisions
+[These inform strategy but do not block the next phase. Later phases will produce data that makes these choices clearer.]
+
+[Repeat for any strategic decisions with `STRATEGIC — revisit after Phase [NN]` tag]
 
 ## Recommendation
 

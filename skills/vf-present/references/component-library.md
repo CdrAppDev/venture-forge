@@ -588,12 +588,15 @@ Evidence briefing + validation summary + decision cards. The briefing helps the 
   </div>
 </div>
 
-<!-- Decision cards with consequences -->
+<!-- Blocking decisions — must resolve before next phase -->
+<h3 class="gate-group-label">Blocking Decisions</h3>
+<p class="gate-group-desc">Must be resolved before the next phase can start.</p>
 <div class="gate-cards">
-  <div class="gate-card">
+  <div class="gate-card blocking">
     <div class="gate-card-header">
       <div class="gate-num">{N}</div>
       <div class="gate-question">{Decision question}</div>
+      <span class="gate-priority blocking">Blocking</span>
     </div>
     <p class="gate-context">{Context paragraph explaining the decision}</p>
     <div class="gate-options">
@@ -601,17 +604,31 @@ Evidence briefing + validation summary + decision cards. The briefing helps the 
         <strong>{Option label}</strong>
         <span class="gate-consequence">&rarr; {What happens if this option is chosen}</span>
       </div>
-      <div class="gate-option">
-        <strong>{Option label}</strong>
-        <span class="gate-consequence">&rarr; {What happens if this option is chosen}</span>
-      </div>
-      <div class="gate-option">
-        <strong>{Option label}</strong>
-        <span class="gate-consequence">&rarr; {What happens if this option is chosen}</span>
-      </div>
+      <!-- Repeat for each option -->
     </div>
   </div>
-  <!-- Repeat for each decision -->
+</div>
+
+<!-- Strategic decisions — inform strategy, can defer -->
+<h3 class="gate-group-label">Strategic Decisions</h3>
+<p class="gate-group-desc">Inform strategy but do not block the next phase. Can be deferred — later phases will produce data that makes these choices clearer.</p>
+<div class="gate-cards">
+  <div class="gate-card strategic">
+    <div class="gate-card-header">
+      <div class="gate-num">{N}</div>
+      <div class="gate-question">{Decision question}</div>
+      <span class="gate-priority strategic">Strategic</span>
+    </div>
+    <p class="gate-context">{Context paragraph}</p>
+    <p class="gate-revisit">Revisit after Phase {NN} &mdash; {what that phase produces that's relevant}</p>
+    <div class="gate-options">
+      <div class="gate-option">
+        <strong>{Option label}</strong>
+        <span class="gate-consequence">&rarr; {What happens}</span>
+      </div>
+      <!-- Repeat for each option -->
+    </div>
+  </div>
 </div>
 ```
 
@@ -624,6 +641,11 @@ Evidence briefing + validation summary + decision cards. The briefing helps the 
 - Gate numbers use amber background circles
 - Each option now includes a `gate-consequence` span explaining what happens next
 - Consequences should be concrete: name the next phase, the specific rework, or the archive action
+- Decisions are split into two groups: **Blocking** (must decide now) and **Strategic** (can defer)
+- Blocking cards use `.gate-card.blocking` — standard amber border
+- Strategic cards use `.gate-card.strategic` — muted border, with a `.gate-revisit` line saying which future phase produces relevant data
+- `.gate-priority` badge shows "Blocking" (amber) or "Strategic" (gray) inline with the question
+- Strategic decisions should always note which phase will produce data to inform the choice
 
 ---
 

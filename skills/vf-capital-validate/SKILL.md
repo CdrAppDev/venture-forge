@@ -135,8 +135,12 @@ See `references/report-template.md` for exact format.
 2. **What's strong** — 3-5 specific strengths from the data, each with a data point
 3. **What's weak or unresolved** — every gap, warning, and unknown, each with specifics
 4. **Gate decisions with consequences** — for each pending decision, explain what each option triggers in concrete terms (name the next phase and what it does, name the specific rework target, or explain what archiving means)
+5. **Decision prioritization** — classify each decision as either:
+   - **Blocking** — must be decided before the next phase can start (e.g., proceed/revise/kill)
+   - **Strategic** — informs strategy but does not block the next phase (e.g., funding track preference, timing choices). These can be deferred and revisited as later phases produce more data.
+   - For each strategic decision, state which future phase will produce data relevant to that decision.
 
-The briefing must be evidence-based, not a recommendation. State what the data supports. Do not tell the human what to decide.
+The briefing must be evidence-based, not a recommendation. State what the data supports. Do not tell the human what to decide. Separate blocking decisions from strategic ones so the human knows what must be resolved now versus what can wait.
 
 **Verdict rules:**
 - ALL 36 checks pass → **READY FOR GATE REVIEW**

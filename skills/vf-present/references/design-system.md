@@ -589,6 +589,34 @@ h3 {
 }
 .gate-option strong { color: var(--text-primary); }
 .gate-consequence { color: var(--text-muted); font-size: 0.8rem; }
+.gate-group-label { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.25rem; }
+.gate-group-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+.gate-card.strategic {
+  border-color: var(--border);
+  border-left-color: var(--text-muted);
+}
+.gate-card.strategic .gate-num {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+.gate-priority {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-left: auto;
+}
+.gate-priority.blocking { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+.gate-priority.strategic { background: var(--bg-secondary); color: var(--text-muted); border: 1px solid var(--border); }
+.gate-revisit {
+  font-size: 0.8rem;
+  color: var(--accent-light);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
 
 /* EVIDENCE BRIEFING */
 .evidence-briefing {

@@ -119,14 +119,19 @@
 
 ### Gate Decisions
 
-[For each pending decision, explain the options and what each triggers:]
+#### Blocking Decisions
+[These must be resolved before the next phase can start.]
 
-**Decision 1: [Question]**
+**Decision 1: [Question]** `BLOCKING`
 - **Proceed** → [What happens next. e.g., "Starts Phase 02 Problem Thesis — research validates whether [specific problem] is real, documented, and severe enough to build for."]
 - **Revise** → [What gets redone. e.g., "Re-runs capital research targeting [specific gap]. Estimated rework: re-process with expanded funder criteria."]
 - **Kill** → [What this means. e.g., "Archives CyberShield Rural. Capital thesis data preserved in phases/01-capital/ for reference."]
 
-**Decision 2: [Question]**
+#### Strategic Decisions
+[These inform strategy but do not block the next phase. They can be deferred — later phases will produce data that makes these choices clearer.]
+
+**Decision 2: [Question]** `STRATEGIC — revisit after Phase [NN]`
+[State which future phase produces relevant data for this decision.]
 - **Option A** → [Concrete consequence]
 - **Option B** → [Concrete consequence]
 - **Option C** → [Concrete consequence]
