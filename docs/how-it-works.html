@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Venture Forge</title>
+    <style>
+        :root {
+            --bg-primary: #09090b;
+            --bg-secondary: #18181b;
+            --bg-card: #1f1f23;
+            --bg-card-hover: #27272a;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(139, 92, 246, 0.12);
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(139, 92, 246, 0.3);
+            --gradient-1: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+            --green: #22c55e;
+            --green-bg: rgba(34, 197, 94, 0.1);
+            --green-border: rgba(34, 197, 94, 0.3);
+            --amber: #fbbf24;
+            --amber-bg: rgba(251, 191, 36, 0.1);
+            --amber-border: rgba(251, 191, 36, 0.3);
+            --red: #ef4444;
+            --red-bg: rgba(239, 68, 68, 0.1);
+            --red-border: rgba(239, 68, 68, 0.3);
+            --cyan: #06b6d4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* LAYOUT */
+        .container { max-width: 1100px; margin: 0 auto; width: 100%; }
+        section { padding: 6rem 2rem; }
+        .section-alt { background: var(--bg-secondary); }
+        .section-num {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+        .section-lead {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+        .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+        .hero .lead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* OVERVIEW FLOW — top-level diagram */
+        .overview-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .overview-step {
+            padding: 0.65rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 110px;
+        }
+        .overview-step.ai {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: var(--accent-light);
+        }
+        .overview-step.human {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: var(--amber);
+        }
+        .overview-step.output {
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--green);
+        }
+        .overview-arrow {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+        }
+        .legend-dot.ai { background: var(--accent); }
+        .legend-dot.human { background: var(--amber); }
+        .legend-dot.output { background: var(--green); }
+
+        /* STEP CARDS — detailed breakdown */
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        .step-card:last-child { margin-bottom: 0; }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.75rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-number.ai {
+            background: rgba(139, 92, 246, 0.15);
+            border: 2px solid var(--accent);
+            color: var(--accent-light);
+        }
+        .step-number.human {
+            background: rgba(251, 191, 36, 0.1);
+            border: 2px solid var(--amber);
+            color: var(--amber);
+        }
+        .step-title-block { flex: 1; }
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .step-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+        .step-actor-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+        }
+        .step-actor-tag.ai {
+            background: var(--accent-glow);
+            color: var(--accent-light);
+            border: 1px solid var(--border-accent);
+        }
+        .step-actor-tag.human {
+            background: var(--amber-bg);
+            color: var(--amber);
+            border: 1px solid var(--amber-border);
+        }
+
+        .step-body {
+            padding: 1.75rem;
+        }
+        .step-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 760px;
+        }
+
+        /* Input → Process → Output layout */
+        .step-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1.8fr auto 1fr;
+            gap: 0.75rem;
+            align-items: start;
+        }
+        .step-flow-col {
+            min-width: 0;
+        }
+        .step-flow-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 0.65rem;
+        }
+        .step-flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.25rem;
+            padding-top: 1.5rem;
+        }
+        .flow-item {
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+        .flow-item.file {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.75rem;
+            color: var(--cyan);
+            background: rgba(6, 182, 212, 0.06);
+            border: 1px solid rgba(6, 182, 212, 0.15);
+        }
+        .process-list {
+            list-style: none;
+        }
+        .process-list li {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+        .process-list li::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0.25rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+
+        /* Validation checks visual */
+        .check-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+        .check-category {
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border-left: 3px solid var(--green);
+        }
+        .check-category-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .check-category-count {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Connector between steps */
+        .step-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 0;
+        }
+        .connector-line {
+            width: 2px;
+            height: 32px;
+            background: linear-gradient(180deg, var(--accent) 0%, rgba(139, 92, 246, 0.2) 100%);
+        }
+
+        /* Gate decision visual */
+        .gate-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .gate-option {
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .gate-option.proceed {
+            background: var(--green-bg);
+            border: 1px solid var(--green-border);
+        }
+        .gate-option.revise {
+            background: var(--amber-bg);
+            border: 1px solid var(--amber-border);
+        }
+        .gate-option.kill {
+            background: var(--red-bg);
+            border: 1px solid var(--red-border);
+        }
+        .gate-option-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+        .gate-option.proceed .gate-option-label { color: var(--green); }
+        .gate-option.revise .gate-option-label { color: var(--amber); }
+        .gate-option.kill .gate-option-label { color: var(--red); }
+        .gate-option-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Output files section */
+        .output-files {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .output-file {
+            padding: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .output-file-name {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            margin-bottom: 0.5rem;
+        }
+        .output-file-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Transparency section */
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .transparency-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .transparency-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .transparency-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+        .transparency-card .highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* Scale note */
+        .scale-note {
+            background: var(--accent-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            line-height: 1.65;
+        }
+        .scale-note strong { color: var(--accent-light); }
+
+        /* NARRATIVE */
+        .narrative {
+            padding: 4rem 2rem 6rem;
+            background: var(--bg-secondary);
+        }
+        .narrative .container { max-width: 720px; }
+        .narrative-chapter { margin-bottom: 3rem; }
+        .narrative-chapter:last-child { margin-bottom: 0; }
+        .narrative-num {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .narrative-chapter h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        .narrative-chapter p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .narrative-chapter p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .narrative-divider {
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.4;
+            margin: 3.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        footer p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .step-flow {
+                grid-template-columns: 1fr;
+            }
+            .step-flow-arrow {
+                transform: rotate(90deg);
+                padding: 0.5rem 0;
+            }
+            .transparency-grid {
+                grid-template-columns: 1fr;
+            }
+            .gate-visual {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            section { padding: 4rem 1.25rem; }
+            .overview-flow { flex-direction: column; }
+            .overview-arrow { transform: rotate(90deg); }
+            .check-grid { grid-template-columns: 1fr; }
+            .output-files { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo">Venture Forge</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#story">The Story</a></li>
+                <li><a href="#pipeline">Pipeline</a></li>
+                <li><a href="#outputs">Outputs</a></li>
+                <li><a href="#transparency">Why It Works</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>How <span class="gradient-text">Phase 01</span> Works</h1>
+            <p class="lead">
+                A walk-through of the Capital Thesis phase. Six concrete steps,
+                five AI agents, three human decision points. Every file auditable,
+                every claim traceable to its source.
+            </p>
+
+            <!-- Top-level flow -->
+            <div class="overview-flow">
+                <div class="overview-step ai">Generate Prompts</div>
+                <span class="overview-arrow">&rarr;</span>
+                <div class="overview-step human">Run Research</div>
+                <span class="overview-arrow">&rarr;</span>
+                <div class="overview-step ai">Process Research</div>
+                <span class="overview-arrow">&rarr;</span>
+                <div class="overview-step ai">Validate</div>
+                <span class="overview-arrow">&rarr;</span>
+                <div class="overview-step human">Gate Review</div>
+                <span class="overview-arrow">&rarr;</span>
+                <div class="overview-step output">Phase Complete</div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot ai"></div>
+                    AI Agent (autonomous)
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot human"></div>
+                    Human (decides)
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot output"></div>
+                    Deliverable
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NARRATIVE -->
+    <section class="narrative" id="story">
+        <div class="container">
+            <div class="narrative-num">The Story</div>
+            <div class="narrative-chapter">
+                <h3>What this phase answers</h3>
+                <p>
+                    The Capital Thesis answers a single question: <strong>is there fundable money
+                    for this type of venture?</strong> Before we research problems, design solutions,
+                    or write a line of code, we need to know that capital exists and what
+                    funders actually require. This is the capital-first principle &mdash;
+                    start with where the money is, not where the idea is.
+                </p>
+            </div>
+
+            <div class="narrative-divider"></div>
+
+            <div class="narrative-chapter">
+                <h3>What the agents actually do</h3>
+                <p>
+                    The process starts when a human provides funder criteria &mdash; a description
+                    of the funding landscape to investigate. From there, <strong>an AI agent reads
+                    that input and generates tailored research prompts</strong>, each scoped to a specific
+                    question with citation requirements baked in. A human then runs those prompts
+                    through deep research. The raw results come back, and <strong>a processing agent
+                    extracts every cited claim, builds structured funder profiles, and writes
+                    a narrative thesis</strong> with inline citations. A validation agent then runs
+                    42 automated checks. Finally, a gate review agent presents the evidence
+                    to a human for a proceed/revise/kill decision.
+                </p>
+            </div>
+
+            <div class="narrative-divider"></div>
+
+            <div class="narrative-chapter">
+                <h3>Why this structure matters</h3>
+                <p>
+                    Every step produces auditable files. The processing log records
+                    what was included, what was excluded, and why. The validation report
+                    checks citation coverage, cross-file consistency, and source quality.
+                    The gate review presents strengths <em>and</em> weaknesses &mdash;
+                    the agent does not advocate; it presents evidence and lets the
+                    human decide. <strong>Nothing proceeds without a human saying "proceed."</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-num">01</div>
+            <h2>The Six-Step Pipeline</h2>
+            <p class="section-lead">
+                Each step has a defined input, a specific agent (or human), and concrete
+                output files. No step is a black box.
+            </p>
+
+            <div class="scale-note" style="margin-top: 0; margin-bottom: 2.5rem;">
+                <strong>Reading this diagram:</strong> Purple-numbered steps are executed by AI agents
+                autonomously. Amber-numbered steps require human action. Every file
+                produced is committed to the project repository and can be inspected.
+            </div>
+        </div>
+    </section>
+
+    <!-- PIPELINE STEPS -->
+    <section class="section-alt" id="pipeline" style="padding-top: 2rem;">
+        <div class="container">
+
+            <!-- STEP 1: Generate Prompts -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number ai">1</div>
+                    <div class="step-title-block">
+                        <div class="step-title">Generate Research Prompts</div>
+                        <div class="step-subtitle">Agent: vf-capital-generate-prompts</div>
+                    </div>
+                    <span class="step-actor-tag ai">Claude Code</span>
+                </div>
+                <div class="step-body">
+                    <div class="step-description">
+                        Reads the human-provided funder criteria and generates 3&ndash;4 targeted
+                        research prompts. Each prompt is scoped to a specific question, includes
+                        citation requirements, defines scope boundaries, and grants permission to
+                        flag uncertainty rather than fabricate.
+                    </div>
+                    <div class="step-flow">
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Input</div>
+                            <div class="flow-item file">inputs/funder-criteria.md</div>
+                            <div class="flow-item">Sector focus, geography, funder types</div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">What the agent does</div>
+                            <ol class="process-list">
+                                <li data-num="1.">Reads funder criteria to understand the landscape</li>
+                                <li data-num="2.">Identifies knowledge gaps needing research</li>
+                                <li data-num="3.">Writes 3&ndash;4 prompts with citation minimums per topic</li>
+                                <li data-num="4.">Adds scope bounds and uncertainty permissions</li>
+                            </ol>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Output</div>
+                            <div class="flow-item file">research/01-capital-prompts.md</div>
+                            <div class="flow-item">3&ndash;4 structured research prompts ready to run</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-connector"><div class="connector-line"></div></div>
+
+            <!-- STEP 2: Human runs research -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number human">2</div>
+                    <div class="step-title-block">
+                        <div class="step-title">Run Deep Research</div>
+                        <div class="step-subtitle">Actor: Human operator</div>
+                    </div>
+                    <span class="step-actor-tag human">Human</span>
+                </div>
+                <div class="step-body">
+                    <div class="step-description">
+                        The human takes the generated prompts and runs them through
+                        Claude Deep Research. This is intentionally manual &mdash; the human
+                        controls what research is executed, can adjust prompts, and verifies
+                        that results are substantive before uploading.
+                    </div>
+                    <div class="step-flow">
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Input</div>
+                            <div class="flow-item file">research/01-capital-prompts.md</div>
+                            <div class="flow-item">Generated prompts from Step 1</div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">What the human does</div>
+                            <ol class="process-list">
+                                <li data-num="1.">Copies each prompt into Claude Deep Research</li>
+                                <li data-num="2.">Reviews results for quality and relevance</li>
+                                <li data-num="3.">Optionally refines prompts and re-runs</li>
+                                <li data-num="4.">Saves results to the research directory</li>
+                            </ol>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Output</div>
+                            <div class="flow-item file">research/01-capital/*.md</div>
+                            <div class="flow-item">3&ndash;4 deep research reports with 150+ citations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-connector"><div class="connector-line"></div></div>
+
+            <!-- STEP 3: Process Research -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number ai">3</div>
+                    <div class="step-title-block">
+                        <div class="step-title">Process Research into Thesis</div>
+                        <div class="step-subtitle">Agent: vf-capital-process-research</div>
+                    </div>
+                    <span class="step-actor-tag ai">Claude Opus 4.5</span>
+                </div>
+                <div class="step-body">
+                    <div class="step-description">
+                        The heaviest agent in the pipeline. Reads all research results,
+                        extracts every cited claim, builds structured funder profiles with
+                        viability assessments, writes the Capital Thesis narrative with inline
+                        citations, and compiles a deduplicated source index. Every processing
+                        decision is logged.
+                    </div>
+                    <div class="step-flow">
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Input</div>
+                            <div class="flow-item file">inputs/funder-criteria.md</div>
+                            <div class="flow-item file">research/01-capital/*.md</div>
+                            <div class="flow-item">Original criteria + all research reports</div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">What the agent does</div>
+                            <ol class="process-list">
+                                <li data-num="1.">Reads all research outputs and funder criteria</li>
+                                <li data-num="2.">Extracts and categorizes cited evidence per funder</li>
+                                <li data-num="3.">Builds structured funder profiles (YAML) with viability scores</li>
+                                <li data-num="4.">Writes thesis narrative with inline citations (80%+ coverage)</li>
+                                <li data-num="5.">Compiles deduplicated sources with org, title, date, URL</li>
+                                <li data-num="6.">Logs every decision: what was included, excluded, and why</li>
+                            </ol>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Output &mdash; 4 files</div>
+                            <div class="flow-item file">phases/01-capital/thesis.md</div>
+                            <div class="flow-item file">phases/01-capital/funder-profiles.yaml</div>
+                            <div class="flow-item file">phases/01-capital/sources.md</div>
+                            <div class="flow-item file">phases/01-capital/processing-log.md</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-connector"><div class="connector-line"></div></div>
+
+            <!-- STEP 4: Validate -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number ai">4</div>
+                    <div class="step-title-block">
+                        <div class="step-title">Run Validation Checks</div>
+                        <div class="step-subtitle">Agent: vf-capital-validate</div>
+                    </div>
+                    <span class="step-actor-tag ai">Claude Code</span>
+                </div>
+                <div class="step-body">
+                    <div class="step-description">
+                        Runs 42 automated checks across the phase outputs before any human
+                        sees them. Checks file existence, funder profile completeness, evidence
+                        minimums, thesis structure, cross-file consistency, citation coverage,
+                        source quality, and writing governance compliance.
+                    </div>
+                    <div class="step-flow">
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Input</div>
+                            <div class="flow-item">All 4 files from Step 3</div>
+                            <div class="flow-item">Phase specification with gate criteria</div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">42 checks across 10 categories</div>
+                            <div class="check-grid">
+                                <div class="check-category">
+                                    <div class="check-category-name">File Existence</div>
+                                    <div class="check-category-count">4 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Funder Profiles</div>
+                                    <div class="check-category-count">6 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Evidence Minimums</div>
+                                    <div class="check-category-count">4 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Thesis Structure</div>
+                                    <div class="check-category-count">8 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Cross-File Consistency</div>
+                                    <div class="check-category-count">4 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Citation Coverage</div>
+                                    <div class="check-category-count">2 checks &mdash; 80% minimum</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Timeline Completeness</div>
+                                    <div class="check-category-count">3 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Sources Quality</div>
+                                    <div class="check-category-count">3 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">URL Verification</div>
+                                    <div class="check-category-count">2 checks</div>
+                                </div>
+                                <div class="check-category">
+                                    <div class="check-category-name">Writing Governance</div>
+                                    <div class="check-category-count">4 checks</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Output</div>
+                            <div class="flow-item file">phases/01-capital/validation-report.md</div>
+                            <div class="flow-item">Verdict: Ready / Needs Revision / Ready with Warnings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-connector"><div class="connector-line"></div></div>
+
+            <!-- STEP 5: Gate Review -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number human">5</div>
+                    <div class="step-title-block">
+                        <div class="step-title">Human Gate Review</div>
+                        <div class="step-subtitle">Agent: vf-gate-review (assists) + Human (decides)</div>
+                    </div>
+                    <span class="step-actor-tag human">Human Decision</span>
+                </div>
+                <div class="step-body">
+                    <div class="step-description">
+                        The gate review agent auto-fixes mechanical issues (count mismatches,
+                        missing sources), re-validates, then presents an evidence briefing
+                        to the human. The briefing shows strengths <em>and</em> weaknesses.
+                        The agent does not recommend &mdash; it presents evidence and the human
+                        makes the call.
+                    </div>
+                    <div class="step-flow">
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Input</div>
+                            <div class="flow-item">All phase outputs</div>
+                            <div class="flow-item">Validation report</div>
+                            <div class="flow-item">Phase gate criteria</div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">What happens</div>
+                            <ol class="process-list">
+                                <li data-num="1.">Agent auto-fixes mechanical issues</li>
+                                <li data-num="2.">Agent re-validates if fixes were applied</li>
+                                <li data-num="3.">Agent presents evidence briefing (strengths + weaknesses)</li>
+                                <li data-num="4.">Human reviews all evidence</li>
+                                <li data-num="5.">Human decides: proceed, revise, or kill</li>
+                            </ol>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Decision</div>
+                            <div class="gate-visual" style="margin-top: 0;">
+                                <div class="gate-option proceed">
+                                    <div class="gate-option-label">Proceed</div>
+                                    <div class="gate-option-desc">Advance to Phase 02 Problem Thesis</div>
+                                </div>
+                                <div class="gate-option revise">
+                                    <div class="gate-option-label">Revise</div>
+                                    <div class="gate-option-desc">Return to processing with revision notes</div>
+                                </div>
+                                <div class="gate-option kill">
+                                    <div class="gate-option-label">Kill</div>
+                                    <div class="gate-option-desc">Stop this venture &mdash; evidence doesn't support it</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-connector"><div class="connector-line"></div></div>
+
+            <!-- STEP 6: Present -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number ai">6</div>
+                    <div class="step-title-block">
+                        <div class="step-title">Generate Presentation</div>
+                        <div class="step-subtitle">Agent: vf-present</div>
+                    </div>
+                    <span class="step-actor-tag ai">Claude Code</span>
+                </div>
+                <div class="step-body">
+                    <div class="step-description">
+                        Reads all phase outputs and generates a standalone HTML presentation.
+                        Every inline citation becomes a clickable link to its source.
+                        The presentation is self-contained &mdash; no external dependencies &mdash;
+                        and deploys via GitHub Pages.
+                    </div>
+                    <div class="step-flow">
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Input</div>
+                            <div class="flow-item">thesis.md + YAML + sources.md</div>
+                            <div class="flow-item">Phase section layout config</div>
+                            <div class="flow-item">Design system (CSS + components)</div>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">What the agent does</div>
+                            <ol class="process-list">
+                                <li data-num="1.">Reads all phase deliverables</li>
+                                <li data-num="2.">Loads section layout for this phase</li>
+                                <li data-num="3.">Builds source URL lookup from sources.md</li>
+                                <li data-num="4.">Converts citations to clickable links</li>
+                                <li data-num="5.">Renders self-contained HTML with embedded CSS/JS</li>
+                            </ol>
+                        </div>
+                        <div class="step-flow-arrow">&rarr;</div>
+                        <div class="step-flow-col">
+                            <div class="step-flow-label">Output</div>
+                            <div class="flow-item file">{project}/docs/phase-01.html</div>
+                            <div class="flow-item file">{project}/docs/index.html</div>
+                            <div class="flow-item">Live on GitHub Pages</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- OUTPUTS SUMMARY -->
+    <section id="outputs">
+        <div class="container">
+            <div class="section-num">02</div>
+            <h2>What Phase 01 Produces</h2>
+            <p class="section-lead">
+                Every file is committed to the project repository. Nothing is ephemeral.
+                Anyone can audit the full chain from raw research to final thesis.
+            </p>
+
+            <div class="output-files">
+                <div class="output-file">
+                    <div class="output-file-name">thesis.md</div>
+                    <div class="output-file-desc">
+                        Narrative capital thesis with inline citations.
+                        Every factual claim linked to a third-party source.
+                    </div>
+                </div>
+                <div class="output-file">
+                    <div class="output-file-name">funder-profiles.yaml</div>
+                    <div class="output-file-desc">
+                        Structured data for each funder: criteria, amounts,
+                        timelines, viability assessment, alignment gaps.
+                    </div>
+                </div>
+                <div class="output-file">
+                    <div class="output-file-name">sources.md</div>
+                    <div class="output-file-desc">
+                        Deduplicated index of every source cited.
+                        Org name, document title, date, URL, what it was cited for.
+                    </div>
+                </div>
+                <div class="output-file">
+                    <div class="output-file-name">processing-log.md</div>
+                    <div class="output-file-desc">
+                        Audit trail of every processing decision.
+                        What was included, excluded, and the reasoning.
+                    </div>
+                </div>
+                <div class="output-file">
+                    <div class="output-file-name">validation-report.md</div>
+                    <div class="output-file-desc">
+                        Results of 42 automated checks.
+                        Evidence briefing with strengths and weaknesses.
+                    </div>
+                </div>
+                <div class="output-file">
+                    <div class="output-file-name">gate-review-record.md</div>
+                    <div class="output-file-desc">
+                        Human decision record. What was decided,
+                        what evidence supported it, any revision notes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THIS WORKS -->
+    <section class="section-alt" id="transparency">
+        <div class="container">
+            <div class="section-num">03</div>
+            <h2>Why This Structure Works</h2>
+            <p class="section-lead">
+                Three properties that separate this from prompt engineering or
+                "just asking ChatGPT."
+            </p>
+
+            <div class="transparency-grid">
+                <div class="transparency-card">
+                    <h3>Full Audit Trail</h3>
+                    <p>
+                        Every agent produces log files. The processing log records what evidence
+                        was used, what was excluded, and why. The validation report lists every
+                        check that passed or failed. <span class="highlight">You can trace any claim
+                        in the thesis back to its original source in the research.</span>
+                    </p>
+                </div>
+                <div class="transparency-card">
+                    <h3>Humans Decide, AI Executes</h3>
+                    <p>
+                        AI agents do research, synthesis, and validation. But <span class="highlight">no
+                        phase advances without a human explicitly choosing "proceed."</span>
+                        The gate review agent presents evidence for and against &mdash;
+                        it does not advocate. The human sees the weaknesses, not just the strengths.
+                    </p>
+                </div>
+                <div class="transparency-card">
+                    <h3>Repeatable and Inspectable</h3>
+                    <p>
+                        Every agent is a defined skill with documented inputs, outputs, and
+                        procedures. <span class="highlight">Run the same inputs through the same
+                        pipeline and get comparable outputs.</span> No hidden prompts, no
+                        one-off conversations that vanish. The skills are version-controlled code.
+                    </p>
+                </div>
+            </div>
+
+            <div class="scale-note">
+                <strong>This same pattern repeats for every phase.</strong> Phase 02 (Problem Thesis)
+                uses the same six-step pipeline with different agents: problem-specific prompts,
+                problem-specific processing, problem-specific validation &mdash; but the same
+                structure of generate, research, process, validate, gate, present. The framework
+                scales by repeating a proven pattern, not by adding complexity.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Venture Forge</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
