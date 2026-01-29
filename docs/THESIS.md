@@ -701,7 +701,7 @@ Venture Forge requires no new infrastructure. The platform already exists:
 │  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                              │
 │  ┌─────────────────────────────────────────────────────────────────────┐    │
-│  │                    GEMINI DEEP RESEARCH API                          │    │
+│  │                    CLAUDE DEEP RESEARCH                              │    │
 │  │                                                                      │    │
 │  │  • Deep research with citations                                      │    │
 │  │  • Multi-step autonomous investigation                               │    │
