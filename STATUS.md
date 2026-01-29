@@ -7,7 +7,7 @@ Venture Forge is a **company factory** - a framework that systematically creates
 ## Key Documents
 
 - **Thesis Document**: `docs/THESIS.md` - Full thesis for stakeholder presentation
-- **Presentation**: `presentation/index.html` - Web-based presentation
+- **Presentation**: `docs/index.html` - Web-based presentation
 - **Live URL**: https://cdrappdev.github.io/venture-forge/
 - **GitHub Repo**: https://github.com/CdrAppDev/venture-forge
 
@@ -83,7 +83,7 @@ Run `status` to see the full portfolio dashboard.
 ## What's Done
 
 - [x] Thesis document (`docs/THESIS.md`)
-- [x] Web presentation (`presentation/index.html`)
+- [x] Web presentation (`docs/index.html`)
 - [x] GitHub Pages hosting
 - [x] 13-phase workflow defined
 - [x] Technology architecture defined
@@ -91,6 +91,17 @@ Run `status` to see the full portfolio dashboard.
 - [x] Phase 01-02 skills built (generate-prompts, process-research, validate)
 - [x] Portfolio state system (registry + per-project detail files)
 - [x] CyberShield Rural Phase 01 Capital Thesis complete (gate-review)
+- [x] `vf-present` shared presentation skill (design system, component library, phase section layouts)
+- [x] Phase 01 retrospective — learnings applied to platform (see below)
+
+## Learnings Applied from Phase 01 Test (CyberShield Rural)
+
+1. **sources.md is a required deliverable** — Added to process-research skills for both Phase 01 and 02. Validation skills now check for it (capital: 36 checks, problem: 33 checks).
+2. **URL verification in validation** — Validation skills now include URL format checks. Broken links caught at validation, not after the presentation is built.
+3. **Narrative is mandatory** — phase-sections.yaml requires a narrative section for every phase, with 4 named chapters. The last chapter is always "The Ask" pointing to Gate Review.
+4. **Presentations go in /docs** — CLAUDE.md project paths updated from `presentation/` to `docs/`. GitHub Pages only serves from `/` or `/docs`.
+5. **Source name labels on citations** — Component library requires source name in all inline citation links (e.g., "192.7M records (HIPAA Journal)").
+6. **Portfolio state at project init** — Portfolio system exists; future improvement: create portfolio entry when a new project starts, not after first phase completes.
 
 ## What's Next
 
@@ -105,5 +116,5 @@ To understand the full framework:
 1. `portfolio.yaml` - Portfolio registry (start here)
 2. `CLAUDE.md` - Commands, resume logic, update rules
 3. `docs/THESIS.md` - The complete thesis
-4. `presentation/index.html` - Visual presentation
+4. `docs/index.html` - Visual presentation
 5. `process/PROCESS.yaml` - Phase definitions and file conventions

@@ -27,12 +27,13 @@ Run exhaustive validation of Problem Thesis outputs against all gate criteria. C
 
 ## Checks to Perform
 
-### 1. File Existence (4 checks)
+### 1. File Existence (5 checks)
 
 Verify these files exist and are non-empty:
 - `{project}/phases/02-problem/thesis.md`
 - `{project}/phases/02-problem/evidence.yaml`
 - `{project}/phases/02-problem/customer-voice.md`
+- `{project}/phases/02-problem/sources.md`
 - `{project}/phases/02-problem/processing-log.md`
 
 **Negative test:** If any file is missing, mark FAIL and continue — do not abort validation.
@@ -80,7 +81,20 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 **Negative test:** A statistic in thesis.md that does not appear in evidence.yaml is a FAIL (evidence of untracked claims).
 
-### 6. Processing Log Validation (3 checks)
+### 6. Sources Validation (3 checks)
+
+- `sources.md` lists all unique sources cited across thesis.md, evidence.yaml, and customer-voice.md
+- Each source entry has org name, document title, date, and what it was cited for
+- Sources are organized by category
+
+**Negative test:** A source cited in thesis.md or evidence.yaml that does not appear in sources.md is a FAIL.
+
+### 7. URL Verification (2 checks)
+
+- All URLs in sources.md that have a direct link are formatted correctly (not placeholder text)
+- URLs from research that returned errors during processing are flagged with a note
+
+### 8. Processing Log Validation (3 checks)
 
 - Processing log lists all research files that were read
 - Processing log documents any excluded evidence with reasons
@@ -88,9 +102,9 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 ## Check Summary
 
-**Total checks: 27**
+**Total checks: 33**
 
-Report format: "Checks passed: X/27"
+Report format: "Checks passed: X/33"
 
 ## Output
 
@@ -99,8 +113,8 @@ Generate validation report at `{project}/phases/02-problem/validation-report.md`
 See `references/report-template.md` for exact format.
 
 **Verdict rules:**
-- ALL 27 checks pass → **READY FOR GATE REVIEW**
+- ALL 33 checks pass → **READY FOR GATE REVIEW**
 - Any FAIL → **NEEDS REVISION** with every failure listed
 - Any WARNING → **READY FOR GATE REVIEW WITH WARNINGS** (list warnings)
 
-The validation report MUST include the check counter showing X/27 checks completed. If fewer than 27 checks are reported, the validation itself is invalid.
+The validation report MUST include the check counter showing X/33 checks completed. If fewer than 33 checks are reported, the validation itself is invalid.

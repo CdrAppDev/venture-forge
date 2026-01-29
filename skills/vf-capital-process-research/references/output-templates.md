@@ -157,6 +157,41 @@ funders:
 *Processing decisions: processing-log.md*
 ```
 
+## sources.md Structure
+
+```markdown
+# Sources: [Phase Name]
+
+**Project:** [Project Name]
+**Phase:** [Phase Number] — [Phase Name]
+**Total unique sources:** [N]
+**Date compiled:** [Date]
+
+---
+
+## [Category 1] ([count])
+
+| # | Source | Document / Page | Date | URL | Cited For |
+|---|--------|----------------|------|-----|-----------|
+| 1 | [Org Name] | [Document title] | [Date] | [url](url) | [What this source was cited for] |
+| 2 | [Org Name] | [Document title] | [Date] | — | [What cited for, if no URL available] |
+
+## [Category 2] ([count])
+
+[Same table format]
+
+---
+
+**Sources without direct URLs ([N]):** [List sources lacking URLs and explain why (e.g., cited in research outputs without linkable URLs).]
+```
+
+**Rules:**
+- One entry per unique source (deduplicate across all phase outputs)
+- Organize by category relevant to the phase (e.g., Government, Industry, Funders, News for capital; Academic, Clinical, Market for problem)
+- Every source must have: org name, document/page title, date, and what it was cited for
+- URL is required where available; mark "—" if no direct URL exists
+- Note all sources without URLs at the bottom with explanation
+
 ## processing-log.md Structure
 
 ```markdown

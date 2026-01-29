@@ -14,10 +14,11 @@ These test cases define expected validator behavior across normal, edge case, an
 - `thesis.md` has all sections with content
 - `evidence.yaml` has all categories meeting minimums, all with source/date fields
 - `customer-voice.md` has 6 quotes across 3 themes, terminology and workarounds sections
+- `sources.md` lists all unique sources by category
 - `processing-log.md` has all sections populated
 - Cross-references consistent
 
-**Expected result:** PASS — 27/27 checks passed
+**Expected result:** PASS — 33/33 checks passed
 
 ### TC-02: Minimum viable output
 
@@ -25,10 +26,11 @@ These test cases define expected validator behavior across normal, edge case, an
 - `thesis.md` has all sections, some minimal
 - `evidence.yaml` has exactly: 3 prevalence, 3 severity, 2 cost, 1 solution, 1 gap
 - `customer-voice.md` has exactly 5 quotes across 2 themes
+- `sources.md` lists all sources with org, document, date, cited-for
 - `processing-log.md` has all sections (some with "None found" noted)
 - Cross-references consistent
 
-**Expected result:** PASS — 27/27 checks passed
+**Expected result:** PASS — 33/33 checks passed
 
 ---
 
@@ -170,4 +172,25 @@ These test cases define expected validator behavior across normal, edge case, an
 
 **Expected result:** FAIL on all file existence checks (non-empty requirement)
 - All downstream checks also FAIL
-- Report still completes with 27 checks reported
+- Report still completes with 33 checks reported
+
+### TC-16: Missing sources.md
+
+**Setup:**
+- All other files valid
+- `sources.md` does not exist
+
+**Expected result:** FAIL
+- Check #5 (sources.md existence) → FAIL
+- Sources validation checks → FAIL (cannot read file)
+- All other checks still run
+
+### TC-17: Source cited in thesis not listed in sources.md
+
+**Setup:**
+- `thesis.md` cites a statistic from "Black Book Research (2024)"
+- `sources.md` exists but does not include Black Book Research
+
+**Expected result:** FAIL
+- Sources completeness check → FAIL
+- Detail: "Source 'Black Book Research' cited in thesis.md but not found in sources.md"

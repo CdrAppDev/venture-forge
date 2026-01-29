@@ -65,7 +65,7 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 | `portfolio/{project}.yaml` | Detailed phase history per project |
 | `STATUS.md` | Framework status and what needs work |
 | `docs/THESIS.md` | Full thesis document |
-| `presentation/index.html` | Web presentation |
+| `docs/index.html` | Web presentation (GitHub Pages) |
 | `process/PROCESS.yaml` | Phase definitions and file conventions |
 | `process/phases/*.yaml` | Individual phase specs with gate criteria |
 | `skills/vf-*/SKILL.md` | Agent skills for each phase step |
@@ -116,14 +116,29 @@ Each project is a separate repo. The `path` field in portfolio files points to t
 ```
 {project}/inputs/              # Human-provided context
 {project}/research/{phase_id}/ # Claude Deep Research outputs
-{project}/phases/{phase_id}/   # Phase deliverables
-{project}/presentation/        # Web presentations
+{project}/phases/{phase_id}/   # Phase deliverables (thesis.md, YAML, sources.md, validation-report.md, processing-log.md)
+{project}/docs/                # Web presentations (GitHub Pages serves from /docs on main branch)
 ```
 
 ## Live Presentation
 
 - **URL**: https://cdrappdev.github.io/venture-forge/
 - **Repo**: https://github.com/CdrAppDev/venture-forge
+
+## Phase Output Rules
+
+Every phase MUST produce these files in `{project}/phases/{phase_id}/`:
+- `thesis.md` — narrative with inline citations
+- Structured data files (phase-specific: YAML profiles, evidence, etc.)
+- `sources.md` — deduplicated list of all third-party sources organized by category
+- `validation-report.md` — automated check results
+- `processing-log.md` — audit trail of all processing decisions
+
+**Sources are a required deliverable, not an afterthought.** The sources.md file must be compiled during processing, not after the presentation is built. Every unique source gets an entry with: org name, document title, date, URL (where available), and what it was cited for.
+
+**Presentations go in `{project}/docs/`.** GitHub Pages serves from `/docs` on main branch. Never use `/presentation/` — it is not a valid Pages source.
+
+**Narrative is mandatory.** Every phase presentation must include a narrative section that tells the story in plain language. The narrative exists for human decision-makers, not as documentation. Every factual claim in the narrative must link to its third-party source with the source name in the label (e.g., "192.7M records (HIPAA Journal)").
 
 ## Communication Guidelines
 

@@ -28,8 +28,9 @@ Process uploaded Claude Deep Research results into a Capital Thesis with structu
 8. **Document** timelines, decision processes, and application requirements
 9. **Log** any conflicting data found across research files
 10. **Write** capital thesis with inline citations
-11. **Write** processing log with complete audit trail
-12. **Output** all three files to `{project}/phases/01-capital/`
+11. **Compile** sources.md — deduplicated list of all third-party sources organized by category, with org name, document, date, URL, and what each source was cited for
+12. **Write** processing log with complete audit trail
+13. **Output** all four files to `{project}/phases/01-capital/`
 
 ## Outputs
 
@@ -37,6 +38,7 @@ Process uploaded Claude Deep Research results into a Capital Thesis with structu
 |------|----------|--------|
 | Capital Thesis | `{project}/phases/01-capital/thesis.md` | Markdown |
 | Funder Profiles | `{project}/phases/01-capital/funder-profiles.yaml` | YAML |
+| Sources | `{project}/phases/01-capital/sources.md` | Markdown |
 | Processing Log | `{project}/phases/01-capital/processing-log.md` | Markdown |
 
 ## Evidence Requirements
@@ -77,6 +79,8 @@ The processing log MUST document:
 - [ ] Alignment gaps documented per funder
 - [ ] Timelines documented where available, flagged where not
 - [ ] Gate criteria checklist embedded in thesis
+- [ ] Sources.md lists every unique source with org, document, date, URL, and citation purpose
+- [ ] All source URLs are from pages actually visited during research (no fabricated URLs)
 - [ ] Processing log is complete with all audit trail sections
 
 See `references/output-templates.md` for exact output formats.

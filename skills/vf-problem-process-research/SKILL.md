@@ -27,8 +27,9 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 7. **Extract** customer voice into themed document
 8. **Log** any conflicting data found across research files
 9. **Write** problem thesis with inline citations
-10. **Write** processing log with complete audit trail
-11. **Output** all four files to `{project}/phases/02-problem/`
+10. **Compile** sources.md — deduplicated list of all third-party sources organized by category, with org name, document, date, URL, and what each source was cited for
+11. **Write** processing log with complete audit trail
+12. **Output** all five files to `{project}/phases/02-problem/`
 
 ## Outputs
 
@@ -37,6 +38,7 @@ Process uploaded Claude Deep Research results into a validated Problem Thesis wi
 | Problem Thesis | `{project}/phases/02-problem/thesis.md` | Markdown |
 | Evidence | `{project}/phases/02-problem/evidence.yaml` | YAML |
 | Customer Voice | `{project}/phases/02-problem/customer-voice.md` | Markdown |
+| Sources | `{project}/phases/02-problem/sources.md` | Markdown |
 | Processing Log | `{project}/phases/02-problem/processing-log.md` | Markdown |
 
 ## Evidence Requirements
@@ -71,6 +73,8 @@ The processing log MUST document:
 - [ ] Customer voice quotes have source attribution
 - [ ] Capital alignment explicitly stated
 - [ ] Gate criteria checklist embedded in thesis
+- [ ] Sources.md lists every unique source with org, document, date, URL, and citation purpose
+- [ ] All source URLs are from pages actually visited during research (no fabricated URLs)
 - [ ] Processing log is complete with all audit trail sections
 
 See `references/output-templates.md` for exact output formats.

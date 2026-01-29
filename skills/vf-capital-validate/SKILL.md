@@ -27,11 +27,12 @@ Run exhaustive validation of Capital Thesis outputs against all gate criteria. C
 
 ## Checks to Perform
 
-### 1. File Existence (3 checks)
+### 1. File Existence (4 checks)
 
 Verify these files exist and are non-empty:
 - `{project}/phases/01-capital/thesis.md`
 - `{project}/phases/01-capital/funder-profiles.yaml`
+- `{project}/phases/01-capital/sources.md`
 - `{project}/phases/01-capital/processing-log.md`
 
 **Negative test:** If any file is missing, mark FAIL and continue — do not abort validation.
@@ -95,7 +96,22 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 **Negative test:** A viable funder with no timeline entry at all (not even "unknown") is a FAIL.
 
-### 7. Processing Log Validation (3 checks)
+### 7. Sources Validation (3 checks)
+
+- `sources.md` lists all unique sources cited across thesis.md and funder-profiles.yaml
+- Each source entry has org name, document title, date, and what it was cited for
+- Sources are organized by category (e.g., Government, Industry, Funders, News)
+
+**Negative test:** A source cited in thesis.md or funder-profiles.yaml that does not appear in sources.md is a FAIL.
+
+### 8. URL Verification (2 checks)
+
+- All URLs in sources.md that have a direct link are formatted correctly (not placeholder text)
+- URLs from research that returned errors during processing are flagged with a note (not silently included)
+
+**Note:** Full HTTP verification is not required at validation time, but URLs that are obviously malformed (missing protocol, placeholder text like "TBD") should be flagged.
+
+### 9. Processing Log Validation (3 checks)
 
 - Processing log lists all research files that were read
 - Processing log documents any excluded evidence with reasons
@@ -103,9 +119,9 @@ Read `thesis.md` and verify each section exists and is non-empty:
 
 ## Check Summary
 
-**Total checks: 31**
+**Total checks: 36**
 
-Report format: "Checks passed: X/31"
+Report format: "Checks passed: X/36"
 
 ## Output
 
@@ -114,8 +130,8 @@ Generate validation report at `{project}/phases/01-capital/validation-report.md`
 See `references/report-template.md` for exact format.
 
 **Verdict rules:**
-- ALL 31 checks pass → **READY FOR GATE REVIEW**
+- ALL 36 checks pass → **READY FOR GATE REVIEW**
 - Any FAIL → **NEEDS REVISION** with every failure listed
 - Any WARNING → **READY FOR GATE REVIEW WITH WARNINGS** (list warnings)
 
-The validation report MUST include the check counter showing X/31 checks completed. If fewer than 31 checks are reported, the validation itself is invalid.
+The validation report MUST include the check counter showing X/36 checks completed. If fewer than 36 checks are reported, the validation itself is invalid.

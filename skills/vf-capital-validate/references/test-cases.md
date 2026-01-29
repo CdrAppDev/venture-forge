@@ -13,22 +13,24 @@ These test cases define expected validator behavior across normal, edge case, an
 **Setup:**
 - `thesis.md` has all sections with content
 - `funder-profiles.yaml` has 3 funders, 2 viable
+- `sources.md` lists all unique sources by category
 - `processing-log.md` has all sections populated
 - All citation minimums met
 - Cross-references consistent
 
-**Expected result:** PASS — 31/31 checks passed
+**Expected result:** PASS — 36/36 checks passed
 
 ### TC-02: Minimum viable output
 
 **Setup:**
 - `thesis.md` has all sections, some minimal
 - `funder-profiles.yaml` has exactly 2 funders, both viable
+- `sources.md` lists all sources with org, document, date, cited-for
 - `processing-log.md` has all sections (some empty with "None" noted)
 - Citation minimums met at exactly the minimum (3, 2, 3, 2)
 - Cross-references consistent
 
-**Expected result:** PASS — 31/31 checks passed
+**Expected result:** PASS — 36/36 checks passed
 
 ---
 
@@ -160,4 +162,34 @@ These test cases define expected validator behavior across normal, edge case, an
 
 **Expected result:** FAIL on all file existence checks (non-empty requirement)
 - All downstream checks also FAIL
-- Report still completes with 31 checks reported
+- Report still completes with 36 checks reported
+
+### TC-15: Missing sources.md
+
+**Setup:**
+- `thesis.md`, `funder-profiles.yaml`, `processing-log.md` all valid
+- `sources.md` does not exist
+
+**Expected result:** FAIL
+- Check #4 (sources.md existence) → FAIL
+- Checks #32-34 (sources validation) → FAIL (cannot read file)
+- All other checks still run
+
+### TC-16: Source in thesis not in sources.md
+
+**Setup:**
+- `thesis.md` cites "CMS RHT Program Overview (Dec 2025)"
+- `sources.md` exists but does not list CMS as a source
+
+**Expected result:** FAIL
+- Check #32 (all sources listed) → FAIL
+- Detail: "Source 'CMS' cited in thesis.md but not found in sources.md"
+
+### TC-17: Malformed URL in sources.md
+
+**Setup:**
+- `sources.md` has a source with URL field containing "TBD" or "http://"
+
+**Expected result:** FAIL
+- Check #35 (URLs formatted correctly) → FAIL
+- Detail: "Malformed URL for source [Name]: 'TBD'"
