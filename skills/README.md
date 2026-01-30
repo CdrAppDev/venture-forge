@@ -60,6 +60,7 @@ See `references/` for detailed templates.
 | gate-review | Auto-fix, present evidence briefing, collect human decisions, update portfolio | `vf-gate-review` |
 | governance | Writing and quality rules referenced by other skills | `vf-write` |
 | present | Generate HTML presentations from phase outputs | `vf-present` |
+| expert-generate-prompts | Generate research prompts for domain expert knowledge | `vf-expert-generate-prompts` |
 
 ## How Skills Are Used
 
@@ -93,6 +94,7 @@ Skills improve through use. Every project run is an opportunity to refine them.
 | `vf-gate-review` | all | Complete |
 | `vf-present` | all | Complete |
 | `vf-write` | all | Complete |
+| `vf-expert-generate-prompts` | platform | Complete |
 | Remaining phases | 03-12 | To be built |
 
 Skills for phases 03-12 will be built as the process is tested with real projects.

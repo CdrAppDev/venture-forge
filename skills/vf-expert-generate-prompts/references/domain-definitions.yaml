@@ -1,0 +1,154 @@
+# Domain Definitions for Expert Review Skills
+#
+# Each domain maps to a set of phases and defines what expertise
+# the expert review skill needs. Used by vf-expert-generate-prompts
+# to produce targeted research prompts per domain.
+
+domains:
+  - id: funding
+    name: "Funding Expert"
+    description: "Evaluates capital strategy, funding materials, and funding execution"
+    phases:
+      - "01-capital"
+      - "08-materials"
+      - "12-funding"
+    evaluation_focus: >
+      Whether the venture's capital strategy, pitch materials, and funding
+      approach would survive scrutiny from grant reviewers, angel investors,
+      and VC partners at the venture's current stage.
+    key_questions:
+      - "Does the capital thesis correctly identify and prioritize viable funding sources for the venture's stage and vertical?"
+      - "Is the funding landscape analysis thorough or does it list every funder with a website?"
+      - "Are funder viability assessments defensible or optimistic?"
+      - "Are pitch materials structured to address what funders actually evaluate?"
+      - "Is the funding execution plan realistic given the venture's traction and stage?"
+      - "Does the funding sequence (grants vs. equity vs. accelerators) match the venture's readiness?"
+    source_types:
+      - "Federal grant review rubrics (SBIR, NSF, NIH published scoring criteria and reviewer guidelines)"
+      - "VC evaluation frameworks published by firms or partners (a16z, Sequoia, First Round, sector-specific funds)"
+      - "Accelerator selection criteria (Y Combinator, Techstars, MassChallenge, domain-specific programs)"
+      - "Angel investor decision-making research (academic studies on investment criteria)"
+      - "Pitch deck analysis (data-backed studies on what makes decks succeed or fail)"
+      - "Venture studio evaluation methodologies (published frameworks from established studios)"
+    example_output_types:
+      - "Capital thesis document (funding landscape, funder profiles, alignment strategy, timeline)"
+      - "Pitch materials (deck, executive summary, one-pager, evidence library)"
+      - "Funding applications and data room materials"
+
+  - id: market
+    name: "Market Expert"
+    description: "Evaluates problem validation, market sizing, and competitive analysis"
+    phases:
+      - "02-problem"
+      - "03-market"
+      - "04-competitive"
+    evaluation_focus: >
+      Whether the venture's problem thesis is evidence-based, market sizing
+      is defensible and bottom-up, and competitive positioning identifies
+      real gaps rather than imagined advantages.
+    key_questions:
+      - "Is the problem validated with sufficient evidence from diverse, independent sources?"
+      - "Does the evidence distinguish between correlation and causation appropriately?"
+      - "Is the market sizing bottom-up and defensible, or top-down aspiration?"
+      - "Are TAM/SAM/SOM calculations methodologically sound with stated assumptions?"
+      - "Does the competitive analysis identify genuine gaps vs. imagined advantages?"
+      - "Is the customer voice data authentic and representative, not cherry-picked?"
+      - "Are counter-signals and limitations honestly documented?"
+    source_types:
+      - "Market research methodology standards (Gartner, Forrester, McKinsey evaluation frameworks)"
+      - "Academic research on market validation and startup failure modes"
+      - "VC due diligence frameworks for market assessment (published by investors)"
+      - "Competitive analysis methodologies (Porter's Five Forces, Blue Ocean, published academic frameworks)"
+      - "Problem validation methodology (lean startup academic research, not blog posts)"
+      - "TAM/SAM/SOM calculation standards (published by analysts and investors)"
+    example_output_types:
+      - "Problem thesis (prevalence, severity, customer voice, current solutions, cost of status quo)"
+      - "Market thesis (TAM/SAM/SOM with bottom-up methodology and source citations)"
+      - "Competitive thesis (landscape map, gap analysis, defensible positioning)"
+
+  - id: product
+    name: "Product Expert"
+    description: "Evaluates solution design, MVP architecture, and technical execution"
+    phases:
+      - "05-solution"
+      - "09-architecture"
+      - "10-build"
+    evaluation_focus: >
+      Whether the solution design addresses validated needs, the architecture
+      is appropriate for the stage, and the MVP scope is correctly bounded
+      to prove the core hypothesis rather than over-engineering.
+    key_questions:
+      - "Does the solution thesis connect directly to validated problem and competitive gaps?"
+      - "Are MVP features scoped to the minimum needed to test the core hypothesis?"
+      - "Is the architecture appropriately simple for a pre-revenue stage?"
+      - "Does the tech stack choice match the team's capabilities and the product's needs?"
+      - "Is the build plan realistic for an AI-accelerated development approach?"
+      - "Does the MVP build the right thing (validated need) not just build it right (technical quality)?"
+    source_types:
+      - "Product management evaluation frameworks (Marty Cagan, Teresa Torres, published methodologies)"
+      - "Technical architecture review standards (ATAM, published review methods)"
+      - "MVP scoping research (academic and practitioner studies on what works at early stage)"
+      - "Product-market fit measurement frameworks (Sean Ellis, Superhuman, published research)"
+      - "Software architecture decision records and review patterns"
+      - "AI-accelerated development best practices (emerging literature)"
+    example_output_types:
+      - "Solution thesis (feature specification, problem-solution mapping, customer terms)"
+      - "MVP architecture (system design, data model, API spec, UI spec, tech stack rationale)"
+      - "Working software (deployed MVP with defined scope and test coverage)"
+
+  - id: business
+    name: "Business Expert"
+    description: "Evaluates unit economics, pricing strategy, revenue model, and risk assessment"
+    phases:
+      - "06-business"
+      - "07-risk"
+    evaluation_focus: >
+      Whether the business model is viable, unit economics are grounded
+      in evidence rather than aspiration, pricing is supported by research,
+      and risks are honestly assessed with realistic mitigations.
+    key_questions:
+      - "Are unit economics based on evidence (comparable companies, research) or aspiration?"
+      - "Is the pricing strategy supported by competitive analysis and willingness-to-pay research?"
+      - "Does the revenue model match how the target customer actually buys?"
+      - "Are financial projections based on stated, testable assumptions?"
+      - "Does the risk thesis identify real threats or just strawman risks?"
+      - "Are risk mitigations actionable and specific, not generic hand-waving?"
+      - "Is the LTV/CAC analysis realistic for the sales cycle in this vertical?"
+    source_types:
+      - "SaaS metrics benchmarks published by VCs (Bessemer, OpenView, SaaS Capital)"
+      - "Pricing strategy research (Van Westendorp, Conjoint analysis, published frameworks)"
+      - "Startup risk assessment frameworks (academic and practitioner research)"
+      - "Unit economics benchmarks by vertical and stage (published datasets)"
+      - "Business model validation methodologies (academic research, not blogs)"
+      - "Healthcare/govtech-specific business model patterns (vertical research)"
+    example_output_types:
+      - "Business thesis (revenue model, pricing strategy, unit economics, financial projections)"
+      - "Risk thesis (risk register with categories, mitigation strategies, scenario analysis)"
+
+  - id: traction
+    name: "Traction Expert"
+    description: "Evaluates go-to-market strategy, customer acquisition, and traction evidence"
+    phases:
+      - "11-traction"
+      - "12-funding"
+    evaluation_focus: >
+      Whether the go-to-market approach is realistic for the vertical and
+      stage, traction evidence is genuine and sufficient, and the funding
+      ask effectively leverages demonstrated traction.
+    key_questions:
+      - "Is the go-to-market strategy appropriate for the vertical's buying process?"
+      - "Are customer acquisition channels realistic for the target segment?"
+      - "Is traction evidence genuine (revenue, usage, LOIs) vs. vanity metrics?"
+      - "Does traction evidence match what funders in this vertical actually look for?"
+      - "Is the sales cycle assumption realistic for the target customer?"
+      - "Does funding execution leverage traction evidence effectively in materials?"
+    source_types:
+      - "Go-to-market frameworks for enterprise/healthcare SaaS (published research)"
+      - "Customer acquisition benchmarks by vertical and company stage"
+      - "Traction metrics that funders evaluate (published by VCs and accelerators)"
+      - "Healthcare/govtech sales cycle research (industry-specific studies)"
+      - "LOI and early customer evidence standards (what counts as validation)"
+      - "B2B SaaS launch playbooks (academic and practitioner, stage-specific)"
+    example_output_types:
+      - "Traction report (customer metrics, revenue evidence, usage data, feedback)"
+      - "Funding applications with traction proof prominently featured"
