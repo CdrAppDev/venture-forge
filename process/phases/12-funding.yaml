@@ -71,6 +71,12 @@ skills:
     description: "Verify funding materials and applications are complete"
     output: "{project}/phases/12-funding/validation-report.md"
 
+  expert_review:
+    skill: "vf-expert-funding"
+    when: "after_validate"
+    description: "Expert strategic review of application quality, traction presentation, and funding sequence"
+    output: "{project}/phases/12-funding/expert-review.md"
+
 gate:
   question: "Have we secured funding?"
 

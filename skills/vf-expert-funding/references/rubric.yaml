@@ -1,0 +1,186 @@
+# Expert Funding Rubric
+#
+# Scoring system for evaluating funding domain outputs.
+# Derived from: NIH 1-9 scoring, First Round PMF Method, MassChallenge
+# judging, Gompers (2020), DocSend pitch data, CB Insights failure analysis.
+#
+# Scale: 1-5 (1 = critically deficient, 5 = exceptional for stage)
+# Weights sum to 100%. Composite score is weighted average.
+
+version: "1.0.0"
+source_research: "process/research/expert-funding/"
+
+# ============================================================
+# PHASE 01 — CAPITAL THESIS
+# ============================================================
+
+phase_01:
+  dimensions:
+    - id: funder_prioritization
+      name: "Funder Prioritization"
+      weight: 30
+      description: "Are funders strategically selected and prioritized, not just listed?"
+      scores:
+        1: "Lists 100+ funders with no prioritization or alignment analysis. Spray-and-pray approach."
+        2: "Some funders identified but no stage/sector/geography filtering. Aspirational targets mixed with realistic ones."
+        3: "20-40 funders identified with basic alignment. Some prioritization but gaps in stage matching or thesis alignment."
+        4: "Funders prioritized by stage match, sector focus, and geographic fit. Excludes misaligned sources. Clear rationale for top targets."
+        5: "Deeply researched funder selection. Fund lifecycle stage considered. Portfolio conflict checks. Relationship-building timeline mapped. Top targets have specific engagement strategy."
+      research_basis: "Suster (Upfront Ventures): 40 qualified investors. First Round: avoid 'shopped deal' signaling. DocSend: weak correlation between quantity contacted and funding raised."
+
+    - id: criteria_depth
+      name: "Criteria Documentation Depth"
+      weight: 25
+      description: "Are funder evaluation criteria documented from primary sources, not generic lists?"
+      scores:
+        1: "Generic 'what VCs look for' copied from blog posts. No funder-specific criteria."
+        2: "Investment thesis noted for some funders but from secondary sources. No distinction between funder types."
+        3: "Primary source criteria for major funders. Recognizes differences between grant reviewers and equity investors."
+        4: "Funder-specific criteria with primary sources. Scoring rubrics documented where public (SBIR, NIH). Vertical-specific requirements noted."
+        5: "Deep criteria analysis per funder type. Distinguishes stated vs. revealed preferences. Notes knockout criteria (administrative and strategic). Documents recent changes to evaluation frameworks."
+      research_basis: "NIH 1-9 scale vs. NSF criteria-based vs. DoD ranked criteria. Gompers (2020): 95% cite team, but Kaplan (2009) shows business stability predicts outcomes."
+
+    - id: alignment_realism
+      name: "Alignment Realism"
+      weight: 25
+      description: "Does the alignment path honestly assess gaps between venture capabilities and funder requirements?"
+      scores:
+        1: "Claims all funders are aligned with no gap analysis. Assumes better pitch language solves misalignment."
+        2: "Acknowledges some gaps but doesn't quantify or plan for them. Optimistic about stage readiness."
+        3: "Identifies major gaps with general plans to address. Distinguishes between stage-appropriate and aspirational targets."
+        4: "Specific gap analysis per funder type. Timeline for closing gaps. Pre-product limitations honestly assessed. Distinguishes what's achievable vs. what requires milestones."
+        5: "Sophisticated alignment analysis. Maps specific requirements to current capabilities with evidence. Sequences funder approach based on milestone achievement. Non-dilutive before dilutive strategy articulated."
+      research_basis: "First Round: seed success ≠ Series A readiness. NIH: 'preliminary data not required' Phase I. Sequoia: '$1B+ market' threshold."
+
+    - id: timeline_specificity
+      name: "Timeline & Process Understanding"
+      weight: 20
+      description: "Are funding timelines, cycles, and decision processes documented with specificity?"
+      scores:
+        1: "No timeline awareness. Treats fundraising as always-available."
+        2: "Vague awareness of process length but no specific cycles or deadlines."
+        3: "Major deadlines noted (SBIR cycles, accelerator batches). General fundraising timeline (12 weeks average)."
+        4: "Specific cycles per funder type. Fund deployment stage considered for VCs. Relationship-building lead time factored. Grant application-to-decision timeline documented (NSF: 5-7 months)."
+        5: "Detailed calendar of opportunities. Fund lifecycle analysis (avoid closing funds). Multi-round application processes mapped. Contingency timing for rejection/resubmission."
+      research_basis: "DocSend: average raise 12 weeks, ~58 investors contacted. NSF Phase I: 5-7 month decision. SBIR annual solicitation cycles."
+
+# ============================================================
+# PHASE 08 — MATERIALS ASSEMBLY
+# ============================================================
+
+phase_08:
+  dimensions:
+    - id: evidence_rigor
+      name: "Evidence Rigor"
+      weight: 25
+      description: "Is evidence methodology-based, not assertion-based?"
+      scores:
+        1: "Market sizing from single analyst report ('$50B market, we need 1%'). No bottom-up analysis. Vanity metrics."
+        2: "Some data cited but methodology unclear. Mix of solid and unsourced claims."
+        3: "Bottom-up market sizing attempted. Most claims cited. Traction evidence present but may lack depth."
+        4: "Bottom-up TAM/SAM/SOM with stated assumptions. Evidence sourced and verifiable. Stage-appropriate traction (LOIs, waitlist, interviews)."
+        5: "Rigorous methodology documented. Cross-referenced sources. Honest about limitations. Distinguishes between validated and hypothesized. Counter-evidence acknowledged."
+      research_basis: "DocSend: 58% successful decks include financials, 0% of failed. CB Insights: 42% fail on 'no market need'. Bottom-up sizing is investor standard."
+
+    - id: narrative_coherence
+      name: "Narrative Coherence"
+      weight: 25
+      description: "Do materials tell a consistent story optimized for how evaluators actually read?"
+      scores:
+        1: "Disconnected sections. Statistics contradict between slides. No narrative arc."
+        2: "Basic structure present but key sections misplaced. Business model buried. No 'Why Now?' section."
+        3: "Logical flow from problem to ask. Most data consistent. Business model present but not prominently positioned."
+        4: "Problem → solution → why now → market → model → team → ask flow. Business model by slide 4. Consistent data across deck, summary, and one-pager. Headlines convey story alone."
+        5: "Optimized for 2.5-minute scan. Front-loaded strongest material. Company purpose in single sentence. Each slide earns its place. Appendix for depth without adding length."
+      research_basis: "DocSend: successful decks put business model 4th; investors spend 2:30. Papermark: 92% successful decks include 'Why Now?'. Kawasaki 10/20/30 rule validated."
+
+    - id: pitch_completeness
+      name: "Pitch Completeness"
+      weight: 25
+      description: "Are all essential sections present with appropriate depth for stage?"
+      scores:
+        1: "Missing 3+ essential sections. No financials. No competition. No ask."
+        2: "Most sections present but shallow. Competition is 'no competitors' or irrelevant comparisons."
+        3: "All essential sections present. Competition acknowledged. Financials basic. Team section present."
+        4: "All 11 essential sections present. Competition honest with positioning. Financials show use of funds and milestones. Team section prominent with relevant credentials."
+        5: "Complete deck optimized for stage. Competition shows differentiation (not 'better at everything' quadrant). Financials tie to specific milestones. Team demonstrates founder-market fit."
+      research_basis: "DocSend: 11 essential sections. 0% failed decks had financials. Competition 'systematically absent' in failures. Team slide scrutiny up 40% in 2024."
+
+    - id: cross_document_consistency
+      name: "Cross-Document Consistency"
+      weight: 25
+      description: "Are the same numbers, claims, and narrative used across all materials?"
+      scores:
+        1: "Different statistics in different documents. Claims in deck contradict summary."
+        2: "Most data consistent but some discrepancies. Narrative emphasis shifts between documents."
+        3: "Data consistent. Narrative mostly aligned. Minor presentation differences acceptable."
+        4: "Same metrics across all materials. Narrative consistent. Evidence library is single source of truth that all materials reference."
+        5: "Perfect consistency. Evidence library serves as master record. Updates propagate to all materials. Version control apparent."
+      research_basis: "DocSend: inconsistent numbers are immediate red flag. Federal grants: same data required across project summary, specific aims, and research strategy."
+
+# ============================================================
+# PHASE 12 — FUNDING EXECUTION
+# ============================================================
+
+phase_12:
+  dimensions:
+    - id: application_quality
+      name: "Application Quality"
+      weight: 30
+      description: "Are applications tailored to each funder's specific evaluation criteria?"
+      scores:
+        1: "Generic application sent to all funders. No tailoring for grant vs. equity vs. accelerator."
+        2: "Some customization but criteria not deeply addressed. Grant applications use equity language or vice versa."
+        3: "Applications differentiated by funder type. Grant applications address scoring criteria. Pitch materials emphasize what each evaluator weights."
+        4: "Funder-specific tailoring with criteria mapping. SBIR addresses technical merit first. VC pitch leads with team and market. Accelerator applications emphasize founder achievement magnitude."
+        5: "Deep customization per funder. Grant applications map to specific scoring dimensions with evidence. Pitch materials optimized for 2.5-minute scan. Agency-specific compliance verified (no Letters of Support for NSF Phase I)."
+      research_basis: "NIH: 5 scored criteria with different weights. DoD: technical merit most important. YC: 'something impressive each founder has built.' NSF Phase I: Letters of Support cause rejection."
+
+    - id: traction_presentation
+      name: "Traction Presentation"
+      weight: 25
+      description: "Is traction evidence genuine, specific, and appropriate for stage?"
+      scores:
+        1: "Vague claims ('strong interest from potential customers'). Vanity metrics only."
+        2: "Some evidence but not specific. 'We've talked to 50 people who would buy' without structure."
+        3: "Stage-appropriate evidence present (LOIs, waitlist, interviews). Some specificity."
+        4: "Specific traction metrics with context. LOIs with terms. Waitlist with conversion data. Customer interviews documented. Evidence matches what funders in this vertical look for."
+        5: "Traction evidence tailored per funder type. Grant applications emphasize technical milestones. Equity pitches highlight customer engagement. Specific numbers with methodology. Bad traction excluded (worse than no traction)."
+      research_basis: "Mercury: LOIs, waitlist signups, first customers count at seed. YC Seibel: 'bad traction is worse than no traction'. DocSend: traction scrutiny up 110% for unsuccessful decks."
+
+    - id: data_room_readiness
+      name: "Data Room Readiness"
+      weight: 20
+      description: "Is the data room stage-appropriate — complete enough without over-engineering?"
+      scores:
+        1: "No data room or grossly incomplete."
+        2: "Some documents but missing essentials (cap table, basic financials)."
+        3: "Essential documents present. Cap table clean. Basic financials (burn rate, runway)."
+        4: "Complete stage-appropriate data room. 5-7 essential documents. Deck, cap table, financials, team, customer evidence. Ready for reactive additions."
+        5: "Optimized data room. No over-documentation. Documents consistent with pitch materials. Prepared for common DD questions. Excludes premature items (detailed projections, org charts, legal docs per a16z guidance)."
+      research_basis: "a16z (Moore): early data room = deck + team + roadmap. PitchDrive: 8-item pre-seed checklist. SVB: 'slick, overly produced' is a red flag. Highline Beta: 'walk away' from deep financials requests at pre-seed."
+
+    - id: funding_sequence
+      name: "Funding Sequence Strategy"
+      weight: 25
+      description: "Does the funding sequence match the venture's readiness and optimize for stage?"
+      scores:
+        1: "No sequencing strategy. Approaching all funders simultaneously."
+        2: "Basic awareness of different funder types but no strategic ordering."
+        3: "Non-dilutive before dilutive understood. Some sequencing by timeline."
+        4: "Strategic sequence: grants for validation → accelerator for credibility → angels/pre-seed for scale. Milestone triggers for each stage. Avoids burning opportunities (500 Startups: repeat applicants get less attention)."
+        5: "Sophisticated sequence with contingency. Grant cycles mapped to milestone timeline. Accelerator applications timed to maximize traction evidence. VC approach sequenced to avoid 'shopped deal' signaling. Follow-on strategy considered."
+      research_basis: "First Round: 'shopped deal' is 'almost impossible to recover from'. YC: 'raises too much too early, moves to suburbs'. DOE: missing commercialization plan = automatic decline."
+
+# ============================================================
+# COMPOSITE SCORING
+# ============================================================
+
+composite:
+  method: "weighted_average"
+  interpretation:
+    "4.5-5.0": "Exceptional — outputs would compete at top-tier evaluator level"
+    "3.5-4.4": "Strong — outputs are strategically sound with minor improvements possible"
+    "2.5-3.4": "Adequate — outputs meet minimum standards but have notable gaps"
+    "1.5-2.4": "Weak — outputs have serious strategic deficiencies"
+    "1.0-1.4": "Critical — outputs contain fatal flaws that would cause rejection"

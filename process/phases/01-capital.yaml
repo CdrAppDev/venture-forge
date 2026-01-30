@@ -75,6 +75,12 @@ skills:
     description: "Check outputs against gate criteria before human review"
     output: "{project}/phases/01-capital/validation-report.md"
 
+  expert_review:
+    skill: "vf-expert-funding"
+    when: "after_validate"
+    description: "Expert strategic review of capital thesis quality, funder prioritization, and alignment realism"
+    output: "{project}/phases/01-capital/expert-review.md"
+
   gate_review:
     skill: "vf-gate-review"
     when: "gate_review"

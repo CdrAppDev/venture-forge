@@ -65,6 +65,7 @@ See `references/` for detailed templates.
 | governance | Writing and quality rules referenced by other skills | `vf-write` |
 | present | Generate HTML presentations from phase outputs | `vf-present` |
 | expert-generate-prompts | Generate research prompts for domain expert knowledge | `vf-expert-generate-prompts` |
+| expert-review | Strategic expert review of phase outputs by domain | `vf-expert-{domain}` |
 
 ## How Skills Are Used
 
@@ -74,7 +75,9 @@ See `references/` for detailed templates.
 4. Claude reads SKILL.md instructions
 5. Claude loads references only when needed
 6. Outputs validated against quality checklist
-7. Validate skill runs before human gate review
+7. Validate skill checks mechanical completeness
+8. Expert review skill evaluates strategic soundness (where available)
+9. Gate review presents findings for human decision
 
 ## Updating Skills
 
@@ -103,6 +106,7 @@ Skills improve through use. Every project run is an opportunity to refine them.
 | `vf-present` | all | Complete |
 | `vf-write` | all | Complete |
 | `vf-expert-generate-prompts` | platform | Complete |
+| `vf-expert-funding` | 01, 08, 12 | Complete |
 | Remaining phases | 03-12 | To be built |
 
 Skills for phases 03-12 will be built as the process is tested with real projects.

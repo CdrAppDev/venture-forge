@@ -69,6 +69,12 @@ skills:
     description: "Check materials for completeness and consistency"
     output: "{project}/phases/08-materials/validation-report.md"
 
+  expert_review:
+    skill: "vf-expert-funding"
+    when: "after_validate"
+    description: "Expert strategic review of evidence rigor, narrative coherence, and pitch completeness"
+    output: "{project}/phases/08-materials/expert-review.md"
+
 gate:
   question: "Are materials complete, consistent, and compelling?"
 
