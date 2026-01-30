@@ -3,8 +3,8 @@ name: vf-discovery-validate
 description: >
   Validate discovery outputs before human gate review. Checks that
   opportunity profiles have cited sources, funder-criteria.md files
-  are Phase 01-compatible, scores are consistent, and venture profile
-  constraints are respected. Activate before Phase 00 gate review.
+  are Phase 01-compatible, scores are consistent, and exclusion
+  criteria are respected. Activate before Phase 00 gate review.
 license: MIT
 metadata:
   version: "1.0.0"
@@ -39,7 +39,7 @@ Check discovery outputs against gate criteria before human review. Produces a va
 | Check | Gate Criterion | Pass Condition |
 |-------|---------------|----------------|
 | G1 | opportunities_found | At least 2 opportunities scored 60+ in discovery report |
-| G2 | profile_alignment | Every opportunity respects all exclusion criteria from venture profile |
+| G2 | exclusion_compliance | Every opportunity respects exclusion criteria from venture profile |
 | G3 | evidence_quality | Every funding source in every opportunity has a citation with URL |
 | G4 | actionability | Every funder-criteria.md has minimum required fields (see below) |
 
@@ -60,7 +60,7 @@ Check discovery outputs against gate criteria before human review. Produces a va
 | Q1 | No funding sources appear in multiple opportunities without cross-reference note |
 | Q2 | Scoring math is correct (dimension scores sum to composite) |
 | Q3 | All opportunities with "Pursue" recommendation have score >= 80 |
-| Q4 | No opportunity violates venture profile exclusion criteria |
+| Q4 | No opportunity violates exclusion criteria |
 | Q5 | Citations include URLs (not just source names) |
 | Q6 | Funding amounts are specific ranges, not vague ("significant funding") |
 

@@ -1,22 +1,19 @@
 # Venture Profile
 
-Platform-level input for Phase 00 (Opportunity Discovery). Discovery agents scan funding sources against this profile to surface opportunities. Runs periodically to find new opportunities as the funding landscape changes.
-
-## Primary Constraint
-
-**Software companies only.** The primary product must be software — SaaS, platform, API, mobile app, web app, desktop app, embedded software, AI/ML product.
+Platform-level input for Phase 00 (Opportunity Discovery). Discovery agents scan funding sources against this profile to surface funded problems across all verticals. Runs periodically to find new opportunities as the funding landscape changes.
 
 ## Scope
 
-- **All verticals** — healthcare, fintech, edtech, cybersecurity, govtech, climate, logistics, legal, HR, real estate, agriculture, and any other sector where software solves problems
+- **All verticals** — healthcare, fintech, edtech, cybersecurity, govtech, climate, logistics, legal, HR, real estate, agriculture, defense, insurance, construction, manufacturing, retail, travel, media, telecom, biotech, nonprofit/social impact, AI/ML, and any other sector with funded problems
 - **All business models** — B2B, B2C, B2B2C, D2C, marketplace, platform, API-as-a-service, usage-based, subscription, freemium, transactional
 - **All entity types** — for-profit, non-profit, public benefit corporation, B-corp
 - **All stages** — pre-idea through growth, with emphasis on early stage (pre-seed, seed, Series A)
 - **All geographies** — US-based companies; funding sources from federal, state, regional, and private
+- **All solution types** — discovery does not filter by solution type. Downstream design phases (using first principles and jobs-to-be-done theory) determine the solution approach.
 
 ## Scan Parameters
 
-Sources to monitor for funding opportunities:
+Sources to monitor for funded problems:
 
 ### Federal Programs
 - grants.gov — new grant announcements
@@ -31,15 +28,18 @@ Sources to monitor for funding opportunities:
 - Regional accelerator and incubator programs
 - State-level grants for specific sectors (health IT, clean energy, education, etc.)
 
-### Private and Institutional
+### VC and Angel
 - VC firms across all sectors and stages
-- Accelerator programs (Y Combinator, Techstars, MassChallenge, 500 Global, domain-specific)
 - Angel networks and syndicates
-- Foundation grants (for non-profit software ventures)
-- University commercialization and spinout programs
+- Sector-specific funds
+
+### Accelerators
+- General accelerator programs (Y Combinator, Techstars, MassChallenge, 500 Global)
+- Domain-specific accelerator programs
+- Corporate-backed accelerators
 
 ### Family Offices
-- Family offices with direct investment programs in technology
+- Family offices with direct investment programs
 - Single-family and multi-family offices with venture allocation
 - Family office networks and syndicates
 
@@ -50,17 +50,38 @@ Sources to monitor for funding opportunities:
 - Strategic investment programs (pilot-to-invest models)
 - Open innovation challenges with funding attached
 
+### Foundations / Philanthropic
+- Foundation grants
+- Program-related investments (PRIs)
+- Corporate philanthropy programs
+- Donor-advised fund networks
+
+### Government Contracts
+- GSA Schedule contract vehicles
+- Agency-specific IDIQ and BPA contracts
+- Other Transaction Authority (OTA) programs
+- Small business set-asides
+
+### University / Research Partnerships
+- STTR programs (require university co-PI)
+- University tech transfer offices and spinout programs
+- University venture funds
+- NSF I-Corps programs
+
+### Competitions / Prizes
+- Federal challenges (challenge.gov)
+- XPRIZE and large-scale competitions
+- Industry innovation awards with funding
+- Pitch competitions at major conferences
+
 ### Policy and Regulatory Signals
 - New federal legislation creating funding or market demand
-- Regulatory enforcement increases that create software opportunities
+- Regulatory enforcement increases that create demand for solutions
 - Executive orders directing agency spending
 - State-level policy changes creating new markets
 
 ## Exclusion Criteria
 
 Do not surface opportunities that:
-- Require hardware development or manufacturing as the primary product
-- Require clinical trials or FDA device approval
-- Require wet-lab, biotech, or physical science research
 - Are restricted to existing federal contractors only (8(a), HUBZone set-asides)
 - Target markets outside the US

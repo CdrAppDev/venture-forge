@@ -2,14 +2,14 @@ id: "00-discovery"
 name: "Opportunity Discovery"
 version: "1.0.0"
 
-purpose: "Discover and score funding opportunities that match the venture profile"
+purpose: "Discover funded problems across all verticals and score them for venture potential"
 
 prerequisites: []
 # This is the first phase - no prerequisites
 
 inputs:
   - name: "venture_profile"
-    description: "Platform-level venture profile defining verticals, geographies, capabilities, and constraints"
+    description: "Platform-level venture profile defining scope, scan parameters, and exclusion criteria"
     location: "inputs/venture-profile.md"
     required: true
     note: "Lives in venture-forge root, not a project directory. Describes what kinds of ventures to look for."
@@ -39,33 +39,22 @@ outputs:
     note: "Each file matches the format Phase 01 expects. Copy to {project}/inputs/ to start Phase 01."
 
 research_requirements:
-  - id: "federal_funding"
-    description: "Active federal grant programs matching venture profile verticals"
+  - id: "funded_problems"
+    description: "Problems that funders are paying to solve across all verticals"
     citation_minimum: 3
-
-  - id: "state_programs"
-    description: "State and regional economic development programs in target geography"
-    citation_minimum: 2
-
-  - id: "private_funding"
-    description: "VC firms, accelerators, and angels active in target verticals"
-    citation_minimum: 2
-
-  - id: "policy_signals"
-    description: "Recent legislation, executive orders, and regulatory changes creating funding opportunities"
-    citation_minimum: 2
+    note: "Research covers 11 funding source types per vertical: federal, state, VC/angel, accelerators, family offices, corporate, foundations, government contracts, university, competitions, policy signals"
 
 skills:
   generate_prompts:
     skill: "vf-discovery-generate-prompts"
     when: "before_research"
-    description: "Generate broad funding scan prompts from venture profile"
+    description: "Generate per-vertical prompts to discover funded problems across 11 funding source types"
     output: "discovery/{run_id}/research/00-discovery-prompts.md"
 
   process_research:
     skill: "vf-discovery-process-research"
     when: "after_research"
-    description: "Process research into opportunity profiles and funder-criteria.md files"
+    description: "Process research into funded problem profiles and funder-criteria.md files"
     outputs:
       - "discovery_report"
       - "opportunity_profiles"
@@ -74,7 +63,7 @@ skills:
   score:
     skill: "vf-discovery-score"
     when: "after_processing"
-    description: "Score and rank opportunities against venture profile"
+    description: "Score and rank funded problems on certainty, clarity, timing, magnitude, competition, and venture potential"
     output: "discovery/{run_id}/discovery-report.md"
 
   validate:
@@ -89,15 +78,15 @@ skills:
     description: "Present ranked opportunities for human selection. Human approves/rejects each opportunity individually."
 
 gate:
-  question: "Did we discover viable funding opportunities worth pursuing?"
+  question: "Did we discover funded problems worth pursuing?"
 
   criteria:
     - id: "opportunities_found"
       description: "At least 2 scored opportunities identified"
       required: true
 
-    - id: "profile_alignment"
-      description: "Opportunities match venture profile verticals, geography, and constraints"
+    - id: "problem_clarity"
+      description: "Funded problems are well-defined with identifiable affected populations"
       required: true
 
     - id: "evidence_quality"

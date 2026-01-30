@@ -1,6 +1,6 @@
 # Discovery Prompt Templates
 
-Prompts are generated **per vertical**. For each vertical, generate one prompt per funding source type (7 total). Replace all `[PLACEHOLDERS]` with vertical-specific content.
+Prompts are generated **per vertical**. For each vertical, generate one prompt per funding source type (11 total). Replace all `[PLACEHOLDERS]` with vertical-specific content.
 
 ## Prompt Engineering Standards
 
@@ -23,14 +23,14 @@ Include the contents of `references/citation-format.md` in each generated prompt
 ## Template 1: Federal Programs
 
 ```
-I am scanning for federal funding opportunities for software ventures in [VERTICAL]. This research will identify active and upcoming federal programs so we can evaluate which to pursue.
+I am scanning for federal funding that targets problems in [VERTICAL]. This research will identify active and upcoming federal programs funding solutions to [VERTICAL] problems, regardless of solution type.
 
-Research the federal funding landscape for [VERTICAL] software ventures.
+Research the federal funding landscape for [VERTICAL] problems.
 
 First, identify currently active programs:
 - SBIR/STTR programs at agencies relevant to [VERTICAL] ([RELEVANT_AGENCIES])
 - Other federal grant programs on grants.gov matching [VERTICAL]
-- Federal contract opportunities on SAM.gov for small business software in [VERTICAL]
+- Federal contract opportunities on SAM.gov for small business in [VERTICAL]
 - Agency-specific innovation programs ([AGENCY_SPECIFIC_PROGRAMS])
 
 Then, identify recently created or expanded programs:
@@ -49,7 +49,7 @@ For each program, document:
 - Any geographic preferences or set-asides
 
 Scope:
-- Vertical: [VERTICAL] software companies
+- Vertical: [VERTICAL] — all solution types
 - Stage: Pre-seed through growth; all award sizes
 - Geography: US-based companies; national programs
 - Entity types: For-profit and non-profit eligible
@@ -64,21 +64,31 @@ If a program appears relevant but application details are not yet published, lis
 
 ### Vertical-Specific Customization (Template 1)
 
-When generating this prompt, replace `[RELEVANT_AGENCIES]` and `[AGENCY_SPECIFIC_PROGRAMS]` with agencies known to fund software in the given vertical:
+When generating this prompt, replace `[RELEVANT_AGENCIES]` and `[AGENCY_SPECIFIC_PROGRAMS]` with agencies known to fund solutions in the given vertical:
 
 | Vertical | Relevant Agencies | Agency-Specific Programs |
 |----------|------------------|------------------------|
 | Healthcare / Health IT | HHS, ONC, CMS, NIH, AHRQ, VA | CMS Innovation Center, ONC Health IT programs, VA Innovation Ecosystem |
 | Cybersecurity | DHS, CISA, DOD, NSA, DOE | CISA programs, DOD SBIR cyber topics, DOE CESER |
 | Fintech | Treasury, CFPB, SEC, FDIC, SBA | Treasury fintech initiatives, SBA programs |
+| Insurance / Insurtech | Treasury, FEMA, SBA, HHS | FEMA risk modeling programs, SBA disaster loan tech |
 | Edtech | ED, NSF, DOL | ED EdTech programs, NSF STEM education, DOL workforce |
 | Climate / Clean Tech | DOE, EPA, NOAA, USDA | DOE ARPA-E, EPA SBIR, USDA Conservation Innovation |
-| Govtech | GSA, OPM, OMB, DHS | GSA Technology Modernization Fund, 18F programs |
+| Govtech / Civic Tech | GSA, OPM, OMB, DHS | GSA Technology Modernization Fund, 18F programs |
+| Defense / National Security | DOD, DARPA, DIU, NSA, DHS | DIU programs, DARPA SBIR, AFWERX, NavalX, Army xTech |
 | Legal Tech | DOJ, LSC, SBA | DOJ grants, Legal Services Corp technology initiatives |
 | HR / Future of Work | DOL, ED, SBA | DOL workforce innovation, ED career pathways |
 | Supply Chain / Logistics | DOT, DOD, DHS, USDA | DOT SBIR, DOD logistics modernization |
 | Agriculture / Food Tech | USDA, FDA, EPA | USDA SBIR, NIFA grants, FDA food safety tech |
 | Real Estate / Proptech | HUD, FHFA, SBA | HUD innovation programs, FHFA fintech initiatives |
+| Construction Tech | DOT, DOD, DOE, GSA | DOT infrastructure tech, DOD construction modernization, GSA building tech |
+| Manufacturing Tech | NIST, DOD, DOE, SBA | NIST Manufacturing Extension Partnership, DOD ManTech, DOE AMO |
+| Retail / Commerce Tech | SBA, FTC, USDA | SBA small business tech, FTC consumer protection tech |
+| Travel / Hospitality Tech | DOT, DOC, SBA | DOC tourism programs, SBA hospitality tech |
+| Media / Entertainment Tech | NSF, NEA, FCC | NSF media innovation, NEA technology grants, FCC broadband programs |
+| Telecom / Connectivity | FCC, NTIA, USDA RUS | FCC broadband programs, NTIA grants, USDA ReConnect |
+| Biotech Software | NIH, NSF, DOE, BARDA | NIH SBIR bioinformatics, NSF bio programs, BARDA |
+| Nonprofit / Social Impact Tech | HHS, ED, HUD, DOL, AmeriCorps | AmeriCorps innovation, HHS community programs, ED equity programs |
 | AI / ML Infrastructure | NSF, DARPA, DOE, NIST | NSF AI institutes, DARPA programs, NIST AI standards |
 
 ---
@@ -86,7 +96,7 @@ When generating this prompt, replace `[RELEVANT_AGENCIES]` and `[AGENCY_SPECIFIC
 ## Template 2: State & Regional Programs
 
 ```
-I am scanning for state and regional funding programs that support [VERTICAL] software startups. This research will identify programs across US states that provide early-stage funding or support for [VERTICAL] ventures.
+I am scanning for state and regional funding programs that support [VERTICAL] startups. This research will identify programs across US states that provide early-stage funding or support for [VERTICAL] ventures.
 
 Research state and regional funding programs:
 
@@ -111,7 +121,7 @@ Research state and regional funding programs:
    - Track record (how many companies funded, notable alumni)
 
 Scope:
-- Vertical: [VERTICAL] software companies
+- Vertical: [VERTICAL] — all solution types
 - Geography: All US states, with focus on states most active in [VERTICAL] funding
 - Stage: Pre-seed through growth
 - Entity types: For-profit and non-profit eligible
@@ -129,12 +139,12 @@ If a program's current status is unclear, note it as "Status unconfirmed — las
 ## Template 3: VC & Angel
 
 ```
-I am scanning for venture capital firms and angel investors that fund [VERTICAL] software ventures. This research will map the private funding landscape so we can identify the most active and aligned sources.
+I am scanning for venture capital firms and angel investors that fund [VERTICAL] ventures. This research will map the private funding landscape so we can identify the most active and aligned sources.
 
 Research VC and angel funding for [VERTICAL]:
 
 1. First, identify VC firms with relevant thesis:
-   - Firms that explicitly invest in [VERTICAL] software
+   - Firms that explicitly invest in [VERTICAL]
    - Firms that have made investments in [VERTICAL] in the past 24 months
    - Sector-specific funds focused on [VERTICAL]
    - For each: firm name, thesis, check sizes, stage focus, recent relevant investments
@@ -151,7 +161,7 @@ Research VC and angel funding for [VERTICAL]:
    - Notable exits that signal investor interest?
 
 Scope:
-- Vertical: [VERTICAL] software
+- Vertical: [VERTICAL]
 - Stage: Pre-seed through Series A
 - Geography: US-based investors
 - Entity types: For-profit (equity) and non-profit (program-related investments where applicable)
@@ -169,7 +179,7 @@ If an investor's current activity level is unclear, note the last confirmed inve
 ## Template 4: Accelerators
 
 ```
-I am scanning for accelerator and incubator programs that accept [VERTICAL] software ventures. This research will identify programs offering funding, mentorship, and resources.
+I am scanning for accelerator and incubator programs that accept [VERTICAL] ventures. This research will identify programs offering funding, mentorship, and resources.
 
 Research accelerator programs for [VERTICAL]:
 
@@ -194,7 +204,7 @@ Research accelerator programs for [VERTICAL]:
    - Whether they accept non-profit or only for-profit
 
 Scope:
-- Vertical: [VERTICAL] software
+- Vertical: [VERTICAL]
 - Geography: US-based programs or programs accepting US companies
 - Entity types: For-profit and non-profit where accepted
 - Exclude: [EXCLUSION_CRITERIA]
@@ -211,12 +221,12 @@ If an accelerator's next cohort hasn't been announced, note the most recent coho
 ## Template 5: Family Offices
 
 ```
-I am scanning for family offices that directly invest in [VERTICAL] software ventures. This research will identify family offices with known technology or [VERTICAL] investment programs.
+I am scanning for family offices that directly invest in [VERTICAL] ventures. This research will identify family offices with known technology or [VERTICAL] investment programs.
 
 Research family office funding for [VERTICAL]:
 
 1. First, identify family offices with known [VERTICAL] or technology thesis:
-   - Single-family offices that have made direct [VERTICAL] software investments
+   - Single-family offices that have made direct [VERTICAL] investments
    - Multi-family offices with venture allocation in [VERTICAL]
    - Family office networks that syndicate deals in [VERTICAL]
 
@@ -233,7 +243,7 @@ Research family office funding for [VERTICAL]:
    - Access method (direct, via intermediary, via event)
 
 Scope:
-- Vertical: [VERTICAL] software
+- Vertical: [VERTICAL]
 - Geography: US-based family offices
 - Stage: Seed through Series A (family offices typically invest later than angels but some do early-stage)
 - Exclude: [EXCLUSION_CRITERIA]
@@ -250,23 +260,23 @@ Family offices are private by nature. Document only publicly available informati
 ## Template 6: Corporate Funding
 
 ```
-I am scanning for corporate funding sources — CVC arms, innovation programs, strategic partnerships, and corporate accelerators — that invest in or partner with [VERTICAL] software ventures. This research will identify corporations actively seeking [VERTICAL] technology through investment or partnership.
+I am scanning for corporate funding sources — CVC arms, innovation programs, strategic partnerships, and corporate accelerators — that invest in or partner with [VERTICAL] ventures. This research will identify corporations actively seeking [VERTICAL] technology through investment or partnership.
 
 Research corporate funding for [VERTICAL]:
 
 1. First, identify corporate venture capital (CVC) arms:
    - CVCs of companies operating in [VERTICAL] ([RELEVANT_CORPORATES])
-   - CVCs with thesis that includes [VERTICAL] software
+   - CVCs with thesis that includes [VERTICAL]
    - For each: CVC name, parent company, check sizes, stage, recent [VERTICAL] investments
 
 2. Then, identify corporate innovation and partnership programs:
-   - Pilot-to-invest programs where corporates test software before investing
+   - Pilot-to-invest programs where corporates test solutions before investing
    - Strategic partnership programs with funding attached
    - Open innovation challenges or competitions with prizes/investment
    - Corporate accelerators (distinct from independent accelerators in Template 4)
 
 3. Finally, identify strategic acquirers:
-   - Companies that have acquired [VERTICAL] software startups in the past 24 months
+   - Companies that have acquired [VERTICAL] startups in the past 24 months
    - Corporations with stated M&A interest in [VERTICAL]
    - This signals where corporates see value and may invest earlier in the pipeline
 
@@ -279,7 +289,7 @@ Research corporate funding for [VERTICAL]:
    - Notable portfolio companies or past participants
 
 Scope:
-- Vertical: [VERTICAL] software
+- Vertical: [VERTICAL]
 - Geography: US-based corporates or those investing in US companies
 - Entity types: For-profit primarily; some corporate social responsibility programs accept non-profits
 - Exclude: [EXCLUSION_CRITERIA]
@@ -300,22 +310,252 @@ Replace `[RELEVANT_CORPORATES]` with major corporations in each vertical:
 | Healthcare / Health IT | UnitedHealth/Optum, CVS Health, Humana, Epic, Cerner, Change Healthcare |
 | Cybersecurity | Palo Alto Networks, CrowdStrike, Microsoft, Google, Cisco, Fortinet |
 | Fintech | JPMorgan, Goldman Sachs, Visa, Mastercard, Stripe, PayPal |
+| Insurance / Insurtech | State Farm, Allstate, AIG, Munich Re, Swiss Re, Berkshire Hathaway |
 | Edtech | Pearson, McGraw Hill, 2U, Chegg, Google for Education, Microsoft Education |
 | Climate / Clean Tech | Schneider Electric, Siemens, NextEra, Brookfield, Microsoft Climate |
-| Govtech | Palantir, Booz Allen, SAIC, Leidos, Maximus |
+| Govtech / Civic Tech | Palantir, Booz Allen, SAIC, Leidos, Maximus |
+| Defense / National Security | Lockheed Martin, Raytheon, Northrop Grumman, General Dynamics, L3Harris |
 | Legal Tech | Thomson Reuters, LexisNexis/RELX, Wolters Kluwer |
 | HR / Future of Work | Workday, ADP, SAP SuccessFactors, LinkedIn/Microsoft |
 | Supply Chain / Logistics | Flexport, FedEx, UPS, Amazon, Maersk |
 | Agriculture / Food Tech | Deere, Cargill, ADM, Syngenta, Corteva |
 | Real Estate / Proptech | Zillow, CoStar, CBRE, JLL, Realogy |
+| Construction Tech | Autodesk, Trimble, Procore, Oracle Construction, Bentley Systems |
+| Manufacturing Tech | Siemens, Rockwell Automation, Honeywell, GE, ABB |
+| Retail / Commerce Tech | Shopify, Amazon, Walmart, Target, Salesforce Commerce |
+| Travel / Hospitality Tech | Booking Holdings, Marriott, Hilton, Airbnb, Expedia |
+| Media / Entertainment Tech | Disney, Warner Bros Discovery, Netflix, Spotify, YouTube/Google |
+| Telecom / Connectivity | AT&T, Verizon, T-Mobile, Comcast, Charter |
+| Biotech Software | Illumina, Thermo Fisher, Roche, Genentech, Moderna |
+| Nonprofit / Social Impact Tech | Salesforce.org, Google.org, Microsoft Philanthropies, Chan Zuckerberg Initiative |
 | AI / ML Infrastructure | NVIDIA, Google, Microsoft, Amazon, Meta, Databricks |
 
 ---
 
-## Template 7: Policy & Regulatory Signals
+## Template 7: Foundations / Philanthropic
 
 ```
-I am scanning for policy and regulatory changes that create new funding opportunities or market demand for [VERTICAL] software ventures. This research will identify tailwinds — government actions that either directly fund or indirectly create demand for [VERTICAL] software.
+I am scanning for foundation and philanthropic funding sources for [VERTICAL] ventures. This research will identify foundations, program-related investments (PRIs), and philanthropic programs that fund solutions to [VERTICAL] problems — especially relevant for non-profit and social impact ventures.
+
+Research foundation and philanthropic funding for [VERTICAL]:
+
+1. First, identify major foundations with [VERTICAL] programs:
+   - Foundations with stated interest in [VERTICAL] or related issues
+   - Foundation program areas that align with [VERTICAL] solutions
+   - For each: foundation name, program area, typical grant size, eligibility
+
+2. Then, identify program-related investments (PRIs):
+   - Foundations making PRIs in [VERTICAL] technology
+   - Impact investors with philanthropic capital in [VERTICAL]
+   - For each: organization, PRI terms, what they've funded
+
+3. Next, identify philanthropic programs:
+   - Corporate philanthropy programs relevant to [VERTICAL] (distinct from CVC in Template 6)
+   - Donor-advised fund networks with [VERTICAL] focus
+   - Community foundations with technology or [VERTICAL] priorities
+
+4. Document for each:
+   - Organization name and program area
+   - Funding type (grant, PRI, recoverable grant, in-kind)
+   - Amount range (per grant and annual program budget)
+   - Eligibility (non-profit only? for-profit eligible? fiscal sponsor accepted?)
+   - Application process and timeline
+   - What they've funded previously in [VERTICAL]
+
+Scope:
+- Vertical: [VERTICAL]
+- Geography: US-based foundations and those funding US organizations
+- Entity types: Non-profit primarily; for-profit where PRIs or social enterprise programs exist
+- Exclude: [EXCLUSION_CRITERIA]
+
+If a foundation's current program priorities are unclear, note the most recent annual report date and stated priorities at that time.
+
+[CITATION FORMAT BLOCK]
+
+[EXAMPLE_ENTRY]
+```
+
+### Vertical-Specific Customization (Template 7)
+
+| Vertical | Relevant Foundations |
+|----------|-------------------|
+| Healthcare / Health IT | RWJF, Commonwealth Fund, California Health Care Foundation, Kresge |
+| Cybersecurity | Hewlett Foundation (cyber policy), Ford Foundation (digital rights) |
+| Fintech | Gates Foundation (financial inclusion), Omidyar Network, MetLife Foundation |
+| Insurance / Insurtech | Geneva Association, Insurance Institute, Ewing Marion Kauffman |
+| Edtech | Gates Foundation, Walton Family Foundation, Chan Zuckerberg Initiative, Lumina |
+| Climate / Clean Tech | Bloomberg Philanthropies, Bezos Earth Fund, ClimateWorks, Hewlett Foundation |
+| Govtech / Civic Tech | Knight Foundation, Omidyar Network, Bloomberg Philanthropies |
+| Defense / National Security | Limited philanthropic presence; Smith Richardson Foundation, Bradley Foundation |
+| Legal Tech | Ford Foundation (access to justice), Open Society Foundations, Pew Charitable Trusts |
+| HR / Future of Work | Lumina Foundation, Markle Foundation, Walmart Foundation, JPMorgan Chase Foundation |
+| Supply Chain / Logistics | Rockefeller Foundation (food systems), Walmart Foundation |
+| Agriculture / Food Tech | Rockefeller Foundation, Gates Foundation, Walton Family Foundation |
+| Real Estate / Proptech | Ford Foundation (housing), Enterprise Community Partners, Kresge Foundation |
+| Construction Tech | Limited; Charles Stewart Mott Foundation (community development) |
+| Manufacturing Tech | Kauffman Foundation, Manufacturing Institute foundations |
+| Retail / Commerce Tech | Walmart Foundation, Target Foundation |
+| Travel / Hospitality Tech | Limited philanthropic presence |
+| Media / Entertainment Tech | Knight Foundation, MacArthur Foundation, Ford Foundation (media) |
+| Telecom / Connectivity | Schmidt Futures, Mozilla Foundation, Ford Foundation (digital equity) |
+| Biotech Software | Wellcome Trust, Howard Hughes Medical Institute, Chan Zuckerberg Initiative |
+| Nonprofit / Social Impact Tech | Skoll Foundation, Omidyar Network, Draper Richards Kaplan, Echoing Green |
+| AI / ML Infrastructure | Patrick J. McGovern Foundation, Mozilla Foundation, Open Philanthropy |
+
+---
+
+## Template 8: Government Contracts
+
+```
+I am scanning for government contract opportunities for [VERTICAL] — all solution types. Unlike grants (Template 1), these are procurement vehicles where government agencies buy products or services. This research will identify contract vehicles and procurement pathways.
+
+Research government contract opportunities for [VERTICAL]:
+
+1. First, identify relevant contract vehicles:
+   - GSA Schedule contracts relevant to [VERTICAL]
+   - Government-Wide Acquisition Contracts (GWACs) for IT
+   - Agency-specific IDIQ contracts for [VERTICAL]
+   - Blanket Purchase Agreements (BPAs) for [VERTICAL]
+   - For each: vehicle name, administering agency, scope, how to get on schedule
+
+2. Then, identify active procurements:
+   - Current RFPs/RFQs on SAM.gov for [VERTICAL]
+   - Sources sought notices and RFIs signaling upcoming procurements
+   - Small business set-asides in [VERTICAL]
+   - For each: opportunity title, agency, estimated value, deadline, set-aside status
+
+3. Next, identify pathways for new companies:
+   - Other Transaction Authority (OTA) programs accepting [VERTICAL] companies
+   - Simplified acquisition procedures for small purchases
+   - Agency innovation programs that lead to contracts (e.g., DIU for defense)
+   - For each: program, how to engage, typical timeline from first contact to contract
+
+4. Document for each:
+   - Contract vehicle or opportunity name
+   - Administering agency
+   - Scope and eligible products/services
+   - Estimated value range
+   - Eligibility requirements (certifications, clearances, past performance)
+   - How a new company can access this vehicle
+   - Timeline from application to award
+
+Scope:
+- Vertical: [VERTICAL]
+- Geography: US federal, state, and local government procurement
+- Entity types: For-profit primarily (some non-profit contract vehicles exist)
+- Exclude: [EXCLUSION_CRITERIA]
+
+If a contract vehicle requires certifications or clearances, document what's needed and typical timeline to obtain them.
+
+[CITATION FORMAT BLOCK]
+
+[EXAMPLE_ENTRY]
+```
+
+---
+
+## Template 9: University / Research Partnerships
+
+```
+I am scanning for university and research institution partnerships that fund or support [VERTICAL] ventures. This includes STTR programs (which require university partnership), tech transfer offices, spinout programs, and university venture funds.
+
+Research university and research partnerships for [VERTICAL]:
+
+1. First, identify universities with strong [VERTICAL] research:
+   - Universities with top-ranked [VERTICAL]-related programs
+   - Research centers or labs focused on [VERTICAL]
+   - For each: university, department/center, key faculty, research focus
+
+2. Then, identify partnership funding mechanisms:
+   - STTR programs (require university co-PI) relevant to [VERTICAL]
+   - University venture funds that invest in spinouts
+   - Tech transfer offices with active [VERTICAL] portfolios
+   - NSF I-Corps programs at universities with [VERTICAL] focus
+   - For each: mechanism, funding amount, terms, how to engage
+
+3. Next, identify research-to-startup pathways:
+   - University incubators and accelerators for [VERTICAL]
+   - Proof-of-concept grant programs
+   - Industry-university research consortia in [VERTICAL]
+   - For each: program, eligibility (must be faculty? alumni? external?), support provided
+
+4. Document for each:
+   - University or institution name
+   - Program or mechanism name
+   - Funding type and amount
+   - Eligibility (affiliation required? open to external founders?)
+   - IP terms (who owns what?)
+   - Application process
+   - Notable [VERTICAL] spinouts or success stories
+
+Scope:
+- Vertical: [VERTICAL]
+- Geography: US universities and research institutions
+- Entity types: For-profit and non-profit
+- Exclude: [EXCLUSION_CRITERIA]
+
+If a university program's current status or funding level is unclear, note the most recent confirmed activity.
+
+[CITATION FORMAT BLOCK]
+
+[EXAMPLE_ENTRY]
+```
+
+---
+
+## Template 10: Competitions / Prizes
+
+```
+I am scanning for competitions, challenges, and prize programs that fund or recognize [VERTICAL] ventures. These provide non-dilutive capital and visibility.
+
+Research competitions and prizes for [VERTICAL]:
+
+1. First, identify major competitions:
+   - XPRIZE competitions relevant to [VERTICAL]
+   - challenge.gov challenges from federal agencies in [VERTICAL]
+   - MIT Solve challenges relevant to [VERTICAL]
+   - Hult Prize and similar global competitions with [VERTICAL] themes
+   - For each: competition name, sponsor, prize amount, timeline, eligibility
+
+2. Then, identify industry-specific competitions:
+   - Trade association innovation awards with funding in [VERTICAL]
+   - Corporate-sponsored challenges in [VERTICAL]
+   - Pitch competitions at major [VERTICAL] conferences
+   - For each: competition, sponsor, prize, how to enter
+
+3. Next, identify recurring programs:
+   - Annual innovation challenges in [VERTICAL]
+   - Startup battlefield / demo day competitions that include [VERTICAL]
+   - Government innovation challenges (beyond challenge.gov)
+   - For each: program, frequency, next deadline, past winners
+
+4. Document for each:
+   - Competition or prize name
+   - Sponsor organization
+   - Prize amount and form (cash, services, equity investment, media exposure)
+   - Eligibility requirements (stage, geography, entity type)
+   - Application timeline and process
+   - Notable past winners in [VERTICAL]
+
+Scope:
+- Vertical: [VERTICAL]
+- Geography: Open to US-based companies
+- Entity types: For-profit and non-profit
+- Exclude: [EXCLUSION_CRITERIA]
+
+If a competition hasn't announced its next cycle, note the most recent edition and typical cadence.
+
+[CITATION FORMAT BLOCK]
+
+[EXAMPLE_ENTRY]
+```
+
+---
+
+## Template 11: Policy & Regulatory Signals
+
+```
+I am scanning for policy and regulatory changes that create new funding opportunities or market demand for [VERTICAL] ventures. This research will identify tailwinds — government actions that either directly fund or indirectly create demand for [VERTICAL].
 
 Research policy and regulatory signals for [VERTICAL]:
 
@@ -325,7 +565,7 @@ Research policy and regulatory signals for [VERTICAL]:
    - State-level legislation affecting [VERTICAL]
 
 2. Then, identify regulatory enforcement trends:
-   - Agencies increasing enforcement in [VERTICAL] (creates compliance software demand)
+   - Agencies increasing enforcement in [VERTICAL] (creates compliance solution demand)
    - New regulations requiring technology adoption in [VERTICAL]
    - Upcoming compliance deadlines creating urgency
    - Penalties that have increased, making compliance tools more valuable
@@ -364,6 +604,7 @@ If a policy signal is rumored but not officially announced, label it as "Unconfi
 | `[RELEVANT_AGENCIES]` | Vertical-specific agency list (see Template 1 customization table) |
 | `[AGENCY_SPECIFIC_PROGRAMS]` | Vertical-specific programs (see Template 1 customization table) |
 | `[RELEVANT_CORPORATES]` | Vertical-specific corporates (see Template 6 customization table) |
+| `[RELEVANT_FOUNDATIONS]` | Vertical-specific foundations (see Template 7 customization table) |
 | `[EXCLUSION_CRITERIA]` | venture-profile.md → Exclusion Criteria section |
 | `[CITATION FORMAT BLOCK]` | Contents of `references/citation-format.md` |
 | `[EXAMPLE_ENTRY]` | Generate a vertical-specific example showing what a good funding source entry looks like |
@@ -373,10 +614,10 @@ If a policy signal is rumored but not officially announced, label it as "Unconfi
 When generating prompts from these templates:
 
 1. Read the venture profile from `inputs/venture-profile.md`
-2. Determine verticals to scan (from profile or reference list)
+2. Determine verticals to scan (from profile or operator instruction — all 22 or a subset)
 3. For each vertical:
    a. Replace `[VERTICAL]` with the vertical name
-   b. Replace agency, corporate, and program placeholders with vertical-specific entries from the customization tables
+   b. Replace agency, corporate, foundation, and program placeholders with vertical-specific entries from the customization tables
    c. Generate a vertical-specific `[EXAMPLE_ENTRY]` (not the same example for every vertical)
    d. Insert exclusion criteria from venture profile
    e. Insert citation format block from `references/citation-format.md`
@@ -398,7 +639,7 @@ Save to `discovery/{run_id}/research/00-discovery-prompts.md`:
 **Primary Constraint:** Software companies only
 **Scope:** {scope summary}
 **Verticals:** {N} verticals being scanned
-**Funding Source Types:** 7 per vertical ({N × 7} total prompts)
+**Funding Source Types:** 11 per vertical ({N × 11} total prompts)
 
 ## Instructions for Research
 
@@ -411,7 +652,11 @@ Save to `discovery/{run_id}/research/00-discovery-prompts.md`:
    - `04-accelerators.md`
    - `05-family-offices.md`
    - `06-corporate.md`
-   - `07-policy-regulatory.md`
+   - `07-foundations.md`
+   - `08-government-contracts.md`
+   - `09-university-research.md`
+   - `10-competitions.md`
+   - `11-policy-regulatory.md`
 4. You can run verticals in any order — run the most interesting ones first
 5. Once a vertical's research is complete, it can be processed independently
 
@@ -431,7 +676,7 @@ Save to `discovery/{run_id}/research/00-discovery-prompts.md`:
 
 ---
 
-(... all 7 prompts ...)
+(... all 11 prompts ...)
 
 ---
 

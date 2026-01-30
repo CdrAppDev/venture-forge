@@ -5,20 +5,20 @@
 | Score | Criteria |
 |-------|----------|
 | 21-25 | Program is active with published solicitation, open applications, or confirmed upcoming cycle. Official documentation available. |
-| 16-20 | Program exists and has funded similar ventures, but current cycle not yet announced. Strong historical pattern. |
-| 11-15 | Program announced but details incomplete. Or program exists in adjacent area (funded health IT but not cybersecurity specifically). |
+| 16-20 | Program exists and has funded similar efforts, but current cycle not yet announced. Strong historical pattern. |
+| 11-15 | Program announced but details incomplete. Or program exists in adjacent area. |
 | 6-10 | Program rumored or in legislative pipeline. Funding source inferred from agency priorities. |
 | 0-5 | Speculative. Based on trends or analogies, not documented programs. |
 
-## Dimension 2: Profile Fit (25 points)
+## Dimension 2: Problem Clarity (25 points)
 
 | Score | Criteria |
 |-------|----------|
-| 21-25 | Matches all profile criteria: verticals, geography, capabilities, stage, and no exclusion conflicts. |
-| 16-20 | Matches most criteria. Minor misalignment (e.g., program prefers but doesn't require different geography). |
-| 11-15 | Matches core vertical but has capability gaps or geographic friction. Workaround plausible. |
-| 6-10 | Partial match. Requires significant stretching of team capabilities or venture scope. |
-| 0-5 | Poor fit. Matches on one dimension but conflicts on others. |
+| 21-25 | Problem is explicitly stated by funders with specific affected populations, quantified impact, and clear success metrics. |
+| 16-20 | Problem is well-defined with identified populations and documented impact, but success metrics are funder-inferred, not explicit. |
+| 11-15 | Problem area is clear but specific pain points or affected populations are vague. Funding targets a broad domain. |
+| 6-10 | Problem is implied by the funding category but not articulated. Requires significant interpretation. |
+| 0-5 | No clear problem statement. Funding is general-purpose or administrative. |
 
 ## Dimension 3: Timing (15 points)
 
@@ -47,14 +47,14 @@
 | 3-5 | Highly competitive. Well-known program with many applicants (success rate <10%). |
 | 0-2 | Extremely competitive or gatekept. Requires existing relationships or track record we don't have. |
 
-## Dimension 6: Venture Viability (10 points)
+## Dimension 6: Venture Potential (10 points)
 
 | Score | Criteria |
 |-------|----------|
-| 9-10 | Clear path to recurring-revenue software product. Identifiable customers with budget and buying authority. |
-| 6-8 | Plausible software product but customer acquisition path unclear. Or market exists but competitive. |
-| 3-5 | Software product possible but business model uncertain. One-time project risk. |
-| 0-2 | Funding supports research or services, not a scalable software product. |
+| 9-10 | Clear path to a venture that addresses the funded problem. Identifiable customers with budget and buying authority. |
+| 6-8 | Plausible venture but customer acquisition path unclear. Or market exists but competitive. |
+| 3-5 | Venture possible but business model uncertain. One-time project risk. |
+| 0-2 | Funding supports pure research or services with no venture path. |
 
 ## Composite Score Interpretation
 

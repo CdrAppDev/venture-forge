@@ -1,10 +1,10 @@
 ---
 name: vf-discovery-score
 description: >
-  Score and rank discovered opportunities against the venture profile.
-  Evaluates each opportunity on funding certainty, profile fit, timing,
-  magnitude, competition, and venture viability. Produces a ranked
-  discovery report with rationale. Activate after vf-discovery-process-research.
+  Score and rank discovered funded problems. Evaluates each opportunity
+  on funding certainty, problem clarity, timing, magnitude, competition,
+  and venture potential. Produces a ranked discovery report with rationale.
+  Activate after vf-discovery-process-research.
 license: MIT
 metadata:
   version: "1.0.0"
@@ -14,7 +14,7 @@ metadata:
 
 # Opportunity Discovery: Score and Rank
 
-Score each discovered opportunity against the venture profile and produce a ranked discovery report for human gate review.
+Score each discovered funded problem and produce a ranked discovery report for human gate review.
 
 ## Prerequisites
 
@@ -35,11 +35,11 @@ Score each discovered opportunity against the venture profile and produce a rank
 | Dimension | Weight | What It Measures |
 |-----------|--------|------------------|
 | Funding Certainty | 25% | Is the funding announced, open, and documented? Or speculative? |
-| Profile Fit | 25% | Does the opportunity match verticals, geography, capabilities, and constraints? |
+| Problem Clarity | 25% | Is the funded problem well-defined? Are affected populations and pain points clear? |
 | Timing | 15% | Are deadlines approaching? Is the program in early or late cycle? |
 | Magnitude | 15% | Total funding potential across all sources in the bundle |
 | Competition | 10% | How many applicants are likely? How specific are the requirements? |
-| Venture Viability | 10% | Can this become a recurring-revenue software product? |
+| Venture Potential | 10% | Is there a plausible venture (any type) that could address this problem? |
 
 ## Output
 
@@ -66,11 +66,11 @@ File: `discovery/{run_id}/discovery-report.md`
 | Dimension | Score | Rationale |
 |-----------|-------|-----------|
 | Funding Certainty | {}/25 | {evidence} |
-| Profile Fit | {}/25 | {evidence} |
+| Problem Clarity | {}/25 | {evidence} |
 | Timing | {}/15 | {evidence} |
 | Magnitude | {}/15 | {evidence} |
 | Competition | {}/10 | {evidence} |
-| Venture Viability | {}/10 | {evidence} |
+| Venture Potential | {}/10 | {evidence} |
 
 **Recommendation:** {Pursue / Investigate further / Pass}
 **Key risk:** {biggest uncertainty}
@@ -87,7 +87,7 @@ File: `discovery/{run_id}/discovery-report.md`
 - [ ] Every opportunity from the processing step is either scored or excluded with reason
 - [ ] Scoring rationale cites specific evidence from opportunity profiles
 - [ ] Funding Certainty scores distinguish between announced programs, rumored programs, and speculative sources
-- [ ] Profile Fit scores check all constraint categories (verticals, geography, capabilities, exclusions)
+- [ ] Problem Clarity scores assess how well-defined the funded problem is
 - [ ] Composite scores are mathematically correct given dimension weights
 - [ ] Rankings are consistent with scores (no manual overrides without explanation)
 - [ ] Report is readable by a human making go/no-go decisions

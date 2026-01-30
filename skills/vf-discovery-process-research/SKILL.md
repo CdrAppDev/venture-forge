@@ -3,9 +3,9 @@ name: vf-discovery-process-research
 description: >
   Process Claude Deep Research results into structured opportunity profiles
   and funder-criteria.md files. Reads discovery research, clusters related
-  funding sources into opportunity bundles, generates venture concepts, and
-  produces Phase 01-ready funder criteria files. Activate after discovery
-  research is uploaded.
+  funding sources into funded problem bundles, identifies the problems
+  funders are paying to solve, and produces Phase 01-ready funder criteria
+  files. Activate after discovery research is uploaded.
 license: MIT
 metadata:
   version: "1.0.0"
@@ -28,10 +28,10 @@ Process raw research results into structured opportunity profiles and generate `
 1. **Read** venture profile from `inputs/venture-profile.md`
 2. **Read** all research results from `discovery/{run_id}/research/00-discovery/`
 3. **Extract** individual funding sources from research — each with program name, agency/organization, amount, eligibility, timeline, vertical alignment
-4. **Cluster** related funding sources into opportunity bundles — group sources that point to the same venture concept (e.g., RHTP + SCRA + CISA → "healthcare cybersecurity for rural hospitals")
-5. **Generate** a venture concept for each bundle — what software product would win this funding, who are the customers, what problem does it solve
-6. **Apply** venture profile constraints — eliminate opportunities that violate exclusion criteria
-7. **Generate** `funder-criteria.md` for each viable opportunity in the format Phase 01 expects
+4. **Cluster** related funding sources into funded problem bundles — group sources that target the same problem (e.g., RHTP + SCRA + CISA → "rural hospitals lack cybersecurity protection")
+5. **Articulate** the funded problem for each bundle — what problem are funders paying to solve, who is affected, what is the impact
+6. **Apply** exclusion criteria from venture profile
+7. **Generate** `funder-criteria.md` for each opportunity in the format Phase 01 expects
 8. **Generate** structured opportunity profile YAML for each opportunity
 9. **Save** outputs to `discovery/{run_id}/`
 
@@ -43,7 +43,7 @@ Process raw research results into structured opportunity profiles and generate `
 ```yaml
 id: "{slug}"
 name: "{Opportunity Name}"
-venture_concept: "{One-line description of the software venture}"
+funded_problem: "{One-line description of the problem funders are paying to solve}"
 verticals: ["{vertical1}", "{vertical2}"]
 funding_sources:
   - name: "{Program Name}"
@@ -76,8 +76,8 @@ Format must match what Phase 01 expects (see `references/funder-criteria-templat
 
 - [ ] Every funding source from research is accounted for (included in an opportunity or excluded with reason)
 - [ ] Opportunity bundles group genuinely related funding sources, not arbitrary clusters
-- [ ] Venture concepts are plausible software products, not vague themes
-- [ ] Exclusion criteria from venture profile are applied (no hardware, no non-profit-only, etc.)
+- [ ] Funded problems are specific and well-articulated, not vague themes
+- [ ] Exclusion criteria from venture profile are applied
 - [ ] Each funder-criteria.md contains the minimum fields Phase 01 needs
 - [ ] All citations from research are preserved in opportunity profiles
 - [ ] Opportunities that share funding sources are noted (e.g., Phase 12 overlap)
