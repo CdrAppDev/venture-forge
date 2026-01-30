@@ -184,6 +184,62 @@ This record documents:
 
 The record lives alongside validation-report.md and thesis.md as the permanent audit trail of the gate decision.
 
+## Phase 00 (Discovery) Gate Variant
+
+When the current phase is `00-discovery`, the gate review follows a **1-to-many** flow instead of the standard single-project flow. The discovery phase produces multiple opportunities, each requiring an individual approve/reject decision.
+
+### How It Differs
+
+1. **Context files** are at `discovery/{run_id}/` instead of `{project}/phases/{phase_id}/`
+2. **Validation report** is at `discovery/{run_id}/validation-report.md`
+3. **Discovery report** at `discovery/{run_id}/discovery-report.md` contains ranked opportunities
+4. **Blocking decision** is per-opportunity, not per-phase
+
+### Presentation
+
+Present each opportunity from the discovery report with its score and rationale:
+
+```
+## Discovery Gate Review
+
+### Run: {run_id}
+
+### Opportunities Found: {count}
+
+| # | Opportunity | Score | Recommendation |
+|---|-------------|-------|----------------|
+| 1 | {name} | {score}/100 | Pursue |
+| 2 | {name} | {score}/100 | Investigate |
+
+### For each opportunity:
+
+**{Opportunity Name}** — {score}/100
+- Funding sources: {list}
+- Total potential: {amount}
+- Top signal: {why it scored high}
+- Main risk: {key uncertainty}
+
+Decision: (a) Pursue → creates project, starts Phase 01
+          (b) Skip → opportunity archived
+          (c) Investigate → flagged for manual research before deciding
+```
+
+### On Pursue (per opportunity)
+
+For each opportunity the human selects "Pursue":
+1. Create project directory at the conventional path
+2. Copy `discovery/{run_id}/outputs/{slug}/funder-criteria.md` to `{project}/inputs/funder-criteria.md`
+3. Add entry to `portfolio.yaml` with `current_phase: "01-capital"`, `phase_status: "pending"`
+4. Create `portfolio/{project}.yaml` with initial phase history
+
+### Gate Review Record
+
+Write `discovery/{run_id}/gate-review-record.md` (not in a project directory) documenting:
+- All opportunities presented
+- Decision per opportunity (pursue/skip/investigate)
+- Human rationale for each decision
+- Projects created (with paths)
+
 ## Quality Checklist
 
 - [ ] All context files read before presenting to human

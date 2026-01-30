@@ -33,8 +33,17 @@ file_conventions:
   presentation: "{project}/docs/"
   evidence_library: "{project}/evidence/"
   materials: "{project}/materials/"
+  venture_profile: "inputs/venture-profile.md"
+  discovery_root: "discovery/"
+  discovery_run: "discovery/{run_id}/"
 
 phases:
+  - id: "00-discovery"
+    name: "Opportunity Discovery"
+    file: "phases/00-discovery.yaml"
+    optional: true
+    note: "Can be skipped if human provides funder-criteria.md directly to Phase 01"
+
   - id: "01-capital"
     name: "Capital Thesis"
     file: "phases/01-capital.yaml"

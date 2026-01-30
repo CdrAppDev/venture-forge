@@ -10,7 +10,10 @@ Venture Forge is a **company factory** - a systematic framework for creating sof
 
 ## The Framework
 
-### 12 Phases (Research → Funded)
+### 13 Phases (Discovery → Funded)
+
+**Discovery (0)** *(optional)*
+0. Opportunity Discovery - Scan funding landscape, score opportunities, auto-generate Phase 01 inputs
 
 **Research & Validation (1-4)**
 1. Capital Thesis - What funders want

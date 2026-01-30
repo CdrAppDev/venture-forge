@@ -51,6 +51,10 @@ See `references/` for detailed templates.
 
 | Type | Purpose | Naming Pattern |
 |------|---------|----------------|
+| discovery-generate-prompts | Create broad funding scan prompts from venture profile | `vf-discovery-generate-prompts` |
+| discovery-process-research | Process scan results into opportunity profiles | `vf-discovery-process-research` |
+| discovery-score | Score and rank opportunities against venture profile | `vf-discovery-score` |
+| discovery-validate | Validate discovery outputs before gate review | `vf-discovery-validate` |
 | generate-prompts | Create research prompts for Claude Deep Research | `vf-{phase}-generate-prompts` |
 | process-research | Process uploaded research into phase outputs | `vf-{phase}-process-research` |
 | synthesize | Combine prior phase outputs (no new research) | `vf-{phase}-synthesize` |
@@ -85,6 +89,10 @@ Skills improve through use. Every project run is an opportunity to refine them.
 
 | Skill | Phase | Status |
 |-------|-------|--------|
+| `vf-discovery-generate-prompts` | 00 | Complete |
+| `vf-discovery-process-research` | 00 | Complete |
+| `vf-discovery-score` | 00 | Complete |
+| `vf-discovery-validate` | 00 | Complete |
 | `vf-capital-generate-prompts` | 01 | Complete |
 | `vf-capital-process-research` | 01 | Complete |
 | `vf-capital-validate` | 01 | Complete |

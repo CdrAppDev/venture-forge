@@ -1,0 +1,125 @@
+id: "00-discovery"
+name: "Opportunity Discovery"
+version: "1.0.0"
+
+purpose: "Discover and score funding opportunities that match the venture profile"
+
+prerequisites: []
+# This is the first phase - no prerequisites
+
+inputs:
+  - name: "venture_profile"
+    description: "Platform-level venture profile defining verticals, geographies, capabilities, and constraints"
+    location: "inputs/venture-profile.md"
+    required: true
+    note: "Lives in venture-forge root, not a project directory. Describes what kinds of ventures to look for."
+
+  - name: "research_results"
+    description: "Claude Deep Research results on funding landscape"
+    location: "discovery/{run_id}/research/00-discovery/"
+    required: true
+    note: "User runs research prompts manually, uploads results here"
+
+outputs:
+  - name: "discovery_report"
+    description: "Scored and ranked funding opportunities with rationale"
+    location: "discovery/{run_id}/discovery-report.md"
+    format: "markdown"
+
+  - name: "opportunity_profiles"
+    description: "Structured profiles of each discovered opportunity"
+    location: "discovery/{run_id}/opportunities/"
+    format: "yaml"
+    note: "One file per opportunity (e.g., healthcare-cybersecurity.yaml)"
+
+  - name: "funder_criteria_files"
+    description: "Generated funder-criteria.md files ready for Phase 01"
+    location: "discovery/{run_id}/outputs/{opportunity-slug}/funder-criteria.md"
+    format: "markdown"
+    note: "Each file matches the format Phase 01 expects. Copy to {project}/inputs/ to start Phase 01."
+
+research_requirements:
+  - id: "federal_funding"
+    description: "Active federal grant programs matching venture profile verticals"
+    citation_minimum: 3
+
+  - id: "state_programs"
+    description: "State and regional economic development programs in target geography"
+    citation_minimum: 2
+
+  - id: "private_funding"
+    description: "VC firms, accelerators, and angels active in target verticals"
+    citation_minimum: 2
+
+  - id: "policy_signals"
+    description: "Recent legislation, executive orders, and regulatory changes creating funding opportunities"
+    citation_minimum: 2
+
+skills:
+  generate_prompts:
+    skill: "vf-discovery-generate-prompts"
+    when: "before_research"
+    description: "Generate broad funding scan prompts from venture profile"
+    output: "discovery/{run_id}/research/00-discovery-prompts.md"
+
+  process_research:
+    skill: "vf-discovery-process-research"
+    when: "after_research"
+    description: "Process research into opportunity profiles and funder-criteria.md files"
+    outputs:
+      - "discovery_report"
+      - "opportunity_profiles"
+      - "funder_criteria_files"
+
+  score:
+    skill: "vf-discovery-score"
+    when: "after_processing"
+    description: "Score and rank opportunities against venture profile"
+    output: "discovery/{run_id}/discovery-report.md"
+
+  validate:
+    skill: "vf-discovery-validate"
+    when: "before_gate"
+    description: "Verify discovery outputs before human review"
+    output: "discovery/{run_id}/validation-report.md"
+
+  gate_review:
+    skill: "vf-gate-review"
+    when: "gate_review"
+    description: "Present ranked opportunities for human selection. Human approves/rejects each opportunity individually."
+
+gate:
+  question: "Did we discover viable funding opportunities worth pursuing?"
+
+  criteria:
+    - id: "opportunities_found"
+      description: "At least 2 scored opportunities identified"
+      required: true
+
+    - id: "profile_alignment"
+      description: "Opportunities match venture profile verticals, geography, and constraints"
+      required: true
+
+    - id: "evidence_quality"
+      description: "Each opportunity backed by cited funding sources with verified URLs"
+      required: true
+
+    - id: "actionability"
+      description: "Generated funder-criteria.md files contain sufficient detail to start Phase 01"
+      required: true
+
+  outcomes:
+    proceed:
+      description: "Opportunities approved. Create project directories and start Phase 01 for each."
+      next_phase: "01-capital"
+      note: "1-to-many: human selects which opportunities to pursue. Each approved opportunity becomes a separate project entering Phase 01."
+
+    revise:
+      description: "Opportunities found but need refinement"
+      action: "Adjust scan parameters, re-run research with narrower or broader scope"
+
+    kill:
+      description: "No viable opportunities match the venture profile"
+      action: "Revise venture profile or wait for new funding cycles"
+
+learnings: []

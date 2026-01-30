@@ -11,7 +11,10 @@ Venture Forge is a **company factory** - a framework that systematically creates
 - **Live URL**: https://cdrappdev.github.io/venture-forge/
 - **GitHub Repo**: https://github.com/CdrAppDev/venture-forge
 
-## The 12-Phase Workflow
+## The 13-Phase Workflow (Phase 00-12)
+
+### Discovery (0)
+0. **Opportunity Discovery** *(optional)* - Scan funding landscape, score opportunities, generate Phase 01 inputs
 
 ### Research & Validation (1-4)
 1. **Capital Thesis** - Where is funding flowing? What do funders want?
@@ -69,7 +72,7 @@ See `/Users/chrisroberts/Projects/rhtp/` for the RHTP research.
 2. **Software-first** - All ventures are software products
 3. **Claude for research** - Use Claude Deep Research (manual workflow) for comprehensive cited research
 4. **Claude for everything else** - Processing, generation, orchestration, code
-5. **12 phases** - Research through funding, including MVP build and traction
+5. **13 phases (00-12)** - Discovery through funding, including MVP build and traction
 6. **Evidence-backed** - Every claim must have third-party citation
 
 ## Portfolio State
@@ -84,7 +87,7 @@ Run `status` to see the full portfolio dashboard.
 - [x] Thesis document (`docs/THESIS.md`)
 - [x] Web presentation (`docs/index.html`)
 - [x] GitHub Pages hosting
-- [x] 12-phase workflow defined (process/PROCESS.yaml)
+- [x] 13-phase workflow defined with Phase 00 Discovery (process/PROCESS.yaml)
 - [x] Technology architecture defined
 - [x] Proof point documented (RHTP → 5 opportunities)
 - [x] Phase 01-02 skills built (generate-prompts, process-research, validate)
@@ -92,6 +95,8 @@ Run `status` to see the full portfolio dashboard.
 - [x] CyberShield Rural Phase 01 Capital Thesis complete (gate-review)
 - [x] `vf-present` shared presentation skill (design system, component library, phase section layouts)
 - [x] Phase 01 retrospective — learnings applied to platform (see below)
+- [x] Phase 00 Opportunity Discovery added (venture profile → scan → score → Phase 01 inputs)
+- [x] Expert domain research skill (`vf-expert-generate-prompts`) for quality assurance
 
 ## Learnings Applied from Phase 01 Test (CyberShield Rural)
 
