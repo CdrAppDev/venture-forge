@@ -1,44 +1,18 @@
 # Venture Profile
 
-Platform-level input for Phase 00 (Opportunity Discovery). Describes what kinds of ventures the platform operator wants to build. Discovery agents scan funding sources against this profile to surface opportunities.
+Platform-level input for Phase 00 (Opportunity Discovery). Discovery agents scan funding sources against this profile to surface opportunities. Runs periodically to find new opportunities as the funding landscape changes.
 
-## Verticals
+## Primary Constraint
 
-Priority verticals for venture creation:
+**Software companies only.** The primary product must be software — SaaS, platform, API, mobile app, web app, desktop app, embedded software, AI/ML product.
 
-- **Healthcare technology** — rural health, telehealth, compliance, cybersecurity, claims processing, remote patient monitoring, behavioral health access
-- **Cybersecurity** — critical infrastructure protection, healthcare security, small/rural organization defense
-- **Government technology** — civic tech, public health informatics, rural services delivery
+## Scope
 
-## Geographies
-
-- **Company base:** South Carolina, USA
-- **Target markets:** US nationwide with rural focus
-- **Funding geography:** Federal programs (national), South Carolina state programs, Southeast regional programs
-
-## Team Capabilities
-
-- Full-stack software engineering
-- AI/ML development (LLMs, agents, automation)
-- Healthcare domain knowledge
-- No hardware manufacturing capability
-- No wet-lab or biotech capability
-
-## Stage Preferences
-
-- **Funding types (priority order):** Non-dilutive grants first, accelerator programs, angel investment, pre-seed/seed equity
-- **Grant range:** $25K–$2M per award
-- **Equity range:** Pre-seed to seed ($100K–$2M)
-- **Timeline:** Must be fundable within 12 months of discovery
-- **Revenue target:** First revenue within 6 months of MVP build
-
-## Constraints
-
-- Software-only ventures (SaaS, platform, API)
-- Must address a validated, evidence-backed problem
-- Must have identifiable early customers (not speculative markets)
-- Ventures must be buildable with AI-accelerated development (small team, high velocity)
-- Regulatory compliance required where applicable (HIPAA, FedRAMP, SOC 2)
+- **All verticals** — healthcare, fintech, edtech, cybersecurity, govtech, climate, logistics, legal, HR, real estate, agriculture, and any other sector where software solves problems
+- **All business models** — B2B, B2C, B2B2C, D2C, marketplace, platform, API-as-a-service, usage-based, subscription, freemium, transactional
+- **All entity types** — for-profit, non-profit, public benefit corporation, B-corp
+- **All stages** — pre-idea through growth, with emphasis on early stage (pre-seed, seed, Series A)
+- **All geographies** — US-based companies; funding sources from federal, state, regional, and private
 
 ## Scan Parameters
 
@@ -47,35 +21,46 @@ Sources to monitor for funding opportunities:
 ### Federal Programs
 - grants.gov — new grant announcements
 - SAM.gov — contract and grant opportunities
-- SBIR.gov — Small Business Innovation Research programs (HHS, NSF, DOD, DOE)
-- NIH Reporter — National Institutes of Health funding
-- Congressional legislation creating new funding pools (recent acts, appropriations)
+- SBIR.gov — Small Business Innovation Research (all agencies)
+- NIH, NSF, DOD, DOE, USDA, DOJ, ED — agency-specific programs
+- Congressional legislation creating new funding pools
 
 ### State and Regional Programs
-- SC Research Authority (SCRA) — grants and investments
-- SC Department of Commerce — economic development programs
-- SC Launch — startup acceleration
-- Southeast regional economic development programs
-- State-level health IT and cybersecurity initiatives
+- State economic development agencies
+- State innovation and technology programs
+- Regional accelerator and incubator programs
+- State-level grants for specific sectors (health IT, clean energy, education, etc.)
 
 ### Private and Institutional
-- VC firms with healthcare, cybersecurity, or govtech thesis
-- Accelerator program announcements (Y Combinator, Techstars, MassChallenge, domain-specific)
-- Corporate innovation programs (health systems, insurance companies, defense contractors)
-- University research commercialization programs
+- VC firms across all sectors and stages
+- Accelerator programs (Y Combinator, Techstars, MassChallenge, 500 Global, domain-specific)
+- Angel networks and syndicates
+- Foundation grants (for non-profit software ventures)
+- University commercialization and spinout programs
+
+### Family Offices
+- Family offices with direct investment programs in technology
+- Single-family and multi-family offices with venture allocation
+- Family office networks and syndicates
+
+### Corporate Funding
+- Corporate venture capital (CVC) arms across industries
+- Corporate innovation and partnership programs
+- Corporate accelerators and incubator programs
+- Strategic investment programs (pilot-to-invest models)
+- Open innovation challenges with funding attached
 
 ### Policy and Regulatory Signals
-- New federal legislation creating funding (e.g., RHTP, CHIPS Act equivalents for health/cyber)
-- Regulatory enforcement increases that create market demand (HIPAA, CISA directives)
+- New federal legislation creating funding or market demand
+- Regulatory enforcement increases that create software opportunities
 - Executive orders directing agency spending
-- State-level policy changes affecting healthcare or cybersecurity
+- State-level policy changes creating new markets
 
 ## Exclusion Criteria
 
 Do not surface opportunities that:
-- Require hardware development or manufacturing
-- Are restricted to organizations with existing federal contracts (8(a), HUBZone only)
-- Require matching funds exceeding $50K
-- Are limited to non-profit or academic institutions only
+- Require hardware development or manufacturing as the primary product
+- Require clinical trials or FDA device approval
+- Require wet-lab, biotech, or physical science research
+- Are restricted to existing federal contractors only (8(a), HUBZone set-asides)
 - Target markets outside the US
-- Require clinical trials or FDA approval

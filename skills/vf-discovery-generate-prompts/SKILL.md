@@ -2,20 +2,21 @@
 name: vf-discovery-generate-prompts
 description: >
   Generate Claude Deep Research prompts for funding opportunity discovery.
-  Reads the venture profile to produce 4 broad scan prompts covering federal
-  grants, state programs, private funding, and policy signals. Output feeds
-  into vf-discovery-process-research. Activate when starting a Phase 00
+  Reads the venture profile and generates prompts per vertical across all
+  funding source types (federal, state, VC, accelerators, angels, family
+  offices, corporate, foundations, policy signals). Output feeds into
+  vf-discovery-process-research. Activate when starting a Phase 00
   discovery run.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
   phase: 00-discovery
   when: before_research
 ---
 
 # Opportunity Discovery: Generate Research Prompts
 
-Generate Claude Deep Research prompts that scan the funding landscape for opportunities matching the venture profile. Unlike Phase 01 prompts which drill into known funders, these prompts cast a wide net across funding sources.
+Generate Claude Deep Research prompts that scan the funding landscape for software venture opportunities. Prompts are generated **per vertical** — each vertical gets its own set of prompts covering all funding source types.
 
 ## Prerequisites
 
@@ -25,19 +26,45 @@ Generate Claude Deep Research prompts that scan the funding landscape for opport
 ## Workflow
 
 1. **Read** venture profile from `inputs/venture-profile.md`
-2. **Extract** verticals, geographies, capabilities, constraints, scan parameters, and exclusion criteria
-3. **Generate 4 prompts** using templates in `references/prompt-templates.md`, replacing all placeholders with venture profile specifics
-4. **Inject** citation format block (from `references/citation-format.md`), scope bounds, and uncertainty permission into each prompt
+2. **Identify verticals** — read the Scope section to determine which verticals to scan. If the profile says "all verticals," generate a list of major software-fundable verticals (see reference list below)
+3. **For each vertical**, generate prompts across funding source types using templates in `references/prompt-templates.md`
+4. **Inject** citation format block (from `references/citation-format.md`), exclusion criteria, and uncertainty permission into each prompt
 5. **Save** to `discovery/{run_id}/research/00-discovery-prompts.md`
 
-## Research Areas (4 Prompts)
+## Vertical Identification
 
-| # | Area | Purpose |
-|---|------|---------|
-| 1 | Federal Funding Landscape | Active federal grant programs matching profile verticals and constraints |
-| 2 | State and Regional Programs | State economic development, research authorities, regional initiatives |
-| 3 | Private and Institutional Funding | VCs, accelerators, angels, corporate innovation programs in target verticals |
-| 4 | Policy and Regulatory Signals | Recent legislation, executive orders, enforcement trends creating opportunities |
+When the venture profile specifies "all verticals," use this reference list of major verticals where software ventures attract funding:
+
+| Vertical | Examples |
+|----------|----------|
+| Healthcare / Health IT | EHR, telehealth, clinical decision support, patient engagement, health data |
+| Cybersecurity | Enterprise security, identity, compliance, threat detection |
+| Fintech | Payments, lending, insurance, banking infrastructure, regtech |
+| Edtech | K-12, higher ed, corporate training, credentialing |
+| Climate / Clean Tech | Energy management, carbon tracking, grid software, sustainability |
+| Govtech / Civic Tech | Government services, public safety, regulatory compliance |
+| Legal Tech | Contract management, discovery, compliance, access to justice |
+| HR / Future of Work | Recruiting, workforce management, benefits, remote work tools |
+| Supply Chain / Logistics | Warehouse, freight, procurement, last-mile, visibility |
+| Agriculture / Food Tech | Precision agriculture, food safety, supply chain traceability |
+| Real Estate / Proptech | Property management, construction tech, mortgage, brokerage |
+| AI / ML Infrastructure | Dev tools, MLOps, data labeling, model serving |
+
+Add or remove verticals based on operator guidance. Each vertical gets its own prompt set.
+
+## Prompts Per Vertical (7 funding source types)
+
+For each vertical, generate one prompt per funding source type:
+
+| # | Funding Source Type | What to Find |
+|---|---------------------|-------------|
+| 1 | Federal Programs | SBIR/STTR, agency grants, federal contracts for software in this vertical |
+| 2 | State & Regional | State grants, economic development programs, regional accelerators |
+| 3 | VC & Angel | VC firms, angel networks, syndicates with thesis in this vertical |
+| 4 | Accelerators | Programs accepting companies in this vertical (general and domain-specific) |
+| 5 | Family Offices | Family offices with direct investment in this vertical's technology |
+| 6 | Corporate Funding | CVC arms, innovation programs, strategic pilots, corporate accelerators in this vertical |
+| 7 | Policy & Regulatory | Legislation, enforcement trends, executive orders creating funding or demand in this vertical |
 
 ## Output
 
@@ -45,20 +72,36 @@ File: `discovery/{run_id}/research/00-discovery-prompts.md`
 
 Must contain:
 - Run ID and date
-- Venture profile summary (verticals, geographies, constraints)
-- All 4 research prompts with citation requirements
-- Each prompt includes: context block, sequencing, scope bounds, exclusion criteria, uncertainty permission, citation format, example entry
+- Venture profile summary (primary constraint, scope)
+- List of verticals being scanned
+- For each vertical: 7 prompts (one per funding source type)
+- Each prompt includes: context block, vertical-specific focus, sequencing, exclusion criteria, uncertainty permission, citation format, example entry
 - Instructions for running in Claude Deep Research and saving results
+
+## File Naming Convention for Results
+
+Instruct the human to save results as:
+```
+discovery/{run_id}/research/00-discovery/
+  {vertical-slug}/
+    01-federal.md
+    02-state-regional.md
+    03-vc-angel.md
+    04-accelerators.md
+    05-family-offices.md
+    06-corporate.md
+    07-policy-regulatory.md
+```
 
 ## Quality Checklist
 
-- [ ] All scan parameter categories from venture profile are represented in prompts
+- [ ] All verticals from venture profile (or reference list) have prompts generated
+- [ ] All 7 funding source types covered per vertical
 - [ ] Prompts include exclusion criteria from venture profile
 - [ ] All prompts explicitly request citations with structured format
-- [ ] Prompts target official funding announcements and published criteria, not news summaries
-- [ ] Each prompt addresses a distinct funding category (no overlap between the 4)
-- [ ] Each prompt specifies geography and vertical scope from venture profile
-- [ ] Each prompt has context/motivation explaining why this scan matters
+- [ ] Prompts target official sources — funding announcements, published criteria, portfolio pages — not news summaries
+- [ ] Each prompt is vertical-specific (not generic with vertical name swapped in — include vertical-relevant agencies, firms, programs)
 - [ ] Each prompt grants permission to flag uncertainty rather than speculate
+- [ ] File naming instructions are clear for the human running research
 
 See `references/prompt-templates.md` for detailed templates.
